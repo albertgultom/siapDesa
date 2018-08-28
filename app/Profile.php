@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
-    protected $table = 'posts';
+    protected $table = 'profiles';
     protected $guarded = [];
     protected $fillable = [];
 }

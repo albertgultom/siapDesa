@@ -23,7 +23,8 @@ class TypeSeeder extends Seeder
 
         foreach($types as $index){
             DB::table('types')->insert([
-                'name' => $index
+                'name' => $index,
+                'level' => 0
             ]);
         }
     }
