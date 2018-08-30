@@ -321,6 +321,10 @@ header {
 }
 /* TAMBAHAN CARD STYLE
 ----------------------*/
+.profil > .card{
+    margin: .55rem;
+    border-radius: .25rem 2.25rem;
+}
 .card-group.nowrapper{
     display: flex;
     flex-wrap: nowrap;
@@ -338,8 +342,9 @@ header {
     display: none;
 }
 .client-img {
-    width: 160px;
-    margin-bottom: 1.25rem;
+    height: 160px;
+    width: auto;
+    /* margin-bottom: 1.25rem; */
 }
 .p-3.text-center{
     margin: .5em;

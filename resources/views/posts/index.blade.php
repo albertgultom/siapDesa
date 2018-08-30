@@ -57,6 +57,7 @@
           </table>
         </div>
       </div>
+      <canvas id="tesChart"></canvas>
     </div>
   </div>
 </section>
@@ -97,5 +98,7 @@
       }
     ]
   });
+  var ctx = document.getElementById("tesChart");
+  var myChart = new Chart(ctx, {});
 </script>
 @endpush

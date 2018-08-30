@@ -46,7 +46,7 @@
                     </a>
                     <ul class="header3-sub-list list-unstyled">
                         <li>
-                            <a href="index.html">Berita</a>
+                            <a href="post">Berita</a>
                         </li>
                         <li>
                             <a href="index2.html">Kategori</a>

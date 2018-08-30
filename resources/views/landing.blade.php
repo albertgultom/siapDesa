@@ -1,60 +1,99 @@
 @extends('layouts.public')
 
 @section('content')
-<div class="container-fluid">
+<section>
   <div class="d-flex flex-row flex-nowrap mb-3 client-logo">
-      <div class="p-3 text-center border border-warning">
-          <img src="{!!asset('storage\apparatus\Gubernur_Nurdin_Basirun.png')!!}" class="client-img rounded-circle" alt="">
-          <div class="text-center">Dr. H. Nurdin Basirun, S.Sos, M.Si.</div>
-      </div>
-      <div class="p-3 text-center border border-warning">
-          <img src="{!!asset('storage\apparatus\1200px-Wakil_Gubernur_Kepulauan_Riau,_Isdianto.jpg')!!}" class="client-img rounded-circle" alt="">
-          <div class="text-center">H. Isdianto, S.Sos, M.M.</div>
-      </div>
-      <div class="p-3 text-center border border-warning">
-          <img src="{!!asset('storage\apparatus\IMG-20180419-WA0010.jpg')!!}" class="client-img rounded-circle" alt="">
-          <div class="text-center">Abdul Haris, SH.</div>
-      </div>
-      <div class="p-3 text-center border border-warning">
-          <img src="{!!asset('storage\apparatus\qweww.jpg')!!}" class="client-img rounded-circle" alt="">
-          <div class="text-center">Wan Zuhendra</div>
-      </div>
-      <div class="p-3 text-center border border-warning">
-          <img src="{!!asset('storage\apparatus\businessman.png')!!}" class="client-img rounded-circle" alt="">
-          <div class="text-center">Dr. H. Nurdin Basirun, S.Sos, M.Si.</div>
-      </div>
-      <div class="p-3 text-center border border-warning">
-          <img src="{!!asset('storage\apparatus\businesswoman.png')!!}" class="client-img rounded-circle" alt="">
-          <div class="text-center">H. Isdianto, S.Sos, M.M.</div>
-      </div>
-      <div class="p-3 text-center border border-warning">
-          <img src="{!!asset('storage\apparatus\Gubernur_Nurdin_Basirun.png')!!}" class="client-img rounded-circle" alt="">
-          <div class="text-center">Dr. H. Nurdin Basirun, S.Sos, M.Si.</div>
-      </div>
-      <div class="p-3 text-center border border-warning">
-          <img src="{!!asset('storage\apparatus\1200px-Wakil_Gubernur_Kepulauan_Riau,_Isdianto.jpg')!!}" class="client-img rounded-circle" alt="">
-          <div class="text-center">H. Isdianto, S.Sos, M.M.</div>
-      </div>
-      <div class="p-3 text-center border border-warning">
-          <img src="{!!asset('storage\apparatus\IMG-20180419-WA0010.jpg')!!}" class="client-img rounded-circle" alt="">
-          <div class="text-center">Abdul Haris, SH.</div>
-      </div>
-      <div class="p-3 text-center border border-warning">
-          <img src="{!!asset('storage\apparatus\qweww.jpg')!!}" class="client-img rounded-circle" alt="">
-          <div class="text-center">Wan Zuhendra</div>
-      </div>
-      <div class="p-3 text-center border border-warning">
-          <img src="{!!asset('storage\apparatus\man-25.png')!!}" class="client-img rounded-circle" alt="">
-          <div class="text-center">Dr. H. Nurdin Basirun, S.Sos, M.Si.</div>
-      </div>
-      <div class="p-3 text-center border border-warning">
-          <img src="{!!asset('storage\apparatus\woman-2.png')!!}" class="client-img rounded-circle" alt="">
-          <div class="text-center">H. Isdianto, S.Sos, M.M.</div>
-      </div>
+    <div class="p-3 text-center border border-warning shadow-lite">
+        <img src="{!!asset('storage\apparatus\siti-aisyah.jpg')!!}" class="client-img rounded-circle" alt="">
+        <div class="text-center" style="min-height: 50px;">SITI AISAH, S.IP</div>
+        <div class="text-center" style="border-top:1px solid;">Kepala Desa</div>
+    </div>
+    <div class="p-3 text-center border border-warning shadow-lite">
+        <img src="{!!asset('storage\apparatus\albumtemp-36.jpg')!!}" class="client-img rounded-circle" alt="">
+        <div class="text-center" style="min-height: 50px;">ARIS SOMANTRI, S.Pd.I</div>
+        <div class="text-center" style="border-top:1px solid;">Sekretaris Desa</div>
+    </div>
+    <div class="p-3 text-center border border-warning shadow-lite">
+        <img src="{!!asset('storage\apparatus\businessman.png')!!}" class="client-img rounded-circle" alt="">
+        <div class="text-center" style="min-height: 50px;">M. IQBAL AL-HAMDANI</div>
+        <div class="text-center" style="border-top:1px solid;">KAUR TU & Umum</div>
+    </div>
+    <div class="p-3 text-center border border-warning shadow-lite">
+        <img src="{!!asset('storage\apparatus\businesswoman.png')!!}" class="client-img rounded-circle" alt="">
+        <div class="text-center" style="min-height: 50px;">SITI NURHASANAH, A.Md</div>
+        <div class="text-center" style="border-top:1px solid;">KAUR Keuangan</div>
+    </div>
+    <div class="p-3 text-center border border-warning shadow-lite">
+        <img src="{!!asset('storage\apparatus\man-28.png')!!}" class="client-img rounded-circle" alt="">
+        <div class="text-center" style="min-height: 50px;">AS MUCLAS, ST</div>
+        <div class="text-center" style="border-top:1px solid;">KAUR Perencanaan</div>
+    </div>
+    <div class="p-3 text-center border border-warning shadow-lite">
+        <img src="{!!asset('storage\apparatus\woman-2.png')!!}" class="client-img rounded-circle" alt="">
+        <div class="text-center" style="min-height: 50px;">BUMI WIRANTINA</div>
+        <div class="text-center" style="border-top:1px solid;">Staf Desa</div>
+    </div>
+    <div class="p-3 text-center border border-warning shadow-lite">
+        <img src="{!!asset('storage\apparatus\man-5.png')!!}" class="client-img rounded-circle" alt="">
+        <div class="text-center" style="min-height: 50px;">DEDI SETIADI, A.Ma.Pd</div>
+        <div class="text-center" style="border-top:1px solid;">Bendahara Desa</div>
+    </div>
+    <div class="p-3 text-center border border-warning shadow-lite">
+        <img src="{!!asset('storage\apparatus\man-16.png')!!}" class="client-img rounded-circle" alt="">
+        <div class="text-center" style="min-height: 50px;">BENI MULYADI</div>
+        <div class="text-center" style="border-top:1px solid;">KASI Pemerintahan</div>
+    </div>
+    <div class="p-3 text-center border border-warning shadow-lite">
+        <img src="{!!asset('storage\apparatus\man-23.png')!!}" class="client-img rounded-circle" alt="">
+        <div class="text-center" style="min-height: 50px;">MASTUR</div>
+        <div class="text-center" style="border-top:1px solid;">KASI Kesejahteraan</div>
+    </div>
+    <div class="p-3 text-center border border-warning shadow-lite">
+        <img src="{!!asset('storage\apparatus\man-34.png')!!}" class="client-img rounded-circle" alt="">
+        <div class="text-center" style="min-height: 50px;">AHMAD SAEPUDIN, A.Ma</div>
+        <div class="text-center" style="border-top:1px solid;">KASI Pelayanan</div>
+    </div>
   </div>
+</section>
+
+<div class="container-fluid bg-gradient-ver">
+    <div class="sseamless">
+        <div class="row pt-5 pb-5 profil seamless2">
+            <div class="card col-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Visi Desa</h5>
+                    <ul>
+                        <li>Mewujudkan Masyarakat Desa Kujangsari yang Religius, Aspiratif, Inovatif, Efektif, Efisien dan Selaras.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card col-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Misi Desa</h5>
+                    <ul>
+                        <li>Membangun sistem pemerintahan yang bersih serta berorientasi kepada pelayanan publik.</li>
+                        <li>Menigkatkan kinerja lembaga pemerintahan desa.</li>
+                        <li>Meningkatkan laju pemberdayaan ekonomi kerakyatan yang berbasis koperasi.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card col-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Statisktik Penduduk</h5>
+                    <canvas id="chartPenduduk"></canvas>
+                </div>
+            </div>
+            <div class="card col-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Statistik Keluarga</h5>
+                    <canvas id="chartKeluarga"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="section light-bg" id="features">
+{{-- <div class="section light-bg" id="features">
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-3">
@@ -182,9 +221,9 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 
-<div class="section">
+{{-- <div class="section">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-5 mb-3">
@@ -316,5 +355,96 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 @endsection
+
+@push('scripts')
+<script>
+    var ctx = document.getElementById("chartPenduduk");
+    if(ctx){
+        ctx.height = 220;
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Laki-laki", "Perempuan"],
+                datasets: [{
+                    data: [5911, 5898],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+    }
+    var ctx = document.getElementById("chartKeluarga");
+    if(ctx){
+        ctx.height = 220;
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Laki-laki", "Perempuan"],
+                datasets: [{
+                    data: [3717, 337],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+    }
+</script>
+@endpush
