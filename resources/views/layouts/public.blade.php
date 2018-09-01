@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Website Desa Kujangsari</title>
+  <title>Desa Kujangsari</title>
   <link rel="shorcut icon" href="{{ asset('storage/images/favicon.png') }}">
   <!-- Fonts -->
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -37,30 +37,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbar">
               <ul class="navbar-nav ml-auto">
-                <li class="nav-item"> <a class="nav-link active" href="#home">AWAL<span class="sr-only">(current)</span></a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#features">BERITA</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#gallery">PELAYANAN</a> </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">PROFIL</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Desa</a>
-                    <a class="dropdown-item" href="#">Sejarah</a>
-                    {{-- <a class="dropdown-item" href="#">Visi dan Misi</a> --}}
-                    <a class="dropdown-item" href="#">Struktur Organisasi</a>
-                  </div>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">POTENSI</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Alam</a>
-                    <a class="dropdown-item" href="#">Sarana Prasarana</a>
-                    <a class="dropdown-item" href="#">Penduduk</a>
-                    <!-- <div class="dropdown-divider"></div> -->
-                    <a class="dropdown-item" href="#">Fisik</a>
-                  </div>
-                </li>
-                {{-- <li class="nav-item"> <a class="nav-link" href="#">PRODUK HUKUM</a> </li> --}}
-                <li class="nav-item"> <a class="nav-link" href="#contact">KONTAK</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="/">BERANDA</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/profil">PROFIL</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/layanan">PELAYANAN</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/pustaka">PUSTAKA</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/produk">PRODUK</a> </li>
               </ul>
             </div>
           </nav>
@@ -71,15 +52,15 @@
   <!-- HEADER -->
   <header class="bg-gradient" id="home">
     <div class="container-fluid">
-      <div class="row">
+      <div class="row custom-header">
         <div class="col-sm-8">
             <h4>SITUS RESMI</h4>
             <h1>DESA KUJANGSARI</h1>
             <p>KECAMATAN LANGENSARI - KOTA BANJAR</p>
             <p>PROVINSI JAWA BARAT</p>
         </div>
-        <div class="col-sm-4 img-holder">
-          <img src="{!!asset('storage/images/logo-kota-banjar.png')!!}" alt="logo" class="img-fluid" style="height: 250px;">
+        <div class="col-sm-4 mb-4">
+          <img src="{!!asset('storage/images/logo-kota-banjar.png')!!}" alt="logo" class="img-fluid">
         </div>
       </div>
     </div>
@@ -90,57 +71,32 @@
   <div class="section bg-gradient">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-3">
-          {{-- <span class="d-block p-2 text-warning border border-warning rounded">BERITA KOMINFO</span> --}}
+        <div class="col-lg-3 col-md-4 col-sm-7 d-block mx-auto mb-2">
           <div id="gpr-kominfo-widget-container"></div>
         </div>
-        <div class="col-md-5">
+        <div class="col-lg-5 col-md-4">
           <span class="d-block p-2 text-warning border border-warning rounded">LINK TERKAIT</span>
           <div class="row p-2 text-center">
-            <div class="col-md-6 mb-2">
+            <div class="col-sm-6 mb-2">
               <img src="{!!asset('storage/images/banner221.jpg')!!}" alt="..." class="img-thumbnail">
             </div>
-            <div class="col-md-6 mb-2">
+            <div class="col-sm-6 mb-2">
               <img src="{!!asset('storage/images/banner2912.jpg')!!}" alt="..." class="img-thumbnail">
             </div>
-            <div class="col-md-6 mb-2">
+            <div class="col-sm-6 mb-2">
               <img src="{!!asset('storage/images/sakip.png')!!}" alt="..." class="img-thumbnail">
             </div>
-            <div class="col-md-6 mb-2">
+            <div class="col-sm-6 mb-2">
               <img src="{!!asset('storage/images/banner311.jpg')!!}" alt="..." class="img-thumbnail">
             </div>
-            <div class="col-md-6 mb-2">
+            <div class="col-sm-6 mb-2">
               <img src="{!!asset('storage/images/monev.jpg')!!}" alt="..." class="img-thumbnail">
             </div>
           </div>
         </div>
-        {{-- <div class="col-md-3">
-            <span class="d-block p-2 text-warning border border-warning rounded">INFO MASYARAKAT</span>
-            <ul class="list-unstyled">
-                <li class="media mt-2">
-                    <span class="ti-themify-favicon-alt ti-2x text-primary mr-2"></span>
-                    <div class="media-body">
-                        <span class="text-primary mr-2">Dr. Irawati :</span>
-                        <p class="text-white d-block text-truncate" style="max-width: 250px;">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                        <small class="text-muted float-right"><span class="ti-calendar mr-2"></span>27 Agustus 2018</small>
-                    </div>
-                </li>
-                <li class="media mt-2">
-                        <span class="ti-themify-favicon-alt ti-2x text-primary mr-2"></span>
-                        <div class="media-body">
-                            <span class="text-primary mr-2">Dr. Irawati :</span>
-                            <p class="text-white d-block text-truncate" style="max-width: 250px;">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                            <small class="text-muted float-right"><span class="ti-calendar mr-2"></span>27 Agustus 2018</small>
-                        </div>
-                    </li>
-            </ul>
-        </div> --}}
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-4">
           <span class="d-block p-2 text-warning border border-warning rounded">AREA LOKASI</span>
-          <img src="{!!asset('storage/images/peta.png')!!}" class="img-fluid mt-2" alt="">
-          {{-- <div class="embed-responsive embed-responsive-4by3 mt-2">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127457.5356666146!2d106.23490044964961!3d3.3383160113283377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31c20c4b6da2183b%3A0x9ed40dd677529b3a!2sPal+Matak%2C+Kabupaten+Kepulauan+Anambas%2C+Kepulauan+Riau!5e0!3m2!1sid!2sid!4v1533299749424" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-          </div> --}}
+          <img src="{!!asset('storage/images/peta.png')!!}" class="img-fluid d-block mx-auto mt-2" alt="">
         </div>
       </div>
     </div>
@@ -177,7 +133,7 @@
   <!-- FOOTER -->
   <footer class="my-5 text-center">
     <p class="mb-2">
-      <small>Copyright Desa Kujangsari © 2018. ALL RIGHTS RESERVED. Maintenance by <a href="https://siapdesa.id">siapDesa</a> - v1.0.0</small>
+      <small>Copyright Desa Kujangsari © 2018. Maintenance by <a href="https://siapdesa.id">siapDesa</a> - v1.0.0</small>
     </p>
     <small>
       <a href="#" class="m-2">TERMS</a>

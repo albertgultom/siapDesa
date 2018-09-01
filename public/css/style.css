@@ -195,6 +195,18 @@ p.lead {
     -moz-box-shadow: 0px 5px 23px 0px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 5px 23px 0px rgba(0, 0, 0, 0.1);
 }
+.nav-middle {
+    overflow-x:auto;
+}
+.nav-middle.is-scrolling {
+    position: fixed;
+    top: 56px;
+    z-index: 1;
+    width: 100%;
+}
+.nav-section.is-scrolling{
+    padding-top:56px;
+}
 
 .nav-menu.is-scrolling {
     padding: 0;
@@ -235,11 +247,27 @@ p.lead {
 ----------------------*/
 
 header {
+    height: 407px;
     padding: 100px 0 0;
     text-align: center;
     color: #FFF;
 }
-
+.custom-header img {
+    max-height: 250px;
+}
+@media (max-width:415px) {
+    header {
+        padding: 90px 0 0;
+    }
+    .custom-header h1,
+    .custom-header h4,
+    .custom-header p {
+        margin-bottom: 0;
+    }
+    .custom-header img {
+        max-height: 125px;
+    }
+}
 .bg-gradient {
     background-image: -moz-linear-gradient( 135deg, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);
     background-image: -webkit-linear-gradient( 135deg, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);
@@ -321,10 +349,6 @@ header {
 }
 /* TAMBAHAN CARD STYLE
 ----------------------*/
-.profil > .card{
-    margin: .55rem;
-    border-radius: .25rem 2.25rem;
-}
 .card-group.nowrapper{
     display: flex;
     flex-wrap: nowrap;

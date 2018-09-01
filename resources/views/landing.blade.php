@@ -1,3 +1,4 @@
+{{-- Halaman utama publik --}}
 @extends('layouts.public')
 
 @section('content')
@@ -58,18 +59,18 @@
 
 <div class="container-fluid bg-gradient-ver">
     <div class="sseamless">
-        <div class="row pt-5 pb-5 profil seamless2">
-            <div class="card col-sm">
+        <div class="row card-deck pt-5 pb-5 profil seamless2">
+            <div class="card m-2 rounded">
+                <div class="card-header">Visi Desa</div>
                 <div class="card-body">
-                    <h5 class="card-title">Visi Desa</h5>
                     <ul>
                         <li>Mewujudkan Masyarakat Desa Kujangsari yang Religius, Aspiratif, Inovatif, Efektif, Efisien dan Selaras.</li>
                     </ul>
                 </div>
             </div>
-            <div class="card col-sm">
+            <div class="card m-2 rounded">
+                <div class="card-header">Misi Desa</div>
                 <div class="card-body">
-                    <h5 class="card-title">Misi Desa</h5>
                     <ul>
                         <li>Membangun sistem pemerintahan yang bersih serta berorientasi kepada pelayanan publik.</li>
                         <li>Menigkatkan kinerja lembaga pemerintahan desa.</li>
@@ -77,15 +78,15 @@
                     </ul>
                 </div>
             </div>
-            <div class="card col-sm">
+            <div class="card m-2 rounded">
+                <div class="card-header">Statisktik Penduduk</div>
                 <div class="card-body">
-                    <h5 class="card-title">Statisktik Penduduk</h5>
                     <canvas id="chartPenduduk"></canvas>
                 </div>
             </div>
-            <div class="card col-sm">
+            <div class="card m-2 rounded">
+                <div class="card-header">Statistik Kepala Keluarga</div>
                 <div class="card-body">
-                    <h5 class="card-title">Statistik Keluarga</h5>
                     <canvas id="chartKeluarga"></canvas>
                 </div>
             </div>
@@ -362,7 +363,7 @@
 <script>
     var ctx = document.getElementById("chartPenduduk");
     if(ctx){
-        ctx.height = 220;
+        ctx.height = 150;
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -405,7 +406,7 @@
     }
     var ctx = document.getElementById("chartKeluarga");
     if(ctx){
-        ctx.height = 220;
+        ctx.height = 150;
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {

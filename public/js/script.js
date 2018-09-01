@@ -22,6 +22,14 @@ $(function() {
         } else {
             $navmenu.removeClass("is-scrolling");
         }
+        var $navmiddle = $('.nav-middle');
+        if ($(window).scrollTop() > 351) {
+            $navmiddle.addClass('is-scrolling');
+            $('.nav-section').addClass('is-scrolling');
+        } else {
+            $navmiddle.removeClass("is-scrolling");
+            $('.nav-section').removeClass("is-scrolling");
+        }
     }
     menuscroll();
     $(window).on('scroll', function() {
