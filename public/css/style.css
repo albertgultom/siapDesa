@@ -203,9 +203,12 @@ p.lead {
     top: 56px;
     z-index: 1;
     width: 100%;
+    -webkit-box-shadow: 0 0 6px 0 #6D4C41;
+    -moz-box-shadow: 0 0 6px 0 #6D4C41;
+    box-shadow: 0 0 15px 0 #6D4C41;
 }
 .nav-section.is-scrolling{
-    padding-top:56px;
+    margin-top:56px;
 }
 
 .nav-menu.is-scrolling {

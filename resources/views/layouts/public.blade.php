@@ -17,7 +17,7 @@
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <link href="{{ asset('css/seamless.css') }}" rel="stylesheet">
 </head>
-<body data-spy="scroll" data-target="#navbar" data-offset="30">
+<body>
   <!-- NAVBAR -->
   <div class="nav-menu fixed-top">
     <div class="container">
@@ -38,10 +38,10 @@
             <div class="collapse navbar-collapse" id="navbar">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item"> <a class="nav-link" href="/">BERANDA</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/profil">PROFIL</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/layanan">PELAYANAN</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/pustaka">PUSTAKA</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/produk">PRODUK</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="/struktur-organisasi">MONOGRAFI</a></li>
+                {{-- <li class="nav-item"> <a class="nav-link" href="/layanan">PELAYANAN</a></li> --}}
+                <li class="nav-item"> <a class="nav-link" href="/artikel">BERITA</a></li>
+                {{-- <li class="nav-item"> <a class="nav-link" href="/produk">PRODUK</a> </li> --}}
               </ul>
             </div>
           </nav>
@@ -69,12 +69,12 @@
   @yield('content')
   <!-- CONTAINER -->
   <div class="section bg-gradient">
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-7 d-block mx-auto mb-2">
+        <div class="col-lg-4 col-md-6 d-block mx-auto mb-2">
           <div id="gpr-kominfo-widget-container"></div>
         </div>
-        <div class="col-lg-5 col-md-4">
+        {{-- <div class="col-lg-5 col-md-4">
           <span class="d-block p-2 text-warning border border-warning rounded">LINK TERKAIT</span>
           <div class="row p-2 text-center">
             <div class="col-sm-6 mb-2">
@@ -93,8 +93,8 @@
               <img src="{!!asset('storage/images/monev.jpg')!!}" alt="..." class="img-thumbnail">
             </div>
           </div>
-        </div>
-        <div class="col-lg-4 col-md-4">
+        </div> --}}
+        <div class="col-lg-8 col-md-6">
           <span class="d-block p-2 text-warning border border-warning rounded">AREA LOKASI</span>
           <img src="{!!asset('storage/images/peta.png')!!}" class="img-fluid d-block mx-auto mt-2" alt="">
         </div>
@@ -133,12 +133,12 @@
   <!-- FOOTER -->
   <footer class="my-5 text-center">
     <p class="mb-2">
-      <small>Copyright Desa Kujangsari © 2018. Maintenance by <a href="https://siapdesa.id">siapDesa</a> - v1.0.0</small>
+      <small>Copyright Desa Kujangsari © 2018 - v1.0.0</small>
     </p>
-    <small>
+    {{-- <small>
       <a href="#" class="m-2">TERMS</a>
       <a href="#" class="m-2">PRIVACY</a>
-    </small>
+    </small> --}}
   </footer>
   <!-- Custom JS -->
   <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>

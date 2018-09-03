@@ -1,4 +1,4 @@
-{{-- Pustaka Berita dan Galeri --}}
+{{-- Pelayanan untuk halaman publik --}}
 @extends('layouts.public')
 
 @section('content')
@@ -9,6 +9,6 @@
 </div>
 
 <section class="container-fluid nav-section">
-  <h3>Pustaka Informasi Berita dan Galeri Desa</h3>
+  @yield('layanan')
 </section>
 @endsection

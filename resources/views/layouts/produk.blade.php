@@ -1,4 +1,4 @@
-{{-- Pelayanan untuk halaman publik --}}
+{{-- Produk-produk Desa --}}
 @extends('layouts.public')
 
 @section('content')
@@ -9,6 +9,6 @@
 </div>
 
 <section class="container-fluid nav-section">
-  <h3>Daftar Pelayanan Desa</h3>
+  @yield('produk')
 </section>
 @endsection
