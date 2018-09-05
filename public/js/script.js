@@ -23,7 +23,7 @@ $(function() {
             $navmenu.removeClass("is-scrolling");
         }
         var $navmiddle = $('.nav-middle');
-        if ($(window).scrollTop() > 351) {
+        if ($(window).scrollTop() > 300) {
             $navmiddle.addClass('is-scrolling');
             $('.nav-section').addClass('is-scrolling');
         } else {

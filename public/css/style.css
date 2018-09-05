@@ -208,7 +208,7 @@ p.lead {
     box-shadow: 0 0 15px 0 #6D4C41;
 }
 .nav-section.is-scrolling{
-    margin-top:56px;
+    margin-top:3.5rem;
 }
 
 .nav-menu.is-scrolling {
@@ -250,7 +250,7 @@ p.lead {
 ----------------------*/
 
 header {
-    height: 407px;
+    /* height: 407px; */
     padding: 100px 0 0;
     text-align: center;
     color: #FFF;

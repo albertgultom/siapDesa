@@ -9,10 +9,7 @@
   {{-- <a class="p-3" href="#">Galeri Video</a> --}}
 </div>
 
-<section class="container-fluid nav-section">
-  <div class="row">
-    <div class="col-md-9">@yield('pustaka')</div>
-    <div class="col-md-3">Kategori</div>
-  </div>
+<section class="container-fluid nav-section pt-3">
+  @yield('pustaka')
 </section>
 @endsection

@@ -32,7 +32,9 @@ Route::get('/foto', function () {
 // })->name('produk');
 
 Route::resource('/post', 'PostController');
+Route::resource('/tag', 'TagController');
 Route::get('/posts', 'PostController@list')->name('posts');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/{nama}', 'HomeController@test');

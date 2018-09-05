@@ -177,3 +177,14 @@
 		-moz-box-shadow: 0 10px 6px -6px #777;
 				box-shadow: 0 10px 6px -6px #777;
 }
+
+.gallery-photos img {
+	height: 160px;
+	width: auto;
+	padding: .05rem;
+}
+@media (max-width:415px) {
+	.gallery-photos img {
+		height: 100px;
+	}
+}
