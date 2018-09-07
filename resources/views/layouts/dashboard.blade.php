@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>{{ config('app.name', 'Dashboard') }}</title>
+  <title>siapDesa</title>
   <!-- Fontfaces CSS-->
   <link href="{{ asset('css/font-face.css') }}" rel="stylesheet" media="all">
   <link href="{{ asset('vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
@@ -49,7 +49,7 @@
                             <a href="post">Berita</a>
                         </li>
                         <li>
-                            <a href="index2.html">Kategori</a>
+                            <a href="/tag">Kategori</a>
                         </li>
                         <li>
                             <a href="index3.html">Tipe</a>
@@ -63,7 +63,7 @@
                   </a>
                   <ul class="header3-sub-list list-unstyled">
                       <li>
-                          <a href="index.html">Desa</a>
+                          <a href="/desa">Desa</a>
                       </li>
                       <li>
                           <a href="index2.html">Sejarah</a>
@@ -181,7 +181,7 @@
                             <a href="index.html">Berita</a>
                         </li>
                         <li>
-                            <a href="index2.html">Kategori</a>
+                            <a href="/tag">Kategori</a>
                         </li>
                         <li>
                             <a href="index3.html">Tipe</a>

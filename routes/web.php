@@ -1,4 +1,5 @@
 <?php
+// PUBLIC ROUTES
 Route::get('/', function () {
     return view('landing');
 })->name('beranda');
@@ -32,8 +33,9 @@ Route::get('/foto', function () {
 // })->name('produk');
 
 Route::resource('/post', 'PostController');
-Route::resource('/tag', 'TagController');
 Route::get('/posts', 'PostController@list')->name('posts');
+
+Route::resource('/tag', 'TagController');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

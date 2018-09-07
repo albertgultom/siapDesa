@@ -9,14 +9,28 @@ class TagController extends Controller
 {
     public function index()
     {
-        $query = Tag::all();
+        $query = Tag::orderBy('updated_at', 'desc')->get();
         // dd($query);
-        return response()->json($query);
+        return view('tags.index', ['data' => $query]);
     }
 
     public function show($id)
     {
         $query = Tag::findOrFail($id);
-        dd($query);
+        // dd($query);
+        return response()->json($query);
+    }
+
+    public function store(Request $request)
+    {
+        if($request->tagid != null){
+            $result = Tag::find($request->tagid)->update(['name' => $request->tagname]);
+            // return response()->json($request, 200);
+        }else{
+            $result = Tag::create(['name' => $request->tagname]);
+            // return response()->json($result, 200);
+        }
+
+        return redirect('tag');
     }
 }

@@ -51,16 +51,44 @@
                 <th>tipe</th>
                 <th>judul</th>
                 <th>Aktif</th>
+                <th>Aksi</th>
               </tr>
             </thead>
             <tbody></tbody>
           </table>
         </div>
       </div>
-      <canvas id="tesChart"></canvas>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Launch demo modal
+      </button>
+      {{-- <canvas id="tesChart"></canvas> --}}
     </div>
   </div>
 </section>
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam laborum quas laudantium repellat? Veniam, porro voluptates accusamus aut exercitationem rem facere, tempora molestias odio quam obcaecati et, eos recusandae beatae!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, voluptate similique? Nemo delectus, quae magnam odio culpa nesciunt! Nam necessitatibus molestiae assumenda maxime odit explicabo atque ducimus placeat, repellat voluptatem?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur consectetur voluptatum alias aperiam nam impedit ea quasi optio eius, odit quisquam eveniet sunt incidunt perspiciatis sed corporis. Ducimus, quod cum.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
 
 @push('scripts')
@@ -95,9 +123,28 @@
               <span class="au-checkmark"></span>
             </label>`;
         }
+      },
+      {
+        targets: [5],
+        data: 'id',
+        render: function ( data, type, row, meta ) {
+          return `
+            <a href="post/`+data+`" class="btn">
+              <i class="fas fa-eye" title="lihat"></i>
+            </a>
+            <a href="post/`+data+`/edit" class="btn">
+              <i class="fas fa-edit" title="edit"></i>
+            </a>
+          `;
+        }
       }
     ]
   });
+
+  $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  });
+
   var ctx = document.getElementById("tesChart");
   var myChart = new Chart(ctx, {});
 </script>

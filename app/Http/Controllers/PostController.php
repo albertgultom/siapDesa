@@ -20,6 +20,20 @@ class PostController extends Controller
         return view('posts.index');
     }
 
+    public function show($id)
+    {
+        $post = Post::findOrFail($id)
+            ->with('tags');
+        // $query = $post->map(function($item){
+        //     return [
+        //         'id' => $item->id,
+        //         'type' => 
+        //     ];
+        // });
+        dd($post);
+        // return response()->json($query);
+    }
+
     public function list()
     {
         $posts = Post::all();
@@ -38,5 +52,10 @@ class PostController extends Controller
             ];
         });
         return response()->json($data);
+    }
+
+    public function test()
+    {
+        return view('monografi.sejarah');
     }
 }
