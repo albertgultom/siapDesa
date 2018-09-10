@@ -53,7 +53,7 @@
                             <a href="/tag">Kategori</a>
                         </li>
                         <li>
-                            <a href="index3.html">Tipe</a>
+                            <a href="/type">Tipe</a>
                         </li>
                     </ul>
                 </li>

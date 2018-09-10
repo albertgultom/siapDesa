@@ -40,3 +40,7 @@ Route::resource('/tag', 'TagController');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/{nama}', 'HomeController@test');
+
+Route::resource('/type', 'TypeController');
+Route::get('/types', 'TypeController@list')->name('types');
+
