@@ -21,6 +21,7 @@
   <link href="{{ asset('vendor/slick/slick.css') }}" rel="stylesheet" media="all">
   <link href="{{ asset('vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
   <link href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
+  <link href="{{ asset('css/slimselect.min.css') }}" rel="stylesheet" media="all">
   <!-- Datatables -->
   <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" rel="stylesheet" type="text/css" >
   <!-- Main CSS-->
@@ -316,6 +317,7 @@
   <script src="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
   <script src="{{ asset('vendor/chartjs/Chart.bundle.min.js') }}"></script>
   <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+  <script src="{{ asset('js/slimselect.min.js') }}"></script>
   <!-- Datatables -->
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
   <!-- Main JS-->

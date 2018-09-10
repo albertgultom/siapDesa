@@ -22,7 +22,7 @@ class TaggableSeeder extends Seeder
                 DB::table('taggables')->insert([
                     'tag_id' => rand(1, $tags),
                     'taggable_id' => $post,
-                    'taggable_type' => 'Post'
+                    'taggable_type' => 'App\Post'
                 ]);
             }
         }

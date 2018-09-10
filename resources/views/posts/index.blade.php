@@ -21,25 +21,7 @@
         <div class="table-responsive m-b-40">
           <div class="table-data__tool">
             <div class="table-data__tool-left">
-              <button class="btn btn-info mt-2 ml-5">Tambah Berita</button>
-              {{-- <div class="rs-select2--light rs-select2--md">
-                <select class="js-select2" name="time">
-                  <option selected="selected">Tipe</option>
-                  @foreach($data['types'] as $type)
-                    <option value="{!!$type->id!!}">{!!$type->name!!}</option>
-                  @endforeach
-                </select>
-                <div class="dropDownSelect2"></div>
-              </div>
-              <div class="rs-select2--light rs-select2--lg">
-                <select class="js-select2" name="property">
-                  <option selected="selected">Kategori</option>
-                  @foreach($data['tags'] as $tag)
-                    <option value="{!!$tag->id!!}">{!!$tag->name!!}</option>
-                  @endforeach
-                </select>
-                <div class="dropDownSelect2"></div>
-              </div> --}}
+              <button id="btn-test" class="btn btn-info mt-2 ml-5">Tambah Berita</button>
             </div>
           </div>
           {{-- <table id="posttable"> --}}
@@ -129,9 +111,6 @@
         data: 'id',
         render: function ( data, type, row, meta ) {
           return `
-            <a href="post/`+data+`" class="btn">
-              <i class="fas fa-eye" title="lihat"></i>
-            </a>
             <a href="post/`+data+`/edit" class="btn">
               <i class="fas fa-edit" title="edit"></i>
             </a>
@@ -141,11 +120,11 @@
     ]
   });
 
-  $('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
-  });
+  // $('#myModal').on('shown.bs.modal', function () {
+  //   $('#myInput').trigger('focus')
+  // });
 
-  var ctx = document.getElementById("tesChart");
-  var myChart = new Chart(ctx, {});
+  // var ctx = document.getElementById("tesChart");
+  // var myChart = new Chart(ctx, {});
 </script>
 @endpush
