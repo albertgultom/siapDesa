@@ -22,16 +22,39 @@ class PostController extends Controller
 
     public function show($id)
     {
-        $post = Post::findOrFail($id)
-            ->with('tags');
-        // $query = $post->map(function($item){
-        //     return [
-        //         'id' => $item->id,
-        //         'type' => 
-        //     ];
-        // });
-        dd($post);
-        // return response()->json($query);
+        $post = Post::findOrFail($id);
+            // ->with(['tags' => function($q){
+            //     $q->select('name');
+            // }])
+            // ->first();
+        
+        $tags = $post->tags->map(function($tag){
+            return [
+                'name' => $tag->name
+            ];
+        });
+
+        $query = [
+            'id' => $post->id,
+            'name' => $post->name,
+            'body' => $post->body,
+            'type' => $post->type->name,
+            'user' => $post->user->name,
+            'tags' => $tags
+        ];
+
+        // dd($query);
+        // return $post->tags;
+        return response()->json($query);
+    }
+
+    public function edit($id)
+    {
+        $data = Post::findOrFail($id);
+        $types = Type::all();
+        $tags = Tag::select('id', 'name')->get();
+        // dd($tags);
+        return view('posts.edit', compact('data', 'types', 'tags'));
     }
 
     public function list()
