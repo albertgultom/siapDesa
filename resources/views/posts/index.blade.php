@@ -21,7 +21,7 @@
         <div class="table-responsive m-b-40">
           <div class="table-data__tool">
             <div class="table-data__tool-left">
-              <button id="btn-test" class="btn btn-info mt-2 ml-5">Tambah Berita</button>
+            <a href="{{route('post.create')}}" class="btn btn-info mt-2 ml-5">Tambah Berita</a>
             </div>
           </div>
           {{-- <table id="posttable"> --}}

@@ -31,6 +31,7 @@ Route::get('/foto', function () {
 // Route::get('/produk', function () {
 //     return view('produk');
 // })->name('produk');
+Route::get('/test/{id}', 'PostController@test');
 
 Route::resource('/post', 'PostController');
 Route::get('/posts', 'PostController@list')->name('posts');
@@ -44,3 +45,4 @@ Route::get('/home/{nama}', 'HomeController@test');
 Route::resource('/type', 'TypeController');
 Route::get('/types', 'TypeController@list')->name('types');
 
+Route::get('profil/{tempe}', 'TypeController@bakwan');

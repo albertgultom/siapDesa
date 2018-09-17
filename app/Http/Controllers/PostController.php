@@ -10,6 +10,11 @@ use App\Tag;
 
 class PostController extends Controller
 {
+    private $allowedImage = [
+        'image/jpeg',
+        'image/png',
+    ];
+
     public function __construct()
     {
         // $this->middleware('auth');
@@ -48,13 +53,99 @@ class PostController extends Controller
         return response()->json($query);
     }
 
+    public function create()
+    {
+        $types = Type::all();
+        $tags = Tag::select('id', 'name')->get();
+        
+        return view('posts.create', compact('types', 'tags'));
+    }
+
+    public function store(Request $request)
+    {
+        $data = $this->validate($request, [
+            'type_id' => 'required',
+            'name' => 'required|max:191',
+            'image' => 'required',
+            'body' => 'required',
+        ]);
+        // test user
+        $data['user_id'] = '1';
+
+        if($request->active == null){
+            $data['active'] = '0';
+        }else{
+            $data['active'] = '1';
+        }
+
+        // if($request->hasFile('image')){
+        //     $extension = $request->image->getMimeType();
+        //     $rename = $request->image->getClientOriginalName();
+        //     if (! in_array($extension, $this->allowedImage)) {
+        //         return back()->withInput()->withErrors(array('image' => 'Tipe file tidak di dukung.'));
+        //     }else{
+        //         $filename = preg_replace('/[^a-z0-9]+/', '_', strtolower($rename));
+        //         $store = $request->image->storeAs('public/images', $filename);
+        //         $data['image'] = $filename;
+        //     }
+        // }
+
+        // $post = Post::insertGetId($data);
+        // if($request->tags)
+        // dd($request);
+        $count = count($request->tags);
+        return response()->json($count);
+    }
+
     public function edit($id)
     {
         $data = Post::findOrFail($id);
         $types = Type::all();
         $tags = Tag::select('id', 'name')->get();
-        // dd($tags);
+        // dd($data->tags);
         return view('posts.edit', compact('data', 'types', 'tags'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $post = Post::find($id);
+
+        $data = $this->validate($request, [
+            'type_id' => 'required',
+            'name' => 'required|max:191',
+            'image' => '',
+            'body' => 'required',
+        ]);
+        // test user
+        $data['user_id'] = '2';
+
+        if($request->active == null){
+            $data['active'] = '0';
+        }else{
+            $data['active'] = '1';
+        }
+
+        if($request->hasFile('image')){
+            $extension = $request->image->getMimeType();
+            $rename = $request->image->getClientOriginalName();
+            if (! in_array($extension, $this->allowedImage)) {
+                return back()->withInput()->withErrors(array('image' => 'Tipe file tidak di dukung.'));
+            }else{
+                $filename = preg_replace('/[^a-z0-9]+/', '_', strtolower($rename));
+                $store = $request->image->storeAs('public/images', $filename);
+                $data['image'] = $filename;
+            }
+        }
+
+        if(!$post->tags()->sync($request->tags)){
+            return back()->with('alert-danger', 'Data kategori tidak dapat di update.');
+        }
+
+        if(!$post->update($data)){
+            return back()->with('alert-danger', 'Artikel tidak dapat di update.');
+        }
+
+        return redirect()->route('post.index')->with('alert-info', 'Artikel telah di update.');
     }
 
     public function list()
@@ -77,8 +168,13 @@ class PostController extends Controller
         return response()->json($data);
     }
 
-    public function test()
+    public function test($id)
     {
-        return view('monografi.sejarah');
+        $edit = Type::findOrFail($id);
+        $tags = Tag::all();
+        // dd($edit);
+        // return $edit;
+
+        // return view('monografi.sejarah', ['data' => $edit, tag]);
     }
 }
