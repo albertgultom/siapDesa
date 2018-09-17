@@ -26,6 +26,7 @@
   <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" rel="stylesheet" type="text/css" >
   <!-- Main CSS-->
   <link href="{{ asset('css/theme.css') }}" rel="stylesheet" media="all">
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet" media="all">
 </head>
 <body class="animsition">
   <div class="page-wrapper">
@@ -47,7 +48,7 @@
                     </a>
                     <ul class="header3-sub-list list-unstyled">
                         <li>
-                            <a href="post">Berita</a>
+                            <a href="/post">Berita</a>
                         </li>
                         <li>
                             <a href="/tag">Kategori</a>
@@ -64,7 +65,7 @@
                   </a>
                   <ul class="header3-sub-list list-unstyled">
                       <li>
-                      <a href="/profiles/desa">Desa</a>
+                          <a href="/profiles/desa">Desa</a>
                       </li>
                       <li>
                           <a href="/profiles/sejarah">Sejarah</a>
@@ -286,6 +287,7 @@
     </div>
     <!-- PAGE CONTENT-->
     <div class="page-content--bgf7">
+      @include('elements.alert')
       @yield('content')
     </div>
     <!-- COPYRIGHT-->
@@ -322,6 +324,7 @@
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
   <!-- Main JS-->
   <script src="{{ asset('js/main.js') }}"></script>
+  <script src="{{ asset('js/app.js') }}"></script>
   @stack('scripts')
 </body>
 </html>
