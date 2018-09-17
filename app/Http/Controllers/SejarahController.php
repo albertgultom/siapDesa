@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Profile;
 
-
-class ProfileController extends Controller
+class SejarahController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +13,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profiles');
+        return view('profiles.sejarah');
     }
 
     /**
@@ -47,8 +45,7 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        $query = Type::findOrFail($id);
-
+        //
     }
 
     /**
@@ -59,10 +56,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $edit = Profile::findOrFail(1);
-        
-        return view('profiles.desa', compact('edit','id'));
-        
+        //
     }
 
     /**
@@ -73,16 +67,8 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {  
-        // dd($request);
-        $query = $this->validate($request,[
-            'name'  => 'required',
-            'subdistrict' => 'required',
-            'history' => 'required'
-        ]);
-        Profile::find($id)->update($query);
-
-        return back()->with('success','Data Updated');
+    {
+        //
     }
 
     /**
@@ -95,22 +81,4 @@ class ProfileController extends Controller
     {
         //
     }
-
-    public function profil($profil)
-    {
-        // $id = '1';
-        $edit = Profile::find(1);
-        // dd($edit);
-        if ($profil === 'desa' ){
-            return view ('profiles.desa', compact('edit'));
-        }
-        elseif ($profil === 'sejarah' ){
-            return view ('profiles.sejarah', compact('edit'));
-        }
-        elseif ($profil === 'vismis' ){
-            dd($edit);
-            return view ('profiles.vismis', compact('edit'));
-        }
-    }
 }
-

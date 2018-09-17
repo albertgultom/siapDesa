@@ -44,3 +44,12 @@ Route::get('/home/{nama}', 'HomeController@test');
 Route::resource('/type', 'TypeController');
 Route::get('/types', 'TypeController@list')->name('types');
 
+Route::resource('/profile', 'ProfileController');
+Route::get('profiles/{name}', 'ProfileController@profil') ;
+
+
+
+
+
+
+
