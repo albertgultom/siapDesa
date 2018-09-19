@@ -15,18 +15,67 @@
       <br>
 <!-- SECTION BODY -->
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-            <form action="" method="post">
-            {{csrf_field()}}
-            <input type="hidden" name="_method" value="PATCH"/>
-            <input type="text" name="name" class="form-control col-md-6" value="" placeholder="Enter name"/>
-            <br>
-            <input type="text" name="subdistrict" class="form-control col-md-6" value="" placeholder="Enter name"/>
-            <br>
+    <form action="{{route('profile.update',$edit->id)}}" method="post">
+        <input type="hidden" name="_method" value="PATCH"/>
+        {{csrf_field()}}  
+        <div class="row">
+            <div class="col-md-6 p-3" >
+                <h3 class="title-5"> Visi</h3>
+                <div id="body" style="background-color: #fff; height: 400px;">
+                    {!! $edit->vision !!}
+                </div>
+              <input type="hidden" name="vision" >
+            </div>
+            <div class="col-md-6 p-3" >
+                <h3 class="title-5"> Misi</h3>
+                <div id="body2" style="background-color: #fff; height: 400px;">
+                {!! $edit->mission !!}
+                </div>
+              <input type="hidden" name="mission"> 
+            </div>
             <input type="submit" class="btn btn-primary" value="save"/>
-            </form>
         </div>
-    </div>
-  </div>
+    </form>
+</div>
 @endsection
+
+@push('scripts')
+<script>
+var quill = new Quill('#body',{
+  modules: {
+    toolbar: QuilljsToolbarOptions
+  },
+  theme: 'snow',
+  placeholder: '...'
+});
+var quill2 = new Quill('#body2',{
+  modules: {
+    toolbar: QuilljsToolbarOptions
+  },
+  theme: 'snow',
+  placeholder: '...'
+});
+
+
+content = $("#body").find(".ql-editor p").html();
+if(isJson(content) == true){
+  quill.setContents(JSON.parse(quill.getContents().ops[0].insert))
+}
+content2 = $("#body2").find(".ql-editor p").html();
+if(isJson(content2) == true){
+  quill2.setContents(JSON.parse(quill2.getContents().ops[0].insert))
+}
+
+$('form').submit(function(e){
+  cfg = {};
+
+  cek = quill.getContents().ops;
+  convert = new QuillDeltaToHtmlConverter(cek, cfg).convert();
+  $('input[name="vision"]').val(convert);
+
+  cek1 = quill2.getContents().ops;
+  convert1 = new QuillDeltaToHtmlConverter(cek1, cfg).convert();
+  $('input[name="mission"]').val(convert1);
+});
+</script>
+@endpush

@@ -20,9 +20,9 @@
             <form action="{{route('profile.update',$edit->id)}}" method="post">
             {{csrf_field()}}
             <input type="hidden" name="_method" value="PATCH"/>
-            <input type="text" name="name" class="form-control col-md-6" value="{{$edit->name}}" placeholder="Enter name"/>
+            <input type="text" name="name" class="form-control col-md-6" value="{{$edit->name}}"/>
             <br>
-            <input type="text" name="subdistrict" class="form-control col-md-6" value="{{$edit->subdistrict}}" placeholder="Enter name"/>
+            <input type="text" name="subdistrict" class="form-control col-md-6" value="{{$edit->subdistrict}}"/>
             <br>
             <input type="submit" class="btn btn-primary" value="save"/>
             </form>

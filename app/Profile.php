@@ -8,5 +8,6 @@ class Profile extends Model
 {
     protected $table = 'profiles';
     protected $guarded = [];
-    protected $fillable = [];
+    // protected $fillable = array('name','subdistrict','history','vision','mission');
+    protected $fillable = ['name','subdistrict','history','vision','mission'];
 }

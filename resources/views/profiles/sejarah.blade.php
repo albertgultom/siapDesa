@@ -17,13 +17,40 @@
   <div class="row">
     <div class="col-md-12">
     <form action="{{route('profile.update',$edit->id)}}" method="post">
-            {{csrf_field()}}
-            <input type="hidden" name="_method" value="PATCH"/>
-            <textarea rows="4" cols="50" name="history"  class="form-control col-md-6" >{{$edit->history}}</textarea>
-            <br>
-            <input type="submit" class="btn btn-primary" value="Save"/>
-            </form>
-        </div>
+      <input type="hidden" name="_method" value="PATCH"/>
+      {{csrf_field()}}
+      <div id="history" style="background-color: #fff; height: 400px;">
+       {!! $edit->history !!}
+      </div>  
+      <input type="hidden" name="history" >
+    </BR>
+      <input type="submit" class="btn btn-primary" value="Save"/>
+      </form>
+      </div>
     </div>
   </div>
 @endsection
+
+@push('scripts')
+<script>
+var quill = new Quill('#history',{
+  modules: {
+    toolbar: QuilljsToolbarOptions
+  },
+  theme: 'snow',
+  placeholder: '...'
+});
+
+content = $("#history").find(".ql-editor p").html();
+if(isJson(content) == true){
+  quill.setContents(JSON.parse(quill.getContents().ops[0].insert))
+}
+
+$('form').submit(function(e){
+  cfg = {};
+  cek = quill.getContents().ops;
+  convert = new QuillDeltaToHtmlConverter(cek, cfg).convert();
+  $('input[name="history"]').val(convert);
+});
+</script>
+@endpush

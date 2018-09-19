@@ -74,15 +74,83 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {  
-        // dd($request);
-        $query = $this->validate($request,[
-            'name'  => 'required',
-            'subdistrict' => 'required',
-            'history' => 'required'
-        ]);
-        Profile::find($id)->update($query);
+        $edit = Profile::find(1);
+        If($request->has('name')){
+            $edit -> name = $request -> name;
+            }if($request -> has('subdistrict')){
+                $edit -> subdistrict = $request -> subdistrict;
+            }if ($request -> has('history')){
+                $edit -> history = $request -> history;
+            }if ($request -> has('vision')){
+                $edit -> vision = $request -> vision;
+            }if ($request -> has('mission')){
+                $edit -> mission = $request -> mission;
+            }
+            
+            $edit->update();
+            return redirect()->back()->with(["edit" => $edit] );
 
-        return back()->with('success','Data Updated');
+        // if ($data -> name = $request -> name){
+        //     $data->save();
+        // }elseif ($data -> subdistrict = $request -> subdistrict){
+        //     $data->save();
+        // }elseif ($data -> history = $request -> history){
+        //     $data->save();
+        // }
+
+        // if ( $this->validate -> request ){
+        //     'name' => 'required',
+        // }elseif ($this->validate -> request){
+        //     'subdistrict' => 'required'
+        // }
+
+
+
+        // $data = Profile::findOrfail($id);
+        // $data -> name = $request -> name;
+        // $data -> subdistrict = $request -> subdistrict;
+        // $data -> history = $request -> history;
+        // $data -> mission = $request -> mission;
+        // $data->save();
+
+
+        // $query = Profile::all();
+        // $edit = $query 
+        // $edit = Profile::all();
+        // $editUpdate = Profile::find($id);
+        // $editUpdate -> $edit ['name'];
+        // $editUpdate -> $edit ['subdistrict'];
+        // $editUpdate -> $edit ['vision'];
+        // $editUpdate -> $edit ['mission'];
+        
+        // $editUpdate->back();
+
+
+        // $this -> validate($request,[
+        //     'name'  => 'required',
+        //     'subdistrict' => 'required',
+        //     'history' => 'required',
+        //     'vision' => 'required',
+        //     'mission' => 'required',
+        // ]);
+
+        // dd($request->all());
+        // $this->validate($request,[
+        //     'name'  => 'required',
+        //     'subdistrict' => 'required',
+        //     'history' => 'required',
+        //     'vision' => 'required',
+        //     'mission' => 'required',
+            
+        // ]);
+        
+        
+
+        // return back()->with('success','Data Updated');
+
+        // if($validate->fails()){
+        //     return back()->withErrors($validate)->withInput();
+        //     }
     }
 
     /**
@@ -101,14 +169,11 @@ class ProfileController extends Controller
         // $id = '1';
         $edit = Profile::find(1);
         // dd($edit);
-        if ($profil === 'desa' ){
+        if ($profil === 'desa'){
             return view ('profiles.desa', compact('edit'));
-        }
-        elseif ($profil === 'sejarah' ){
+        }elseif ($profil === 'sejarah'){
             return view ('profiles.sejarah', compact('edit'));
-        }
-        elseif ($profil === 'vismis' ){
-            dd($edit);
+        }elseif ($profil === 'vismis'){
             return view ('profiles.vismis', compact('edit'));
         }
     }

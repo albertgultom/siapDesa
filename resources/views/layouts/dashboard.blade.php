@@ -65,13 +65,13 @@
                   </a>
                   <ul class="header3-sub-list list-unstyled">
                       <li>
-                          <a href="/profiles/desa">Desa</a>
+                          <a href="/profil/desa">Desa</a>
                       </li>
                       <li>
-                          <a href="/profiles/sejarah">Sejarah</a>
+                          <a href="/profil/sejarah">Sejarah</a>
                       </li>
                       <li>
-                          <a href="/profile/vismis">Visi dan Misi</a>
+                          <a href="/profil/vismis">Visi dan Misi</a>
                       </li>
                       <li>
                           <a href="index4.html">Struktur</a>
