@@ -119,15 +119,4 @@ class TypeController extends Controller
     {
         //
     }
-
-    public function bakwan($tempe)
-    {
-        if($tempe === 'desa'){
-            return 'isinya desa';
-        }else if($tempe === 'sejarah'){
-            return 'sejarah detail';
-        }else{
-            return 'nggak dijual';
-        }
-    }
 }

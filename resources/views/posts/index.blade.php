@@ -41,9 +41,9 @@
         </div>
       </div>
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         Launch demo modal
-      </button>
+      </button> --}}
       {{-- <canvas id="tesChart"></canvas> --}}
     </div>
   </div>
@@ -83,6 +83,7 @@
       url: '{{ route('posts') }}',
       dataSrc: '',
     },
+    order: [[ 1, "desc" ]],
     columns: [
       {data: 'id'},
       {data: 'created'},
@@ -110,11 +111,7 @@
         targets: [5],
         data: 'id',
         render: function ( data, type, row, meta ) {
-          return `
-            <a href="post/`+data+`/edit" class="btn">
-              <i class="fas fa-edit" title="edit"></i>
-            </a>
-          `;
+          return '<a href="post/'+data+'/edit" class="btn">edit</a>';
         }
       }
     ]

@@ -19,8 +19,9 @@ class CreateGalleriesTable extends Migration
             $table->unsignedInteger('type_id')->nullable();
             $table->string('name');
             $table->boolean('active')->default(true);
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+            $table->timestamps();
+            // $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            // $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
     }
 
