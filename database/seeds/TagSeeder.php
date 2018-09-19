@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class TagSeeder extends Seeder
 {
@@ -25,7 +26,9 @@ class TagSeeder extends Seeder
 
         foreach($tags as $index){
             DB::table('tags')->insert([
-                'name' => $index
+                'name' => $index,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ]);
         }
     }

@@ -70,7 +70,7 @@ class PostController extends Controller
             'body' => 'required',
         ]);
         // test user
-        $data['user_id'] = '1';
+        $data['user_id'] = '2';
 
         if($request->active == null){
             $data['active'] = '0';
@@ -78,23 +78,31 @@ class PostController extends Controller
             $data['active'] = '1';
         }
 
-        // if($request->hasFile('image')){
-        //     $extension = $request->image->getMimeType();
-        //     $rename = $request->image->getClientOriginalName();
-        //     if (! in_array($extension, $this->allowedImage)) {
-        //         return back()->withInput()->withErrors(array('image' => 'Tipe file tidak di dukung.'));
-        //     }else{
-        //         $filename = preg_replace('/[^a-z0-9]+/', '_', strtolower($rename));
-        //         $store = $request->image->storeAs('public/images', $filename);
-        //         $data['image'] = $filename;
-        //     }
-        // }
+        if($request->hasFile('image')){
+            $extension = $request->image->getMimeType();
+            if (! in_array($extension, $this->allowedImage)) {
+                return back()->withInput()->withErrors(array('image' => 'Tipe file tidak di dukung.'));
+            }else{
+                $date = date('ymdhis_');
+                $file = $request->image->getClientOriginalName();
+                $filename = $date . str_replace(' ', '_', strtolower($file));
+                $store = $request->image->storeAs('public/images', $filename);
+                $data['image'] = $filename;
+            }
+        }
 
-        // $post = Post::insertGetId($data);
-        // if($request->tags)
-        // dd($request);
+        $post = Post::insertGetId($data);
+        if(!$post){
+            return back()->with('alert-danger', 'Artikel tidak dapat di simpan.');
+        }
+
         $count = count($request->tags);
-        return response()->json($count);
+        if($count > 0){
+            $postId = Post::find($post);
+            $postId->tags()->attach($request->tags);
+        }
+        // dd($request->tags);
+        return redirect()->route('post.index')->with('alert-info', 'Artikel telah di simpan.');
     }
 
     public function edit($id)
@@ -127,11 +135,12 @@ class PostController extends Controller
 
         if($request->hasFile('image')){
             $extension = $request->image->getMimeType();
-            $rename = $request->image->getClientOriginalName();
             if (! in_array($extension, $this->allowedImage)) {
                 return back()->withInput()->withErrors(array('image' => 'Tipe file tidak di dukung.'));
             }else{
-                $filename = preg_replace('/[^a-z0-9]+/', '_', strtolower($rename));
+                $date = date('ymdhis_');
+                $file = $request->image->getClientOriginalName();
+                $filename = $date . str_replace(' ', '_', strtolower($file));
                 $store = $request->image->storeAs('public/images', $filename);
                 $data['image'] = $filename;
             }
@@ -150,7 +159,7 @@ class PostController extends Controller
 
     public function list()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('updated_at', 'desc')->get();
         $data = $posts->map(function($item){
             if($item->active !== 0){
                 $active = 'checked';
@@ -166,15 +175,5 @@ class PostController extends Controller
             ];
         });
         return response()->json($data);
-    }
-
-    public function test($id)
-    {
-        $edit = Type::findOrFail($id);
-        $tags = Tag::all();
-        // dd($edit);
-        // return $edit;
-
-        // return view('monografi.sejarah', ['data' => $edit, tag]);
     }
 }

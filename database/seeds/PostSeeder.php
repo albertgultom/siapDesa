@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class PostSeeder extends Seeder
 {
@@ -23,6 +24,8 @@ class PostSeeder extends Seeder
                     'name' => $faker->sentence($nbWords = 6, $variableNbWords = true),
                     'image' => 'laravel.jpg',
                     'body' => $faker->paragraph($nbSentences = 25, $variableNbSentences = true),
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now()
                 ]);
             }
         }

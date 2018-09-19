@@ -64,6 +64,9 @@
                       <span class="bot-line"></span>
                   </a>
                   <ul class="header3-sub-list list-unstyled">
+                        <li>
+                            <a href="/apparatus">Perangkat Desa</a>
+                        </li>
                       <li>
                           <a href="/profiles/desa">Desa</a>
                       </li>
@@ -194,6 +197,9 @@
                     <a class="js-arrow" href="#">
                         <i class="fas fa-map-marker"></i>Profil</a>
                     <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                        <li>
+                            <a href="/apparatus">Perangkat Desa</a>
+                        </li>
                         <li>
                             <a href="index.html">Dashboard 1</a>
                         </li>

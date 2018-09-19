@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class TypeSeeder extends Seeder
 {
@@ -24,7 +25,9 @@ class TypeSeeder extends Seeder
         foreach($types as $index){
             DB::table('types')->insert([
                 'name' => $index,
-                'level' => 0
+                'level' => 0,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ]);
         }
     }
