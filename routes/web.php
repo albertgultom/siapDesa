@@ -45,4 +45,6 @@ Route::get('/home/{nama}', 'HomeController@test');
 Route::resource('/type', 'TypeController');
 Route::get('/types', 'TypeController@list')->name('types');
 
+
 Route::get('profil/{tempe}', 'TypeController@bakwan');
+

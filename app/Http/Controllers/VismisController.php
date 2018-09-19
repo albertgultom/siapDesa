@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Type;
+use App\Profile;
+use App\Vismis;
 
-class TypeController extends Controller
+
+class VismisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        return view('types.index');
+       return view('profiles.vismis');
     }
 
     /**
@@ -23,26 +25,9 @@ class TypeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
-        return view ('types.create');
-    }
-
-
-    public function list()
     {
-        $types = Type::all();
-        $data = $types->map(function($item){
-            return [
-                'id' => $item->id,
-                'name' => $item->name,
-                'level' => $item->level,
-                'created' => $item->updated_at->format('d-m-Y')
-            ];
-        });
-        // dd($data);
-        return response()->json($data);
+        //
     }
-    
 
     /**
      * Store a newly created resource in storage.
@@ -52,12 +37,7 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        $kategori= $this->validate($request,[
-            'name' => 'required',
-            'level' => 'required'
-        ]);
-        Type::create($kategori);
-        return redirect()->route('type.index')->with('success','Data Added');
+        //
     }
 
     /**
@@ -68,8 +48,7 @@ class TypeController extends Controller
      */
     public function show($id)
     {
-        $query = Type::findOrFail($id);
-        return view('types.detail');
+        //
     }
 
     /**
@@ -80,9 +59,9 @@ class TypeController extends Controller
      */
     public function edit($id)
     {
-        $edit = Type::findOrFail($id);
-        
-        return view('types.edit', compact('edit','id'));
+        $edit = Profile::findOrFail($id);
+       
+        return view('vismis.edit', compact('edit'));
     }
 
     /**
@@ -95,18 +74,12 @@ class TypeController extends Controller
     public function update(Request $request, $id)
     {
         $query=$this->validate($request,[
-            'name'  => 'required',
-            'level' => 'required'
+            'vision'  => 'required',
+            'mission' => 'required'
         ]);
+        Profile::find($id)->update($query);
         
-        // $edit = edit::find($id);
-        // $edit->name=$request->get('name');
-        // $edit->level=$request->get('level');
-        // $edit->save();
-        Type::find($id)->update($query);
-        // return redirect()->route('type.create')->with('success','Data Added');
-        
-        return redirect()->route('type.index')->with('success','Data Updated');
+        return redirect()->route('vismis.index')->with('success','Data Updated');
     }
 
     /**

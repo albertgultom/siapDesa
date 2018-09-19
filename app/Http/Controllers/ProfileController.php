@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Type;
+use App\Profile;
 
-class TypeController extends Controller
+
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        return view('types.index');
+        return view('profiles');
     }
 
     /**
@@ -23,26 +24,9 @@ class TypeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
-        return view ('types.create');
-    }
-
-
-    public function list()
     {
-        $types = Type::all();
-        $data = $types->map(function($item){
-            return [
-                'id' => $item->id,
-                'name' => $item->name,
-                'level' => $item->level,
-                'created' => $item->updated_at->format('d-m-Y')
-            ];
-        });
-        // dd($data);
-        return response()->json($data);
+        //
     }
-    
 
     /**
      * Store a newly created resource in storage.
@@ -52,12 +36,7 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        $kategori= $this->validate($request,[
-            'name' => 'required',
-            'level' => 'required'
-        ]);
-        Type::create($kategori);
-        return redirect()->route('type.index')->with('success','Data Added');
+        //
     }
 
     /**
@@ -69,7 +48,7 @@ class TypeController extends Controller
     public function show($id)
     {
         $query = Type::findOrFail($id);
-        return view('types.detail');
+
     }
 
     /**
@@ -80,9 +59,10 @@ class TypeController extends Controller
      */
     public function edit($id)
     {
-        $edit = Type::findOrFail($id);
+        $edit = Profile::findOrFail(1);
         
-        return view('types.edit', compact('edit','id'));
+        return view('profiles.desa', compact('edit','id'));
+        
     }
 
     /**
@@ -93,20 +73,16 @@ class TypeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        $query=$this->validate($request,[
+    {  
+        // dd($request);
+        $query = $this->validate($request,[
             'name'  => 'required',
-            'level' => 'required'
+            'subdistrict' => 'required',
+            'history' => 'required'
         ]);
-        
-        // $edit = edit::find($id);
-        // $edit->name=$request->get('name');
-        // $edit->level=$request->get('level');
-        // $edit->save();
-        Type::find($id)->update($query);
-        // return redirect()->route('type.create')->with('success','Data Added');
-        
-        return redirect()->route('type.index')->with('success','Data Updated');
+        Profile::find($id)->update($query);
+
+        return back()->with('success','Data Updated');
     }
 
     /**
@@ -119,4 +95,22 @@ class TypeController extends Controller
     {
         //
     }
+
+    public function profil($profil)
+    {
+        // $id = '1';
+        $edit = Profile::find(1);
+        // dd($edit);
+        if ($profil === 'desa' ){
+            return view ('profiles.desa', compact('edit'));
+        }
+        elseif ($profil === 'sejarah' ){
+            return view ('profiles.sejarah', compact('edit'));
+        }
+        elseif ($profil === 'vismis' ){
+            dd($edit);
+            return view ('profiles.vismis', compact('edit'));
+        }
+    }
 }
+

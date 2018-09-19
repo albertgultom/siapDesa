@@ -71,10 +71,10 @@
                           <a href="/profiles/desa">Desa</a>
                       </li>
                       <li>
-                          <a href="index2.html">Sejarah</a>
+                          <a href="/profiles/sejarah">Sejarah</a>
                       </li>
                       <li>
-                          <a href="index3.html">Visi dan Misi</a>
+                          <a href="/profile/vismis">Visi dan Misi</a>
                       </li>
                       <li>
                           <a href="index4.html">Struktur</a>
