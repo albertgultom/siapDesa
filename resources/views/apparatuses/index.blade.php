@@ -16,7 +16,125 @@
 <section class="statistic-chart">
   <div class="container">
     <div class="row">
+      <div class="col-lg-8">
+        <div class="d-flex flex-wrap mb-3">
+          @foreach ($data as $item)
+          <div class="aparatur p-1">
+            <div class="media p-2 border rounded bg-white">
+              <img src="{{asset('storage\apparatus\\'.$item->image)}}" class="img-apparatus rounded-circle" alt="">
+              <div class="media-body pl-2">
+                <small><i>Nama :</i></small>
+                <p class="text-primary">{!!$item->name!!}</p>
+                <small><i>Jabatan :</i></small>
+                <p class="text-primary">{!!$item->position!!}</p>
+                <p class="mb-0"><small><i>Nomor posisi :</i></small><span class="pl-2 text-primary">{!!$item->number!!}</span></p>
+                <p>
+                  <small><i>Status aktif :</i></small>
+                  @if($item->active == 1)
+                    <span class="pl-2 text-primary">YA</span>
+                  @else
+                    <span class="pl-2 text-danger">TIDAK</span>
+                  @endif
+                </p>
+              </div>
+            </div>
+          </div>
+          @endforeach
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card border-secondary">
+          <div class="card-header">
+            <strong>Kategori</strong>
+            <small> form</small>
+          </div>
+          <div class="card-body card-block">
+            <form action="" class="row" enctype="multipart/form-data">
+              <div class="form-group col-12">
+                <img 
+                  id="imageFile01" 
+                  src="{{asset('storage\apparatus\who.png')}}" 
+                  class="img-apparatus mx-auto d-block rounded-circle" 
+                  alt="">
+                <div class="input-group mt-2">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label text-truncate" for="inputGroupFile01">pilih photo...</label>
+                  </div>
+                </div>
+                <small class="form-text text-success">ukuran file square / kotak</small>
+              </div>
+              <div class="form-group col-12">
+                <label for="apName" class="form-control-label">Nama :</label>
+                <input type="text" id="apName" name="name" placeholder="..." class="form-control">
+                @if ($errors->has('name'))
+                  <small class="form-text text-danger">{{ $errors->first('name') }}</small>
+                @endif
+              </div>
+              <div class="form-group col-12">
+                <label for="apPosition" class="form-control-label">Jabatan :</label>
+                <input type="text" id="apPosition" name="position" placeholder="..." class="form-control">
+                @if ($errors->has('position'))
+                  <small class="form-text text-danger">{{ $errors->first('position') }}</small>
+                @endif
+              </div>
+              <div class="form-group col-6">
+                <label for="apNumber" class="form-control-label">Nomor posisi :</label>
+                <input type="text" id="apNumber" name="number" placeholder="..." class="form-control">
+                @if ($errors->has('number'))
+                  <small class="form-text text-danger">{{ $errors->first('number') }}</small>
+                @endif
+              </div>
+              <div class="form-group col-6">
+                <div class="form-control-label">Status Aktif :</div>
+                <label class="switch switch-text switch-success mt-3">
+                  <input id="poststatus" type="checkbox" name="active" class="switch-input" checked>
+                  <span data-on="On" data-off="Off" class="switch-label"></span>
+                  <span class="switch-handle"></span>
+                </label>
+              </div>
+              <div class="col-12 mt-4">
+                <button type="submit" class="btn btn-outline-primary">Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 @endsection
+
+@push('scripts')
+<script>
+  $(document).ready(function(){
+    $('input[type="file"]').change(function(e) {
+      var filename = e.target.files[0].name;
+      $('.custom-file-label').text(filename);
+
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#imageFile01').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(this.files[0]);
+    });
+  });
+</script>
+@endpush
+
+@push('styles')
+<style>
+  .aparatur{
+    width: 50%;
+  }
+  .img-apparatus{
+    width: 150px;
+    height: auto;
+  }
+  @media (max-width:732px) {
+    .aparatur{
+      width: 100%;
+    }
+  }
+</style>
+@endpush
