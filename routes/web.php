@@ -1,8 +1,6 @@
 <?php
 // PUBLIC ROUTES
-Route::get('/', function () {
-    return view('landing');
-})->name('beranda');
+Route::get('/', 'HomeController@index')->name('beranda');
 
 Route::get('/struktur-organisasi', function () {
     return view('monografi.struktur');
@@ -37,6 +35,7 @@ Route::resource('/post', 'PostController');
 Route::get('/posts', 'PostController@list')->name('posts');
 
 Route::resource('/tag', 'TagController');
+Route::resource('/apparatus', 'ApparatusController');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

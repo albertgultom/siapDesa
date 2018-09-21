@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Apparatus extends Model
 {
-    protected $table = 'posts';
+    protected $table = 'apparatuses';
     protected $guarded = [];
     protected $fillable = [];
     // protected $hidden = [];
