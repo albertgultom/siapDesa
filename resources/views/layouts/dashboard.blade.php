@@ -106,7 +106,7 @@
                       <i class="fas fa-users"></i>
                       <span class="bot-line"></span>Pelayanan</a>
               </li>
-              <li>
+              {{-- <li>
                   <a href="table.html">
                       <i class="fas fa-university"></i>
                       <span class="bot-line"></span>Produk Hukum</a>
@@ -142,10 +142,6 @@
                               <div class="account-dropdown__item">
                                   <a href="#">
                                       <i class="zmdi zmdi-settings"></i>Setting</a>
-                              </div>
-                              <div class="account-dropdown__item">
-                              <a href="{{route('register')}}">
-                                      <i class="zmdi zmdi-money-box"></i>Register</a>
                               </div>
                           </div>
                           <div class="account-dropdown__footer">
@@ -239,7 +235,7 @@
                     <a href="chart.html">
                         <i class="fas fa-users"></i>Pelayanan</a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="table.html">
                         <i class="fas fa-university"></i>Produk Hukum</a>
                 </li> --}}
@@ -279,10 +275,6 @@
                             <div class="account-dropdown__item">
                                 <a href="#">
                                     <i class="zmdi zmdi-settings"></i>Setting</a>
-                            </div>
-                            <div class="account-dropdown__item">
-                                <a href="{{route('register')}}">
-                                    <i class="zmdi zmdi-money-box"></i>Register</a>
                             </div>
                         </div>
                         <div class="account-dropdown__footer">
