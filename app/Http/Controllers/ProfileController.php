@@ -8,6 +8,10 @@ use App\Profile;
 
 class ProfileController extends Controller
 {
+    private $allowedImage = [
+        'image/jpeg',
+        'image/png',
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +40,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
     }
 
     /**
@@ -79,78 +83,62 @@ class ProfileController extends Controller
             $edit -> name = $request -> name;
             }if($request -> has('subdistrict')){
                 $edit -> subdistrict = $request -> subdistrict;
+            }if ($request -> has('province')){
+                $edit -> province = $request -> province;
             }if ($request -> has('history')){
                 $edit -> history = $request -> history;
             }if ($request -> has('vision')){
                 $edit -> vision = $request -> vision;
             }if ($request -> has('mission')){
                 $edit -> mission = $request -> mission;
+            }if ($request -> has('district')){
+                $edit -> district = $request -> district;
+            }if ($request -> has('zip_code')){
+                $edit -> zip_code = $request -> zip_code;
+            }if ($request -> has('phone')){
+                $edit -> phone = $request -> phone;
+            }if ($request -> has('email')){
+                $edit -> email = $request -> email;
             }
+            if ($request -> has('image_profile')){
+                $edit -> image_profile = $request -> image_profile;
+
+            if ($request -> has('headman')){
+                $edit -> headman = $request -> headman;
+            }if ($request -> has('image_headman')){
+                $edit -> image_headman = $request -> image_headman;
+
+            }
+            if($request->hasFile('image_profile')){
+                $extension = $request->image_profile->getMimeType();
+                if (! in_array($extension, $this->allowedImage)) {
+                    return back()->withInput()->withErrors(array('image_profile' => 'Tipe file tidak di dukung.'));
+                }else{
+                    $date = date('ymdhis_');
+                    $file = $request->image_profile->getClientOriginalName();
+                    $filename = $date . str_replace(' ', '_', strtolower($file));
+                    $store = $request->image_profile->storeAs('public/images', $filename);
+                    $edit['image_profile'] = $filename;
+                }
+            }}
+                //     if($request->file('image_profile') == "")
+                // {
+                //     $edit->image_profile = $edit->image_profile;
+                // } 
+                // else
+                // {
+                //     $file       = $request->file('image_profile');
+                //     $fileName   = $file->getClientOriginalName();
+                //     $request->file('image_profile')->move("image/", $fileName);
+                //     $edit->image_profile = $fileName;
+                // }
             
+            // dd($edit);
             $edit->update();
             return redirect()->back()->with(["edit" => $edit] );
 
-        // if ($data -> name = $request -> name){
-        //     $data->save();
-        // }elseif ($data -> subdistrict = $request -> subdistrict){
-        //     $data->save();
-        // }elseif ($data -> history = $request -> history){
-        //     $data->save();
-        // }
-
-        // if ( $this->validate -> request ){
-        //     'name' => 'required',
-        // }elseif ($this->validate -> request){
-        //     'subdistrict' => 'required'
-        // }
-
-
-
-        // $data = Profile::findOrfail($id);
-        // $data -> name = $request -> name;
-        // $data -> subdistrict = $request -> subdistrict;
-        // $data -> history = $request -> history;
-        // $data -> mission = $request -> mission;
-        // $data->save();
-
-
-        // $query = Profile::all();
-        // $edit = $query 
-        // $edit = Profile::all();
-        // $editUpdate = Profile::find($id);
-        // $editUpdate -> $edit ['name'];
-        // $editUpdate -> $edit ['subdistrict'];
-        // $editUpdate -> $edit ['vision'];
-        // $editUpdate -> $edit ['mission'];
-        
-        // $editUpdate->back();
-
-
-        // $this -> validate($request,[
-        //     'name'  => 'required',
-        //     'subdistrict' => 'required',
-        //     'history' => 'required',
-        //     'vision' => 'required',
-        //     'mission' => 'required',
-        // ]);
-
-        // dd($request->all());
-        // $this->validate($request,[
-        //     'name'  => 'required',
-        //     'subdistrict' => 'required',
-        //     'history' => 'required',
-        //     'vision' => 'required',
-        //     'mission' => 'required',
-            
-        // ]);
         
         
-
-        // return back()->with('success','Data Updated');
-
-        // if($validate->fails()){
-        //     return back()->withErrors($validate)->withInput();
-        //     }
     }
 
     /**
