@@ -27,6 +27,7 @@
   <!-- Main CSS-->
   <link href="{{ asset('css/theme.css') }}" rel="stylesheet" media="all">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" media="all">
+  @stack('styles')
 </head>
 <body class="animsition">
   <div class="page-wrapper">

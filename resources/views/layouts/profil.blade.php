@@ -9,7 +9,7 @@
   <li class="nav-item">
     <a class="nav-link p-3" href="/sejarah">Sejarah</a>
   </li>
-  <li class="nav-item">
+  {{-- <li class="nav-item">
     <a class="nav-link p-3" href="/potensi">Potensi</a>
   </li>
   <li class="nav-item">
@@ -17,7 +17,7 @@
   </li>
   <li class="nav-item">
   <a class="nav-link p-3" href="/lembaga">Lembaga</a>
-  </li>
+  </li> --}}
 </ul>
 
 <section data-spy="scroll" data-target="#list-profil" data-offset="0" class="container nav-section pt-3">

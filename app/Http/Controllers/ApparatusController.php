@@ -9,7 +9,8 @@ class ApparatusController extends Controller
 {
     public function index()
     {
-        
-        return view('apparatuses.index');
+        $data = Apparatus::orderBy('number', 'asc')->get();
+        // dd($data);
+        return view('apparatuses.index', compact('data'));
     }
 }
