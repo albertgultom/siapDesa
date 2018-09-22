@@ -33,7 +33,7 @@
                 </div>
               <input type="hidden" name="mission"> 
             </div>
-            <input type="submit" class="btn btn-primary" value="save"/>
+            <input type="submit" class="btn btn-primary" value="Save"/>
         </div>
     </form>
 </div>
