@@ -23,12 +23,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('landing');
     }
 
-    public function  test($nama)
+    public function  struktur()
     {
-        $request = 'balikin angka: ' . $nama;
-        // return view('', $request;
+        return view('monografi.struktur');
+    }
+
+    public function  sejarah()
+    {
+        return view('monografi.sejarah');
     }
 }

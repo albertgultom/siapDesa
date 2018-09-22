@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>siapDesa</title>
+  <title>Desa Kujangsari</title>
   <!-- Fontfaces CSS-->
   <link href="{{ asset('css/font-face.css') }}" rel="stylesheet" media="all">
   <link href="{{ asset('vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
@@ -101,7 +101,7 @@
                       </li>
                   </ul>
               </li>
-              <li>
+              {{-- <li>
                   <a href="table.html">
                       <i class="fas fa-users"></i>
                       <span class="bot-line"></span>Pelayanan</a>
@@ -110,7 +110,7 @@
                   <a href="table.html">
                       <i class="fas fa-university"></i>
                       <span class="bot-line"></span>Produk Hukum</a>
-              </li>
+              </li> --}}
             </ul>
           </div>
           <div class="header__tool">
@@ -144,8 +144,8 @@
                                       <i class="zmdi zmdi-settings"></i>Setting</a>
                               </div>
                               <div class="account-dropdown__item">
-                                  <a href="#">
-                                      <i class="zmdi zmdi-money-box"></i>Billing</a>
+                              <a href="{{route('register')}}">
+                                      <i class="zmdi zmdi-money-box"></i>Register</a>
                               </div>
                           </div>
                           <div class="account-dropdown__footer">
@@ -183,13 +183,13 @@
                         <i class="fas fa-list-alt"></i>Artikel</a>
                     <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                         <li>
-                            <a href="index.html">Berita</a>
+                            <a href="/post">Berita</a>
                         </li>
                         <li>
                             <a href="/tag">Kategori</a>
                         </li>
                         <li>
-                            <a href="index3.html">Tipe</a>
+                            <a href="/type">Tipe</a>
                         </li>
                     </ul>
                 </li>
@@ -232,14 +232,14 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="chart.html">
                         <i class="fas fa-users"></i>Pelayanan</a>
                 </li>
                 <li>
                     <a href="table.html">
                         <i class="fas fa-university"></i>Produk Hukum</a>
-                </li>
+                </li> --}}
               </ul>
           </div>
       </nav>
@@ -278,8 +278,8 @@
                                     <i class="zmdi zmdi-settings"></i>Setting</a>
                             </div>
                             <div class="account-dropdown__item">
-                                <a href="#">
-                                    <i class="zmdi zmdi-money-box"></i>Billing</a>
+                                <a href="{{route('register')}}">
+                                    <i class="zmdi zmdi-money-box"></i>Register</a>
                             </div>
                         </div>
                         <div class="account-dropdown__footer">
