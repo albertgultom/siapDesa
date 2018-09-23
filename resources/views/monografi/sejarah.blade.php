@@ -3,7 +3,6 @@
 @section('profil')
 <div id="identitas">
   <h4 class="title">Sejarah Desa</h4>
-  <p>{{$data}}</p>
   <div>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium mollitia provident hic ex! Assumenda velit aspernatur, possimus, quos debitis illum inventore deserunt distinctio omnis placeat amet deleniti minus ullam magni.</p>
     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus tenetur aut excepturi veritatis cum consectetur eaque magni laborum, adipisci, labore vitae pariatur, consequuntur totam doloribus tempora magnam vero ut dignissimos.</p>

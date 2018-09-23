@@ -12,6 +12,12 @@ class ProfileController extends Controller
         'image/jpeg',
         'image/png',
     ];
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *

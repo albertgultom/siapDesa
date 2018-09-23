@@ -76,9 +76,9 @@
                       <li>
                           <a href="/profil/vismis">Visi dan Misi</a>
                       </li>
-                      <li>
+                      {{-- <li>
                           <a href="index4.html">Struktur</a>
-                      </li>
+                      </li> --}}
                   </ul>
               </li>
               <li class="has-sub">
@@ -149,8 +149,11 @@
                               </div>
                           </div>
                           <div class="account-dropdown__footer">
-                              <a href="#">
-                                  <i class="zmdi zmdi-power"></i>Logout</a>
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                <i class="zmdi zmdi-power"></i>{{ __('Logout') }}
+                            </a>
                           </div>
                       </div>
                   </div>
@@ -283,8 +286,15 @@
                             </div>
                         </div>
                         <div class="account-dropdown__footer">
-                            <a href="#">
-                                <i class="zmdi zmdi-power"></i>Logout</a>
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                 <i class="zmdi zmdi-power"></i>{{ __('Logout') }}
+                             </a>
+
+                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                 @csrf
+                             </form>
                         </div>
                     </div>
                 </div>
