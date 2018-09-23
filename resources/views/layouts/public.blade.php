@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Desa Kujangsari</title>
+  <title>{{ config('app.name', 'Laravel') }}</title>
   <link rel="shorcut icon" href="{{ asset('storage/images/favicon.png') }}">
   <!-- Fonts -->
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">

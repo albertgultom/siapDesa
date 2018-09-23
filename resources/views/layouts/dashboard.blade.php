@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Desa Kujangsari</title>
+  <title>{{ config('app.name', 'Laravel') }}</title>
   <!-- Fontfaces CSS-->
   <link href="{{ asset('css/font-face.css') }}" rel="stylesheet" media="all">
   <link href="{{ asset('vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
