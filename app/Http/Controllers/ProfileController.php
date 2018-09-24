@@ -88,69 +88,7 @@ class ProfileController extends Controller
             }
             
             $edit->update();
-            return redirect()->back()->with(["edit" => $edit] );
-
-        // if ($data -> name = $request -> name){
-        //     $data->save();
-        // }elseif ($data -> subdistrict = $request -> subdistrict){
-        //     $data->save();
-        // }elseif ($data -> history = $request -> history){
-        //     $data->save();
-        // }
-
-        // if ( $this->validate -> request ){
-        //     'name' => 'required',
-        // }elseif ($this->validate -> request){
-        //     'subdistrict' => 'required'
-        // }
-
-
-
-        // $data = Profile::findOrfail($id);
-        // $data -> name = $request -> name;
-        // $data -> subdistrict = $request -> subdistrict;
-        // $data -> history = $request -> history;
-        // $data -> mission = $request -> mission;
-        // $data->save();
-
-
-        // $query = Profile::all();
-        // $edit = $query 
-        // $edit = Profile::all();
-        // $editUpdate = Profile::find($id);
-        // $editUpdate -> $edit ['name'];
-        // $editUpdate -> $edit ['subdistrict'];
-        // $editUpdate -> $edit ['vision'];
-        // $editUpdate -> $edit ['mission'];
-        
-        // $editUpdate->back();
-
-
-        // $this -> validate($request,[
-        //     'name'  => 'required',
-        //     'subdistrict' => 'required',
-        //     'history' => 'required',
-        //     'vision' => 'required',
-        //     'mission' => 'required',
-        // ]);
-
-        // dd($request->all());
-        // $this->validate($request,[
-        //     'name'  => 'required',
-        //     'subdistrict' => 'required',
-        //     'history' => 'required',
-        //     'vision' => 'required',
-        //     'mission' => 'required',
-            
-        // ]);
-        
-        
-
-        // return back()->with('success','Data Updated');
-
-        // if($validate->fails()){
-        //     return back()->withErrors($validate)->withInput();
-        //     }
+            return redirect()->back()->with(["edit" => $edit] );     
     }
 
     /**

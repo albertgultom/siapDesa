@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h3 class="title-5">DAFTAR BERITA</h3>
+        <h3 class="title-5">DAFTAR TIPE</h3>
         <hr class="line-seprate">
       </div>
     </div>

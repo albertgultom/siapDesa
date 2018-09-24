@@ -25,11 +25,11 @@
         <div class="container">
         <form method="post" action="{{url('type')}}" >{{csrf_field()}}
             <div class="form-group col-md-6" >
-                <input type="text" name="name" class="form-control" placeholder="masukan kategori"/>    
+                <input type="text" name="name" class="form-control" placeholder="masukan Tipe"/>    
             </div>
 
             <div class="form-group col-md-6">
-                    <input type="text"  name="level" class="form-control" placeholder="masukan level pada kategori"/>
+                    <input type="text"  name="level" class="form-control" placeholder="masukan level pada Tipe"/>
             </div>
 
             <div class="form-group ">
