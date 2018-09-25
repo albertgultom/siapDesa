@@ -55,13 +55,14 @@
     <div class="container-fluid">
       <div class="row custom-header">
         <div class="col-sm-8">
+            
             <h4>SITUS RESMI</h4>
-            <h1>DESA KUJANGSARI</h1>
-            <p>KECAMATAN LANGENSARI - KOTA BANJAR</p>
-            <p>PROVINSI JAWA BARAT</p>
+            <h1>{{$row['name']}}</h1>
+            <p>{{$row['district']}} - {{$row['subdistrict']}}</p>
+            <p>{{$row['province']}}</p>
         </div>
         <div class="col-sm-4 mb-4">
-          <img src="{!!asset('storage/images/logo-kota-banjar.png')!!}" alt="logo" class="img-fluid">
+          <img src="{{asset('storage\images\\'.$row['image_profile'])}}" alt="logo" class="img-fluid">
         </div>
       </div>
     </div>
