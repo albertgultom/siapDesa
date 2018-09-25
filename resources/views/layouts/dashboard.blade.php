@@ -305,7 +305,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="copyright">
-                        <p>Copyright © 2018. All rights reserved. Maintenance by <a href="https://siapdesa.id">siapDesa</a> - v1.0.0</p>
+                        <p>{{ config('app.name') }} - 2018 © Copyright <a href="https://siapdesa.id">siapDesa</a> v1.0.0</p>
                     </div>
                 </div>
             </div>
