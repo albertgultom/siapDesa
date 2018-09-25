@@ -1,4 +1,8 @@
 {
+    "name": "siapdesa",
+    "description": "Sistem Aplikasi Desa",
+    "version": "1.0.0",
+    "author": "Albert Gultom <gultomic@gmail.com>",
     "private": true,
     "scripts": {
         "dev": "npm run development",

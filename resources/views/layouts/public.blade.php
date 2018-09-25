@@ -134,7 +134,7 @@
   <!-- FOOTER -->
   <footer class="my-5 text-center">
     <p class="mb-2">
-      <small>Copyright Desa Kujangsari © 2018 - v1.0.0</small>
+      <small>{{ config('app.name') }} - 2018 © Copyright siapDesa v1.0.0</small>
     </p>
     {{-- <small>
       <a href="#" class="m-2">TERMS</a>
