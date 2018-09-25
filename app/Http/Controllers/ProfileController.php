@@ -25,7 +25,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profiles');
+        $profiles = Profile::all()->toArray();
+        return view('landing', compact('profiles'));
     }
 
     /**
@@ -141,15 +142,8 @@ class ProfileController extends Controller
             
             // dd($edit);
             $edit->update();
-<<<<<<< HEAD
-            return redirect()->back()->with(["edit" => $edit] );     
-=======
             return redirect()->back()->with(["edit" => $edit] );
-
-        
-        
->>>>>>> 3804a9c38e0e31ce8f0aef099563c6855e9938ab
-    }
+            }
 
     /**
      * Remove the specified resource from storage.
@@ -175,5 +169,7 @@ class ProfileController extends Controller
             return view ('profiles.vismis', compact('edit'));
         }
     }
+
+
 }
 

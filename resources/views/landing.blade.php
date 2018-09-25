@@ -63,18 +63,18 @@
             <div class="card m-2 rounded">
                 <div class="card-header">Visi Desa</div>
                 <div class="card-body">
+                    @foreach ($profiles as $row)
                     <ul>
-                        <li>Mewujudkan Masyarakat Desa Kujangsari yang Religius, Aspiratif, Inovatif, Efektif, Efisien dan Selaras.</li>
+                    {!!$row['mission']!!}
                     </ul>
+                    @endforeach
                 </div>
             </div>
             <div class="card m-2 rounded">
                 <div class="card-header">Misi Desa</div>
                 <div class="card-body">
                     <ul>
-                        <li>Membangun sistem pemerintahan yang bersih serta berorientasi kepada pelayanan publik.</li>
-                        <li>Menigkatkan kinerja lembaga pemerintahan desa.</li>
-                        <li>Meningkatkan laju pemberdayaan ekonomi kerakyatan yang berbasis koperasi.</li>
+                        {!!$row['vision']!!}
                     </ul>
                 </div>
             </div>
