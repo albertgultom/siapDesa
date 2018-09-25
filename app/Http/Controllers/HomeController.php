@@ -26,4 +26,13 @@ class HomeController extends Controller
         return view('landing');
     }
 
+    public function  struktur()
+    {
+        return view('monografi.struktur');
+    }
+
+    public function  sejarah()
+    {
+        return view('monografi.sejarah');
+    }
 }

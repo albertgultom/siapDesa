@@ -8,6 +8,16 @@ use App\Profile;
 
 class ProfileController extends Controller
 {
+    private $allowedImage = [
+        'image/jpeg',
+        'image/png',
+    ];
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +46,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
     }
 
     /**
@@ -79,16 +89,66 @@ class ProfileController extends Controller
             $edit -> name = $request -> name;
             }if($request -> has('subdistrict')){
                 $edit -> subdistrict = $request -> subdistrict;
+            }if ($request -> has('province')){
+                $edit -> province = $request -> province;
             }if ($request -> has('history')){
                 $edit -> history = $request -> history;
             }if ($request -> has('vision')){
                 $edit -> vision = $request -> vision;
             }if ($request -> has('mission')){
                 $edit -> mission = $request -> mission;
+            }if ($request -> has('district')){
+                $edit -> district = $request -> district;
+            }if ($request -> has('zip_code')){
+                $edit -> zip_code = $request -> zip_code;
+            }if ($request -> has('phone')){
+                $edit -> phone = $request -> phone;
+            }if ($request -> has('email')){
+                $edit -> email = $request -> email;
             }
+            if ($request -> has('image_profile')){
+                $edit -> image_profile = $request -> image_profile;
+
+            if ($request -> has('headman')){
+                $edit -> headman = $request -> headman;
+            }if ($request -> has('image_headman')){
+                $edit -> image_headman = $request -> image_headman;
+
+            }
+            if($request->hasFile('image_profile')){
+                $extension = $request->image_profile->getMimeType();
+                if (! in_array($extension, $this->allowedImage)) {
+                    return back()->withInput()->withErrors(array('image_profile' => 'Tipe file tidak di dukung.'));
+                }else{
+                    $date = date('ymdhis_');
+                    $file = $request->image_profile->getClientOriginalName();
+                    $filename = $date . str_replace(' ', '_', strtolower($file));
+                    $store = $request->image_profile->storeAs('public/images', $filename);
+                    $edit['image_profile'] = $filename;
+                }
+            }}
+                //     if($request->file('image_profile') == "")
+                // {
+                //     $edit->image_profile = $edit->image_profile;
+                // } 
+                // else
+                // {
+                //     $file       = $request->file('image_profile');
+                //     $fileName   = $file->getClientOriginalName();
+                //     $request->file('image_profile')->move("image/", $fileName);
+                //     $edit->image_profile = $fileName;
+                // }
             
+            // dd($edit);
             $edit->update();
+<<<<<<< HEAD
             return redirect()->back()->with(["edit" => $edit] );     
+=======
+            return redirect()->back()->with(["edit" => $edit] );
+
+        
+        
+>>>>>>> 3804a9c38e0e31ce8f0aef099563c6855e9938ab
     }
 
     /**

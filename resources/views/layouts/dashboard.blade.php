@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>siapDesa</title>
+  <title>{{ config('app.name', 'Laravel') }}</title>
   <!-- Fontfaces CSS-->
   <link href="{{ asset('css/font-face.css') }}" rel="stylesheet" media="all">
   <link href="{{ asset('vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
@@ -77,9 +77,9 @@
                       <li>
                           <a href="/profil/vismis">Visi dan Misi</a>
                       </li>
-                      <li>
+                      {{-- <li>
                           <a href="index4.html">Struktur</a>
-                      </li>
+                      </li> --}}
                   </ul>
               </li>
               <li class="has-sub">
@@ -102,7 +102,7 @@
                       </li>
                   </ul>
               </li>
-              <li>
+              {{-- <li>
                   <a href="table.html">
                       <i class="fas fa-users"></i>
                       <span class="bot-line"></span>Pelayanan</a>
@@ -146,8 +146,11 @@
                               </div>
                           </div>
                           <div class="account-dropdown__footer">
-                              <a href="#">
-                                  <i class="zmdi zmdi-power"></i>Logout</a>
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                <i class="zmdi zmdi-power"></i>{{ __('Logout') }}
+                            </a>
                           </div>
                       </div>
                   </div>
@@ -180,13 +183,13 @@
                         <i class="fas fa-list-alt"></i>Artikel</a>
                     <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                         <li>
-                            <a href="index.html">Berita</a>
+                            <a href="/post">Berita</a>
                         </li>
                         <li>
                             <a href="/tag">Kategori</a>
                         </li>
                         <li>
-                            <a href="index3.html">Tipe</a>
+                            <a href="/type">Tipe</a>
                         </li>
                     </ul>
                 </li>
@@ -229,7 +232,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="chart.html">
                         <i class="fas fa-users"></i>Pelayanan</a>
                 </li>
@@ -276,8 +279,15 @@
                             </div>
                         </div>
                         <div class="account-dropdown__footer">
-                            <a href="#">
-                                <i class="zmdi zmdi-power"></i>Logout</a>
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                 <i class="zmdi zmdi-power"></i>{{ __('Logout') }}
+                             </a>
+
+                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                 @csrf
+                             </form>
                         </div>
                     </div>
                 </div>

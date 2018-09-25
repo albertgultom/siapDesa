@@ -1,14 +1,8 @@
 <?php
 // PUBLIC ROUTES
 Route::get('/', 'HomeController@index')->name('beranda');
-
-Route::get('/struktur-organisasi', function () {
-    return view('monografi.struktur');
-})->name('struktur');
-
-Route::get('/sejarah', function () {
-    return view('monografi.sejarah');
-})->name('sejarah');
+Route::get('/struktur-organisasi', 'HomeController@struktur')->name('struktur');
+Route::get('/sejarah', 'HomeController@sejarah')->name('sejarah');
 
 Route::get('/potensi', function () {
     return view('monografi.potensi');
