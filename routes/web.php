@@ -8,9 +8,7 @@ Route::get('/potensi', function () {
     return view('monografi.potensi');
 })->name('potensi');
 
-Route::get('/artikel', function () {
-    return view('berita.artikel');
-})->name('artikel');
+Route::get('/artikel', 'HomeController@artikel')->name('artikel');
 
 Route::get('/foto', function () {
     return view('berita.foto');

@@ -35,4 +35,15 @@ class HomeController extends Controller
     {
         return view('monografi.sejarah');
     }
+
+    public function artikel()
+    {
+        $row = \App\Profile::find(1);
+        $tags = \App\Tag::all();
+        $posts = \App\Post::where('active', '=', 1)
+            ->orderBy('updated_at','desc')
+            ->paginate(6);
+        // dd($posts);
+        return view('berita.artikel', compact('row', 'tags', 'posts'));
+    }
 }

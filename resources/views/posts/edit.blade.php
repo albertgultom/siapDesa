@@ -83,7 +83,7 @@
                 name="image"
                 accept="image/png, image/jpeg"
                 aria-describedby="inputFileAddon01">
-              <label class="custom-file-label" for="inputFile01">{!! $data->image !!}></label>
+              <label class="custom-file-label" for="inputFile01">{!! $data->image !!}</label>
             </div>
           </div>
           @if ($errors->has('image'))

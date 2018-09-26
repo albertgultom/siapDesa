@@ -1,34 +1,51 @@
 @extends('layouts.pustaka')
 
 @section('pustaka')
-<div id="identitas">
-  <h4 class="title">List Artikel Terbaru</h4>
-  <div>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium mollitia provident hic ex! Assumenda velit aspernatur, possimus, quos debitis illum inventore deserunt distinctio omnis placeat amet deleniti minus ullam magni.</p>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus tenetur aut excepturi veritatis cum consectetur eaque magni laborum, adipisci, labore vitae pariatur, consequuntur totam doloribus tempora magnam vero ut dignissimos.</p>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius nobis praesentium corrupti est quae, quo consectetur! Rerum, ullam placeat. Voluptas rem illum repellat quod nostrum. Soluta perspiciatis praesentium vero impedit!</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui cumque rem voluptates asperiores, fuga earum architecto est laborum deserunt officia laboriosam doloribus! Perferendis repellat ipsum, praesentium recusandae unde a sed?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis excepturi rerum ipsa cupiditate animi iste officia sunt facere, asperiores eveniet obcaecati! Obcaecati consectetur expedita quia fuga quaerat asperiores rerum? Saepe.</p>
+<div class="row">
+  <div class="col-lg-3">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item list-group-item-primary">WARTA BERITA</li>
+      @foreach ($tags as $item)
+        <li class="list-group-item">{!!$item->name!!}</li>
+      @endforeach
+    </ul>
   </div>
-</div>
-<div id="perangkat">
-  <h4 class="title">Detail Perangkat Desa</h4>
-  <div>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium mollitia provident hic ex! Assumenda velit aspernatur, possimus, quos debitis illum inventore deserunt distinctio omnis placeat amet deleniti minus ullam magni.</p>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus tenetur aut excepturi veritatis cum consectetur eaque magni laborum, adipisci, labore vitae pariatur, consequuntur totam doloribus tempora magnam vero ut dignissimos.</p>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius nobis praesentium corrupti est quae, quo consectetur! Rerum, ullam placeat. Voluptas rem illum repellat quod nostrum. Soluta perspiciatis praesentium vero impedit!</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui cumque rem voluptates asperiores, fuga earum architecto est laborum deserunt officia laboriosam doloribus! Perferendis repellat ipsum, praesentium recusandae unde a sed?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis excepturi rerum ipsa cupiditate animi iste officia sunt facere, asperiores eveniet obcaecati! Obcaecati consectetur expedita quia fuga quaerat asperiores rerum? Saepe.</p>
-  </div>
-</div>
-<div id="sejarah">
-  <h4 class="title">Deskripsi Sejarah Desa</h4>
-  <div>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium mollitia provident hic ex! Assumenda velit aspernatur, possimus, quos debitis illum inventore deserunt distinctio omnis placeat amet deleniti minus ullam magni.</p>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus tenetur aut excepturi veritatis cum consectetur eaque magni laborum, adipisci, labore vitae pariatur, consequuntur totam doloribus tempora magnam vero ut dignissimos.</p>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius nobis praesentium corrupti est quae, quo consectetur! Rerum, ullam placeat. Voluptas rem illum repellat quod nostrum. Soluta perspiciatis praesentium vero impedit!</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui cumque rem voluptates asperiores, fuga earum architecto est laborum deserunt officia laboriosam doloribus! Perferendis repellat ipsum, praesentium recusandae unde a sed?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis excepturi rerum ipsa cupiditate animi iste officia sunt facere, asperiores eveniet obcaecati! Obcaecati consectetur expedita quia fuga quaerat asperiores rerum? Saepe.</p>
+  <div class="col-lg-9">
+      <div class="row">
+        @foreach ($posts as $item)            
+          <a href="#" class="col-12 col-lg-4 mb-2 berita">
+            <div class="card features">
+              <img class="card-img-top" src="{{'/storage/images//'.$item->image}}" alt="Card image cap">
+              <div class="card-body">
+                <div class="media">
+                  <div class="media-body">
+                      <h4 class="card-title">{!! $item->name !!}</h4>
+                      <small class="text-right">{!! $item->updated_at !!}</small>
+                      <div>
+                        @foreach ($item->tags as $tag)
+                          <small class="badge badge-pill badge-secondary">{!! $tag->name !!}</small> 
+                        @endforeach
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        @endforeach
+      </div>
+      <nav aria-label="Page navigation example" style="padding-top: 20px;">
+          <ul class="pagination justify-content-end">
+              <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+              </li>
+          </ul>
+      </nav>
   </div>
 </div>
 @endsection
