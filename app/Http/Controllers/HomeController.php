@@ -36,6 +36,18 @@ class HomeController extends Controller
 
     public function  sejarah()
     {
-        return view('monografi.sejarah');
+        $row = Profile::find(1);
+        return view('monografi.sejarah',compact('row'));
+    }
+
+    public function  potensi()
+    {
+        $row = Profile::find(1);
+        return view('monografi.potensi',compact('row'));
+    }
+    public function  foto()
+    {
+        $row = Profile::find(1);
+        return view('berita.foto',compact('row'));
     }
 }
