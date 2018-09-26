@@ -63,19 +63,17 @@
             <div class="card m-2 rounded">
                 <div class="card-header">Visi Desa</div>
                 <div class="card-body">
-                    @foreach ($profiles as $row)
-                    <ul>
+                    
                     {!!$row['mission']!!}
-                    </ul>
-                    @endforeach
+                   
                 </div>
             </div>
             <div class="card m-2 rounded">
                 <div class="card-header">Misi Desa</div>
                 <div class="card-body">
-                    <ul>
+                   
                         {!!$row['vision']!!}
-                    </ul>
+                    
                 </div>
             </div>
             <div class="card m-2 rounded">

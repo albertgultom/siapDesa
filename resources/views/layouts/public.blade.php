@@ -54,12 +54,13 @@
   <header class="bg-gradient" id="home">
     <div class="container-fluid">
       <div class="row custom-header">
-        <div class="col-sm-8">
+        <div class="col-sm-8" >
             
+
             <h4>SITUS RESMI</h4>
-            <h1>{{$row['name']}}</h1>
-            <p>{{$row['district']}} - {{$row['subdistrict']}}</p>
-            <p>{{$row['province']}}</p>
+            <h1 class="text-uppercase">{{$row['name']}}</h1>
+            <p class="text-uppercase">{{$row['subdistrict']}} - {{$row['district']}}</p>
+            <p class="text-uppercase">{{$row['province']}}</p>
         </div>
         <div class="col-sm-4 mb-4">
           <img src="{{asset('storage\images\\'.$row['image_profile'])}}" alt="logo" class="img-fluid">
@@ -108,15 +109,15 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 text-center text-lg-left">
-          <p class="mb-2"> <span class="ti-location-pin mr-2"></span> 46324 Langensari, Kota Banjar, Jawa Barat</p>
+          <p class="mb-2"> <span class="ti-location-pin mr-2"></span> {{$row['zip_code']}} {{$row['subdistrict']}}, {{$row['district']}}, {{$row['province']}}</p>
           <div class=" d-block d-sm-inline-block">
             <p class="mb-2">
-              <span class="ti-email mr-2"></span> <a class="mr-4" href="mailto:support@telukbayur.id">support@desakujangsari.id</a>
+              <span class="ti-email mr-2"></span> <a class="mr-4" href="mailto:support@telukbayur.id">{{$row['email']}}</a>
             </p>
           </div>
           <div class="d-block d-sm-inline-block">
             <p class="mb-0">
-              <span class="ti-headphone-alt mr-2"></span> <a href="tel:51836362800">N/A</a>
+              <span class="ti-headphone-alt mr-2"></span> <a href="tel:51836362800">{{$row['phone']}}</a>
             </p>
           </div>
         </div>
