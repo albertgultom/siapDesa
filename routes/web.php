@@ -6,9 +6,7 @@ Route::get('/sejarah', 'HomeController@sejarah')->name('sejarah');
 
 Route::get('/potensi','HomeController@potensi'); 
 
-Route::get('/artikel', function () {
-    return view('berita.artikel');
-})->name('artikel');
+Route::get('/artikel', 'HomeController@artikel')->name('artikel');
 
 Route::get('/foto','HomeController@foto' )->name('foto');
 
