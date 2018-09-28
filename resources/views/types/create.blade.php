@@ -27,11 +27,11 @@
                     <br/>
                     <h3 align="left">Tambah Tipe</h3>
                     <br/>
-                <input type="text" name="name" class="form-control" placeholder="masukan kategori"/>    
+                <input type="text" name="name" class="form-control" placeholder="masukan tipe"/>    
             </div>
 
             <div class="form-group col-md-6">
-                    <input type="text"  name="level" class="form-control" placeholder="masukan level pada kategori"/>
+                    <input type="text"  name="level" class="form-control" placeholder="masukan level pada tipe"/>
                 </BR>
                     <input type="submit" class="btn btn-primary"/>
                 </div>

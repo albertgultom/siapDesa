@@ -77,9 +77,9 @@
                       <li>
                           <a href="/profil/vismis">Visi dan Misi</a>
                       </li>
-                      {{-- <li>
-                          <a href="index4.html">Struktur</a>
-                      </li> --}}
+                      <li>
+                          <a href="/profil/struktur">Struktur</a>
+                      </li>
                   </ul>
               </li>
               <li class="has-sub">

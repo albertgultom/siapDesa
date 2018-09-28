@@ -64,7 +64,7 @@
                 <div class="card-header">Visi Desa</div>
                 <div class="card-body">
                     
-                    {!!$row['mission']!!}
+                    {!!$row['vision']!!}
                    
                 </div>
             </div>
@@ -72,7 +72,7 @@
                 <div class="card-header">Misi Desa</div>
                 <div class="card-body">
                    
-                        {!!$row['vision']!!}
+                        {!!$row['mission']!!}
                     
                 </div>
             </div>

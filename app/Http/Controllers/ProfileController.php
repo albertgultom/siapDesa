@@ -47,7 +47,23 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-    
+        // dd($request);
+        $edit = Profile::find(1);
+        if($request->hasFile('image_structure')){
+            $extension = $request->image_structure->getMimeType();
+            if (! in_array($extension, $this->allowedImage)) {
+                return back()->withInput()->withErrors(array('image_structure' => 'Tipe file tidak di dukung.'));
+            }else{
+                $date = date('ymdhis_');
+                $file = $request->image_structure->getClientOriginalName();
+                $filename = $date . str_replace(' ', '_', strtolower($file));
+                $store = $request->image_structure->storeAs('public/images', $filename);
+                $edit['image_structure'] = $filename;
+            }
+        }
+        
+        $edit->update();
+        return redirect()->back()->with(["edit" => $edit] );
     }
 
     /**
@@ -109,7 +125,7 @@ class ProfileController extends Controller
             }
             if ($request -> has('image_profile')){
                 $edit -> image_profile = $request -> image_profile;
-
+            }
             if ($request -> has('headman')){
                 $edit -> headman = $request -> headman;
             }if ($request -> has('image_headman')){
@@ -127,23 +143,13 @@ class ProfileController extends Controller
                     $store = $request->image_profile->storeAs('public/images', $filename);
                     $edit['image_profile'] = $filename;
                 }
-            }}
-                //     if($request->file('image_profile') == "")
-                // {
-                //     $edit->image_profile = $edit->image_profile;
-                // } 
-                // else
-                // {
-                //     $file       = $request->file('image_profile');
-                //     $fileName   = $file->getClientOriginalName();
-                //     $request->file('image_profile')->move("image/", $fileName);
-                //     $edit->image_profile = $fileName;
-                // }
+            }
             
+               
             // dd($edit);
             $edit->update();
             return redirect()->back()->with(["edit" => $edit] );
-            }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -167,6 +173,8 @@ class ProfileController extends Controller
             return view ('profiles.sejarah', compact('edit'));
         }elseif ($profil === 'vismis'){
             return view ('profiles.vismis', compact('edit'));
+        }elseif ($profil === 'struktur'){
+            return view ('profiles.struktur', compact('edit'));
         }
     }
 

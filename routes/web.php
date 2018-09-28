@@ -34,4 +34,5 @@ Route::get('/types', 'TypeController@list')->name('types');
 
 Route::resource('/profile', 'ProfileController');
 Route::get('profil/{name}', 'ProfileController@profil');
+// Route::get('profil/{name}', 'ProfileController@struktur');
 
