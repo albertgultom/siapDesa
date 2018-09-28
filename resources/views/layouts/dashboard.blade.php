@@ -82,7 +82,7 @@
                       </li>
                   </ul>
               </li>
-              <li class="has-sub">
+              {{-- <li class="has-sub">
                   <a href="#">
                       <i class="fas fa-signal"></i>Potensi
                       <span class="bot-line"></span>
@@ -101,11 +101,18 @@
                           <a href="index4.html">Dashboard 4</a>
                       </li>
                   </ul>
-              </li>
-              {{-- <li>
-                  <a href="table.html">
-                      <i class="fas fa-users"></i>
-                      <span class="bot-line"></span>Pelayanan</a>
+              </li> --}}
+              <li class="has-sub">
+                <a href="#">
+                    <i class="fas fa-briefcase"></i>Administrasi
+                    <span class="bot-line"></span>
+                </a>
+                <ul class="header3-sub-list list-unstyled">
+                    <li><a href="#">Penduduk</a></li>
+                    <li><a href="#">Kartu Keluarga</a></li>
+                    <li><a href="#">Master Pekerjaan</a></li>
+                    <li><a href="#">Master Pendidikan</a></li>
+                </ul>
               </li>
               {{-- <li>
                   <a href="table.html">
