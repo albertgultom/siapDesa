@@ -11,9 +11,6 @@ Route::get('/foto','HomeController@foto' )->name('foto');
 //     return view('layanan');
 // })->name('layanan');
 
-// Route::get('/produk', function () {
-//     return view('produk');
-// })->name('produk');
 Route::get('/test/{id}', 'PostController@test');
 
 Route::resource('/post', 'PostController');
