@@ -57,6 +57,12 @@
                         <li>
                             <a href="/type">Tipe</a>
                         </li>
+                        <li>
+                            <a href="{{route('gallery.index', ['content' => 'photo'])}}">Galeri Photo</a>
+                        </li>
+                        <li>
+                            <a href="{{route('gallery.index', ['content' => 'video'])}}">Galeri Video</a>
+                        </li>
                     </ul>
                 </li>
               <li class="has-sub">
@@ -82,7 +88,7 @@
                       </li>
                   </ul>
               </li>
-              {{-- <li class="has-sub">
+              <li class="has-sub">
                   <a href="#">
                       <i class="fas fa-signal"></i>Potensi
                       <span class="bot-line"></span>
@@ -91,17 +97,8 @@
                       <li>
                           <a href="index.html">Dashboard 1</a>
                       </li>
-                      <li>
-                          <a href="index2.html">Dashboard 2</a>
-                      </li>
-                      <li>
-                          <a href="index3.html">Dashboard 3</a>
-                      </li>
-                      <li>
-                          <a href="index4.html">Dashboard 4</a>
-                      </li>
                   </ul>
-              </li> --}}
+              </li>
               <li class="has-sub">
                 <a href="#">
                     <i class="fas fa-briefcase"></i>Administrasi
