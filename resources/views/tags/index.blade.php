@@ -83,6 +83,7 @@
       console.log(err);
     });
   });
+  
   $("#formCat").submit(function(e){
     console.log('return ' + e)
   });

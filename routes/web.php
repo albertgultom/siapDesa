@@ -5,6 +5,7 @@ Route::get('/struktur-organisasi', 'HomeController@struktur')->name('struktur');
 Route::get('/sejarah', 'HomeController@sejarah')->name('sejarah');
 Route::get('/potensi','HomeController@potensi'); 
 Route::get('/artikel', 'HomeController@artikel')->name('artikel');
+Route::get('/artikel/{name}', 'HomeController@lihat_artikel')->name('artikel.lihat');
 Route::get('/foto','HomeController@foto' )->name('foto');
 
 // Route::get('/layanan', function () {

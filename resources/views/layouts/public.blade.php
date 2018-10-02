@@ -99,7 +99,7 @@
         </div> --}}
         <div class="col-lg-8 col-md-6">
           <span class="d-block p-2 text-warning border border-warning rounded">AREA LOKASI</span>
-          <img src="{!!asset('storage/images/peta.png')!!}" class="img-fluid d-block mx-auto mt-2" alt="">
+          <img src="{{asset('storage\images\\'.$row['map'])}}" class="img-fluid d-block mx-auto mt-2" alt="">
         </div>
       </div>
     </div>
