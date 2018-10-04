@@ -35,3 +35,8 @@ Route::get('profil/{name}', 'ProfileController@profil');
 
 Route::resource('/gallery', 'GalleryController');
 Route::get('/galleries/{content}', 'GalleryController@list')->name('galleries');
+
+// use Illuminate\Http\Request;
+// use Illuminate\Support\Collection;
+
+Route::get('/cek', 'CriteriaController@index');
