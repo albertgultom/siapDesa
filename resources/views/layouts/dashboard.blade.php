@@ -36,7 +36,7 @@
       <div class="section__content section__content--p35">
         <div class="header3-wrap">
           <div class="header__logo">
-              <a href="#">
+              <a href="/" target="_blank">
                   <img src="{{asset('storage/images/logo.png')}}" alt="CoolAdmin" />
               </a>
           </div>
@@ -56,6 +56,12 @@
                         </li>
                         <li>
                             <a href="/type">Tipe</a>
+                        </li>
+                        <li>
+                            <a href="{{route('gallery.index', ['content' => 'photo'])}}">Galeri Photo</a>
+                        </li>
+                        <li>
+                            <a href="{{route('gallery.index', ['content' => 'video'])}}">Galeri Video</a>
                         </li>
                     </ul>
                 </li>
@@ -78,11 +84,14 @@
                           <a href="/profil/vismis">Visi dan Misi</a>
                       </li>
                       <li>
-                          <a href="/profil/struktur">Struktur</a>
+                          <a href="/profil/struktur">Struktur Organisasi</a>
                       </li>
+                      <li>
+                        <a href="/profil/map">Map</a>
+                    </li>
                   </ul>
               </li>
-              {{-- <li class="has-sub">
+              <li class="has-sub">
                   <a href="#">
                       <i class="fas fa-signal"></i>Potensi
                       <span class="bot-line"></span>
@@ -91,27 +100,18 @@
                       <li>
                           <a href="index.html">Dashboard 1</a>
                       </li>
-                      <li>
-                          <a href="index2.html">Dashboard 2</a>
-                      </li>
-                      <li>
-                          <a href="index3.html">Dashboard 3</a>
-                      </li>
-                      <li>
-                          <a href="index4.html">Dashboard 4</a>
-                      </li>
                   </ul>
-              </li> --}}
+              </li>
               <li class="has-sub">
                 <a href="#">
                     <i class="fas fa-briefcase"></i>Administrasi
                     <span class="bot-line"></span>
                 </a>
                 <ul class="header3-sub-list list-unstyled">
-                    <li><a href="#">Penduduk</a></li>
+                    <li><a href="{{route('population.index')}}">Penduduk</a></li>
                     <li><a href="#">Kartu Keluarga</a></li>
-                    <li><a href="#">Master Pekerjaan</a></li>
-                    <li><a href="#">Master Pendidikan</a></li>
+                    <li><a href="{{route('occupation.index')}}">Master Pekerjaan</a></li>
+                    <li><a href="{{route('education.index')}}">Master Pendidikan</a></li>
                 </ul>
               </li>
               {{-- <li>

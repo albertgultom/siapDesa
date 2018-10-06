@@ -4,12 +4,14 @@
 @section('content')
 <section>
   <div class="d-flex flex-row flex-nowrap mb-3 client-logo">
+        @foreach ($data as $item)
+    
     <div class="p-3 text-center border border-warning shadow-lite">
-        <img src="{!!asset('storage\apparatus\siti-aisyah.jpg')!!}" class="client-img rounded-circle" alt="">
-        <div class="text-center" style="min-height: 50px;">SITI AISAH, S.IP</div>
-        <div class="text-center" style="border-top:1px solid;">Kepala Desa</div>
+        <img src="{{asset('storage\apparatus\\'.$item['image'])}}" class="client-img rounded-circle" alt="">
+        <div class="text-center" style="min-height: 50px;">{!!$item->name!!}</div>
+        <div class="text-center" style="border-top:1px solid;">{!!$item->position!!}</div>
     </div>
-    <div class="p-3 text-center border border-warning shadow-lite">
+    {{-- <div class="p-3 text-center border border-warning shadow-lite">
         <img src="{!!asset('storage\apparatus\albumtemp-36.jpg')!!}" class="client-img rounded-circle" alt="">
         <div class="text-center" style="min-height: 50px;">ARIS SOMANTRI, S.Pd.I</div>
         <div class="text-center" style="border-top:1px solid;">Sekretaris Desa</div>
@@ -53,8 +55,10 @@
         <img src="{!!asset('storage\apparatus\man-34.png')!!}" class="client-img rounded-circle" alt="">
         <div class="text-center" style="min-height: 50px;">AHMAD SAEPUDIN, A.Ma</div>
         <div class="text-center" style="border-top:1px solid;">KASI Pelayanan</div>
-    </div>
+    </div> --}}
+    @endforeach
   </div>
+     
 </section>
 
 <div class="container-fluid bg-gradient-ver">

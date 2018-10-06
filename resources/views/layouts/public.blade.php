@@ -25,7 +25,9 @@
       <div class="row">
         <div class="col-md-12">
           <nav class="navbar navbar-dark navbar-expand-lg">
-            <a class="navbar-brand" href="index.html"><img src="logo.png" class="img-fluid" alt="logo"></a>
+            <a class="navbar-brand" href="/">
+              <img src="{{asset('storage/images/logo.png')}}" class="img-fluid" alt="logo">
+            </a>
             <button 
               class="navbar-toggler" 
               type="button" 
@@ -99,7 +101,7 @@
         </div> --}}
         <div class="col-lg-8 col-md-6">
           <span class="d-block p-2 text-warning border border-warning rounded">AREA LOKASI</span>
-          <img src="{!!asset('storage/images/peta.png')!!}" class="img-fluid d-block mx-auto mt-2" alt="">
+          <img src="{{asset('storage\images\\'.$row['map'])}}" class="img-fluid d-block mx-auto mt-2" alt="">
         </div>
       </div>
     </div>

@@ -4,15 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Content extends Model
+class Tabulation extends Model
 {
-    protected $table = 'contents';
+    protected $table = 'testtabulasi';
     protected $guarded = [];
     protected $fillable = [];
     // protected $hidden = [];
-
-    public function gallery()
-    {
-        $this->belongsTo(Gallery::class);
-    }
 }

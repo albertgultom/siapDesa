@@ -21,31 +21,31 @@
     
     <div class="col-md-6">
         <div class="form-group">
-            <label class="form-control-label">Edit Desa</label>
+            <label class="form-control-label">Desa</label>
             <input type="text" name="name"  value="{{$edit->name}}"  class="form-control"/>
         </div>
         <div class="form-group" >
-            <label class="form-control-label">Edit Kecamatan </label>
+            <label class="form-control-label">Kecamatan </label>
             <input type="text" name="subdistrict"  value="{{$edit->subdistrict}}" class="form-control "/>
         </div>
         <div class="form-group" >
-            <label class="form-control-label">Edit Kabupaten </label>
+            <label class="form-control-label">Kota </label>
             <input type="text" name="district"  value="{{$edit->district}}" class="form-control "/>
         </div>
         <div class="form-group" >
-            <label class="form-control-label">Edit Kota </label>
+            <label class="form-control-label">Provinsi </label>
             <input type="text" name="province"  value="{{$edit->province}}" class="form-control "/>
         </div>
         <div class="form-group" >
-            <label class="form-control-label">Edit Kode Pos </label>
+            <label class="form-control-label">Kode Pos </label>
             <input type="text" name="zip_code"  value="{{$edit->zip_code}}" class="form-control"/>
         </div>
         <div class="form-group" >
-            <label class="form-control-label">Edit Nomor Telepon </label>
+            <label class="form-control-label">Nomor Telepon </label>
             <input type="text" name="phone"  value="{{$edit->phone}}" class="form-control "/>
         </div>
         <div class="form-group" >
-            <label class="form-control-label">Edit Email </label>
+            <label class="form-control-label">Email </label>
             <input type="text" name="email"  value="{{$edit->email}}" class="form-control "/>
         </div>
     </div>
@@ -53,7 +53,7 @@
     <div class="col-md-6">
       <div class="form-group{{ $errors->has('image_profile') ? ' has-danger' : '' }}">
         <label class="form-control-label">Foto Desa</label>
-        <img id="imageFile01" src="{{asset('storage\images\\'.$edit->image_profile)}}" class="img-fluid mx-auto d-block mb-3" alt="">
+        
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputFileAddon01">Upload</span>
@@ -73,6 +73,9 @@
               <small class="form-text text-danger">{{ $errors->first('image_profile') }}</small>
             @endif
           </div>
+      </div>
+      <div>
+        <img id="imageFile01" src="{{asset('storage\images\\'.$edit->image_profile)}}" class="img-fluid mx-auto d-block mb-3" alt="">
       </div>
     </div>
 

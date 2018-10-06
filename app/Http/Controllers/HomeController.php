@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Profile;
+use App\Post;
+use App\Apparatus;
 
 class HomeController extends Controller
 {
@@ -25,7 +27,8 @@ class HomeController extends Controller
     public function index()
     {
         $row = Profile::find(1);
-        return view('landing', compact('row'));
+        $data = Apparatus::orderBy('number', 'asc')->get();
+        return view('landing', compact('row','data'));
     }
 
     public function  struktur()
@@ -53,12 +56,20 @@ class HomeController extends Controller
 
     public function artikel()
     {
-        $row = \App\Profile::find(1);
+        $row = Profile::find(1);
         $tags = \App\Tag::all();
-        $posts = \App\Post::where('active', '=', 1)
-            ->orderBy('updated_at','desc')
-            ->paginate(6);
+        
+        $post = Post::find($id);
         // dd($posts);
         return view('berita.artikel', compact('row', 'tags', 'posts'));
     }
+
+    public function lihat_artikel($name)
+    {
+        $row = Profile::find(1);
+        $post = Post::findOrfail($name);
+        // dd($post);
+        return view('berita.lihat',compact('row'));
+    }
+    
 }

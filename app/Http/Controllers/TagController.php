@@ -28,6 +28,7 @@ class TagController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->tagid);
         if($request->tagid != null){
             $result = Tag::find($request->tagid)->update(['name' => $request->tagname]);
             // return response()->json($request, 200);

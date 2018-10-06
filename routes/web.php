@@ -5,6 +5,7 @@ Route::get('/struktur-organisasi', 'HomeController@struktur')->name('struktur');
 Route::get('/sejarah', 'HomeController@sejarah')->name('sejarah');
 Route::get('/potensi','HomeController@potensi'); 
 Route::get('/artikel', 'HomeController@artikel')->name('artikel');
+Route::get('/artikel/{name}', 'HomeController@lihat_artikel')->name('artikel.lihat');
 Route::get('/foto','HomeController@foto' )->name('foto');
 
 // Route::get('/layanan', function () {
@@ -30,3 +31,10 @@ Route::resource('/profile', 'ProfileController');
 Route::get('profil/{name}', 'ProfileController@profil');
 // Route::get('profil/{name}', 'ProfileController@struktur');
 
+Route::resource('/gallery', 'GalleryController');
+Route::get('/galleries/{content}', 'GalleryController@list')->name('galleries');
+
+Route::resource('/population', 'PopulationController');
+Route::resource('/education', 'EducationController');
+Route::resource('/occupation', 'OccupationController');
+// Route::get('/cek', 'CriteriaController@index');

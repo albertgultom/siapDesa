@@ -13,7 +13,7 @@
   <div class="col-lg-9">
       <div class="row">
         @foreach ($posts as $item)            
-          <a href="#" class="col-12 col-lg-4 mb-2 berita">
+      <a href="{{route('artikel.lihat',$item->id)}}" class="col-12 col-lg-4 mb-2 berita">
             <div class="card features">
               <img class="card-img-top" src="{{'/storage/images//'.$item->image}}" alt="Card image cap">
               <div class="card-body">

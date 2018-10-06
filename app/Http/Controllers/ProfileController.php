@@ -34,9 +34,12 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        
+        
+        // $edit->update();
+        // return redirect()->back()->with(["edit" => $edit] );
     }
 
     /**
@@ -59,6 +62,17 @@ class ProfileController extends Controller
                 $filename = $date . str_replace(' ', '_', strtolower($file));
                 $store = $request->image_structure->storeAs('public/images', $filename);
                 $edit['image_structure'] = $filename;
+            }
+        }if($request->hasFile('map')){
+            $extension = $request->map->getMimeType();
+            if (! in_array($extension, $this->allowedImage)) {
+                return back()->withInput()->withErrors(array('map' => 'Tipe file tidak di dukung.'));
+            }else{
+                $date = date('ymdhis_');
+                $file = $request->map->getClientOriginalName();
+                $filename = $date . str_replace(' ', '_', strtolower($file));
+                $store = $request->map->storeAs('public/images', $filename);
+                $edit['map'] = $filename;
             }
         }
         
@@ -175,6 +189,8 @@ class ProfileController extends Controller
             return view ('profiles.vismis', compact('edit'));
         }elseif ($profil === 'struktur'){
             return view ('profiles.struktur', compact('edit'));
+        }elseif ($profil === 'map'){
+            return view ('profiles.map', compact('edit'));
         }
     }
 
