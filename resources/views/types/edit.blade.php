@@ -22,7 +22,7 @@
             class="form-control col-md-6" value="{{$edit->level}}" placeholder="Enter name"
             />
             <br>
-            <input type="submit" class="btn btn-primary" value="save"/>
+            <button input type="submit" class="btn btn-outline-primary">Save</button>
         </form>
         </div>
     </div>

@@ -7,6 +7,7 @@ use Illuminate\Support\Collection;
 use App\Post;
 use App\Type;
 use App\Tag;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -68,9 +69,13 @@ class PostController extends Controller
             'name' => 'required|max:191',
             'image' => 'required',
             'body' => 'required',
+            
+            
         ]);
         // test user
         $data['user_id'] = '2';
+        $data['created_at'] = Carbon::now(); 
+        $data['updated_at'] = Carbon::now();       
 
         if($request->active == null){
             $data['active'] = '0';

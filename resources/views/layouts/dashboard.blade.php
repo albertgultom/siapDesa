@@ -86,6 +86,9 @@
                       <li>
                           <a href="/profil/struktur">Struktur Organisasi</a>
                       </li>
+                      <li>
+                        <a href="/profil/map">Map</a>
+                    </li>
                   </ul>
               </li>
               <li class="has-sub">

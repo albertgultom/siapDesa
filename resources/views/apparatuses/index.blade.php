@@ -19,7 +19,7 @@
       <div class="col-lg-8">
         <div class="d-flex flex-wrap mb-3">
           @foreach ($data as $item)
-          <div class="aparatur p-1">
+          <div class="aparatur p-1"  data-id="{!! $item->id !!}">
             <div class="media p-2 border rounded bg-white">
               <img src="{{asset('storage\apparatus\\'.$item->image)}}" class="img-apparatus rounded-circle" alt="">
               <div class="media-body pl-2">
@@ -49,17 +49,18 @@
             <small> form</small>
           </div>
           <div class="card-body card-block">
-            <form action="" class="row" enctype="multipart/form-data">
+            <form action="{{route('apparatus.store')}}" method="post" class="row" enctype="multipart/form-data">
+              {{csrf_field()}}
               <div class="form-group col-12">
                 <img 
-                  id="imageFile01" 
-                  src="{{asset('storage\apparatus\who.png')}}" 
+                  id="InputFile01" 
+                  src="{{asset('storage\apparatus\who.png' )}}" 
                   class="img-apparatus mx-auto d-block rounded-circle" 
                   alt="">
                 <div class="input-group mt-2">
                   <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                    <label class="custom-file-label text-truncate" for="inputGroupFile01">pilih photo...</label>
+                    <input type="file" class="custom-file-input" name="apImage" id="imageFile01" aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label text-truncate" id="ImageFile01" for="InputFile01" >Pilih foto...</label>
                   </div>
                 </div>
                 <small class="form-text text-success">ukuran file square / kotak</small>
@@ -88,14 +89,18 @@
               <div class="form-group col-6">
                 <div class="form-control-label">Status Aktif :</div>
                 <label class="switch switch-text switch-success mt-3">
-                  <input id="poststatus" type="checkbox" name="active" class="switch-input" checked>
+                  <input type="checkbox" name="active"  class="switch-input" {{ $item->active == 1 ? 'checked' : ''}}>
                   <span data-on="On" data-off="Off" class="switch-label"></span>
                   <span class="switch-handle"></span>
                 </label>
               </div>
               <div class="col-12 mt-4">
                 <button type="submit" class="btn btn-outline-primary">Simpan</button>
+                <button type="reset" class="btn btn-danger btn-sm">
+                    <i class="fa fa-ban"></i> Delete
+                </button>
               </div>
+              
             </form>
           </div>
         </div>
@@ -107,14 +112,42 @@
 
 @push('scripts')
 <script>
+  $('.aparatur').click(function(e){
+    e.preventDefault();
+    read = $(this).data('id');
+    
+    $.ajax({
+      method: "GET",
+      url: "/apparatus/"+read,
+      dataType: "json",
+      cache: false
+    }).done (function(res){
+      console.log(res.active); 
+      $("#apName").val(res.name);
+      $("#apPosition").val(res.position);
+      $("#apNumber").val(res.number);
+      $("#apImage").text(res.image);
+      // $("#apStatus").val(res.active);
+      if(res.active != 1){
+        $('#apStatus').removeAttr('checked');
+      }
+      $('#InputFile01').attr('src','storage/apparatus/'+res.image);
+      $('#tagid').val(res.id);
+    }).fail(function(err){
+      alert("Mohon maaf, terjadi kesalahan sistem.");
+      console.log(err);
+    });
+  });
   $(document).ready(function(){
     $('input[type="file"]').change(function(e) {
       var filename = e.target.files[0].name;
+      // console.log('#bla');
       $('.custom-file-label').text(filename);
 
       var reader = new FileReader();
       reader.onload = function (e) {
-        $('#imageFile01').attr('src', e.target.result);
+        $('#InputFile01').attr('src', e.target.result);
+        // console.log(e.target.result);
       }
       reader.readAsDataURL(this.files[0]);
     });
