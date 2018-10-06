@@ -9,7 +9,7 @@
         <div class="col-lg-9 mb-3">
           <!-- <div class="container"> -->
             <div class="d-block p-2 mb-3" style="border-bottom: darksalmon solid 1pt;">
-              <h6 class="text-info">Judul Isi Berita...</h6>
+              <h6 class="text-info">{{$post->name}}</h6>
             </div>
             <img src="images/berita/anambas_20161218_161541.jpg" class="img-fluid mx-auto d-block mb-3" alt="Responsive image">
             <div class="p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet tenetur sapiente impedit assumenda soluta vitae, numquam, suscipit eius nostrum ipsa magnam. Ex reprehenderit repellat delectus nisi? Saepe suscipit eaque assumenda.</div>

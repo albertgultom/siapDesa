@@ -58,9 +58,8 @@ class HomeController extends Controller
     {
         $row = Profile::find(1);
         $tags = \App\Tag::all();
-        $posts = Post::where('active', '=', 1)
-            ->orderBy('updated_at','desc')
-            ->paginate(6);
+        
+        $post = Post::find($id);
         // dd($posts);
         return view('berita.artikel', compact('row', 'tags', 'posts'));
     }

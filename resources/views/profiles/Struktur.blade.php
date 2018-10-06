@@ -17,7 +17,7 @@
 <div class="container">
   <form action="{{route('profile.store')}}" class="row" method="post" enctype="multipart/form-data">
   {{csrf_field()}}
-  {{-- <input type="hidden" name="_method" value="PATCH"/> --}}
+  <input type="hidden" name="_method" value="PATCH"/>
   <div class="col-md-12">
     <div class="form-group{{ $errors->has('image_structure') ? ' has-danger' : '' }}">
       <label class="form-control-label">Foto Desa</label>

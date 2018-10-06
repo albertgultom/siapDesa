@@ -26,9 +26,9 @@ class ApparatusController extends Controller
     public function store(request $request)
     {
         if($request->active == null){
-            $data['active'] = '0';
+            $active = '0';
         }else{
-            $data['active'] = '1';
+            $active = '1';
         }
         if($request->hasFile('apImage')){
             $extension = $request->apImage->getMimeType();
@@ -42,9 +42,16 @@ class ApparatusController extends Controller
                
             }
         }
-        // dd($request);
-        if($request->apparatusesid != null){
-            $result = Apparatus::find($request->apparatusid)->update(['name' => $request->apName],['position' => $request->apPosition]);
+        // dd($request->apparatusId);
+        if($request->apparatusId != null){
+            $result = Apparatus::find($request->apparatusId)->update([
+                'name' => $request->name,
+                'position' => $request->position,
+                'number' => $request->number,
+                'image' => $filename,
+                'active' => $active
+                ]);
+           
             // return response()->json($request, 200);
         
         }else{
@@ -53,12 +60,18 @@ class ApparatusController extends Controller
                 'position' => $request->position,
                 'number' => $request->number,
                 'image' => $filename,
-                'active' => $request->active
+                'active' => $active
                 ]);
             
         }
         // $data = Apparatus::orderBy('number', 'asc')->get();
         return redirect('apparatus');
     }
-    
+    public function delete($id)
+    {
+        $delete = Apparatus::find($id);
+        $delete->delete();
+        return redirect('apparatus');
+
+    }
 }

@@ -51,13 +51,14 @@
           <div class="card-body card-block">
             <form action="{{route('apparatus.store')}}" method="post" class="row" enctype="multipart/form-data">
               {{csrf_field()}}
+              <input type="hidden" name="apparatusId" id="apparatusId">
               <div class="form-group col-12">
                 <img 
                   id="InputFile01" 
                   src="{{asset('storage\apparatus\who.png' )}}" 
                   class="img-apparatus mx-auto d-block rounded-circle" 
                   alt="">
-                <div class="input-group mt-2">
+                <div class="">
                   <div class="custom-file">
                     <input type="file" class="custom-file-input" name="apImage" id="imageFile01" aria-describedby="inputGroupFileAddon01">
                     <label class="custom-file-label text-truncate" id="ImageFile01" for="InputFile01" >Pilih foto...</label>
@@ -89,18 +90,17 @@
               <div class="form-group col-6">
                 <div class="form-control-label">Status Aktif :</div>
                 <label class="switch switch-text switch-success mt-3">
-                  <input type="checkbox" name="active"  class="switch-input" {{ $item->active == 1 ? 'checked' : ''}}>
+                  <input type="checkbox" name="active" id="apStatus" class="switch-input" checked>
                   <span data-on="On" data-off="Off" class="switch-label"></span>
                   <span class="switch-handle"></span>
                 </label>
               </div>
-              <div class="col-12 mt-4">
-                <button type="submit" class="btn btn-outline-primary">Simpan</button>
+              {{-- <div class="col-12 mt-4">
+                <button  action="{{route('apparatus.delete')}}" type="submit" class="btn btn-outline-primary">Simpan</button>
                 <button type="reset" class="btn btn-danger btn-sm">
                     <i class="fa fa-ban"></i> Delete
                 </button>
-              </div>
-              
+              </div> --}}
             </form>
           </div>
         </div>
@@ -112,6 +112,11 @@
 
 @push('scripts')
 <script>
+  $(document).ready(function(e){
+    var toggle= '{{$item->active}}';
+    // console.log(toggle);
+  });
+  
   $('.aparatur').click(function(e){
     e.preventDefault();
     read = $(this).data('id');
@@ -122,7 +127,8 @@
       dataType: "json",
       cache: false
     }).done (function(res){
-      console.log(res.active); 
+      // console.log(res.active); 
+      
       $("#apName").val(res.name);
       $("#apPosition").val(res.position);
       $("#apNumber").val(res.number);
@@ -130,9 +136,11 @@
       // $("#apStatus").val(res.active);
       if(res.active != 1){
         $('#apStatus').removeAttr('checked');
+      }else{
+        $('#apStatus').attr('checked','checked');
       }
       $('#InputFile01').attr('src','storage/apparatus/'+res.image);
-      $('#tagid').val(res.id);
+      $('#apparatusId').val(res.id);
     }).fail(function(err){
       alert("Mohon maaf, terjadi kesalahan sistem.");
       console.log(err);
