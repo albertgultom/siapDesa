@@ -84,7 +84,7 @@
                           <a href="/profil/vismis">Visi dan Misi</a>
                       </li>
                       <li>
-                          <a href="/profil/struktur">Struktur</a>
+                          <a href="/profil/struktur">Struktur Organisasi</a>
                       </li>
                   </ul>
               </li>
@@ -105,10 +105,10 @@
                     <span class="bot-line"></span>
                 </a>
                 <ul class="header3-sub-list list-unstyled">
-                    <li><a href="#">Penduduk</a></li>
+                    <li><a href="{{route('population.index')}}">Penduduk</a></li>
                     <li><a href="#">Kartu Keluarga</a></li>
-                    <li><a href="#">Master Pekerjaan</a></li>
-                    <li><a href="#">Master Pendidikan</a></li>
+                    <li><a href="{{route('occupation.index')}}">Master Pekerjaan</a></li>
+                    <li><a href="{{route('education.index')}}">Master Pendidikan</a></li>
                 </ul>
               </li>
               {{-- <li>
