@@ -118,7 +118,7 @@
 
   var quill = new Quill('#body',{
     modules: {
-      toolbar: QuilljsToolbarOptions
+      toolbar: QuilljsToolbarOptions,
     },
     theme: 'snow',
     placeholder: '...'

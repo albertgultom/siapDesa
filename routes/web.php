@@ -36,3 +36,8 @@ Route::get('profil/{name}', 'ProfileController@profil');
 
 Route::resource('/gallery', 'GalleryController');
 Route::get('/galleries/{content}', 'GalleryController@list')->name('galleries');
+
+Route::resource('/population', 'PopulationController');
+Route::resource('/education', 'EducationController');
+Route::resource('/occupation', 'OccupationController');
+// Route::get('/cek', 'CriteriaController@index');
