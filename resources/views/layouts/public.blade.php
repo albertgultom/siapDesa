@@ -25,7 +25,9 @@
       <div class="row">
         <div class="col-md-12">
           <nav class="navbar navbar-dark navbar-expand-lg">
-            <a class="navbar-brand" href="index.html"><img src="logo.png" class="img-fluid" alt="logo"></a>
+            <a class="navbar-brand" href="/">
+              <img src="{{asset('storage/images/logo.png')}}" class="img-fluid" alt="logo">
+            </a>
             <button 
               class="navbar-toggler" 
               type="button" 
