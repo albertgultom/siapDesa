@@ -42,7 +42,7 @@
           </div>
           <div class="header__navbar">
             <ul class="list-unstyled">
-              <li class="has-sub">
+                <li class="has-sub"> <!-- ARTIKEL -->
                     <a href="#">
                         <i class="fas fa-list-alt"></i>Artikel
                         <span class="bot-line"></span>
@@ -65,60 +65,84 @@
                         </li>
                     </ul>
                 </li>
-              <li class="has-sub">
-                  <a href="#">
-                      <i class="fas fa-map-marker"></i>Profil
-                      <span class="bot-line"></span>
-                  </a>
-                  <ul class="header3-sub-list list-unstyled">
+                <li class="has-sub"> <!-- PROFIL -->
+                    <a href="#">
+                        <i class="fas fa-map-marker"></i>Profil
+                        <span class="bot-line"></span>
+                    </a>
+                    <ul class="header3-sub-list list-unstyled">
                         <li>
                             <a href="/apparatus">Perangkat Desa</a>
                         </li>
-                      <li>
-                          <a href="/profil/desa">Desa</a>
-                      </li>
-                      <li>
-                          <a href="/profil/sejarah">Sejarah</a>
-                      </li>
-                      <li>
-                          <a href="/profil/vismis">Visi dan Misi</a>
-                      </li>
-                      <li>
-                          <a href="/profil/struktur">Struktur Organisasi</a>
-                      </li>
-                      <li>
+                        <li>
+                            <a href="/profil/desa">Desa</a>
+                        </li>
+                        <li>
+                            <a href="/profil/sejarah">Sejarah</a>
+                        </li>
+                        <li>
+                            <a href="/profil/vismis">Visi dan Misi</a>
+                        </li>
+                        <li>
+                            <a href="/profil/struktur">Struktur Organisasi</a>
+                        </li>
+                        <li>
                         <a href="/profil/map">Map</a>
                     </li>
-                  </ul>
-              </li>
-              <li class="has-sub">
-                  <a href="#">
-                      <i class="fas fa-signal"></i>Potensi
-                      <span class="bot-line"></span>
-                  </a>
-                  <ul class="header3-sub-list list-unstyled">
-                      <li>
-                          <a href="index.html">Dashboard 1</a>
-                      </li>
-                  </ul>
-              </li>
-              <li class="has-sub">
-                <a href="#">
-                    <i class="fas fa-briefcase"></i>Administrasi
-                    <span class="bot-line"></span>
-                </a>
-                <ul class="header3-sub-list list-unstyled">
-                    <li><a href="{{route('population.index')}}">Penduduk</a></li>
-                    <li><a href="#">Kartu Keluarga</a></li>
-                    <li><a href="{{route('occupation.index')}}">Master Pekerjaan</a></li>
-                    <li><a href="{{route('education.index')}}">Master Pendidikan</a></li>
-                </ul>
-              </li>
-              {{-- <li>
-                  <a href="table.html">
-                      <i class="fas fa-university"></i>
-                      <span class="bot-line"></span>Produk Hukum</a>
-              </li> --}}
+                    </ul>
+                </li>
+                <li class="has-sub"> <!-- POTENSI -->
+                    <a href="#">
+                        <i class="fas fa-signal"></i>Potensi
+                        <span class="bot-line"></span>
+                    </a>
+                    <ul class="header3-sub-list list-unstyled">
+                        <li>
+                            <a href="#">Dashboard 1</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-sub"> <!-- PELAYANAN -->
+                    <a href="#">
+                        <i class="fab fa-pinterest-p"></i>
+                        Pelayanan 
+                        <span class="badge badge-warning ml-1">4</span>
+                        <span class="bot-line"></span>
+                    </a>
+                    <ul class="header3-sub-list list-unstyled">
+                        <li>
+                            <a href="#">
+                                Pendaftaran Baru 
+                                <span class="badge badge-warning p-2">4</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Sedang Diproses
+                                <span class="badge badge-info p-2">12</span>
+                            </a>
+                        </li>
+                        <li><a href="#">Selesai Diproses</a></li>
+                        <li><a href="#">Master Pelayanan</a></li>
+                    </ul>
+                </li>
+                <li class="has-sub"> <!-- ADMINISTRASI -->
+                    <a href="#">
+                        <i class="fas fa-briefcase"></i>Administrasi
+                        <span class="bot-line"></span>
+                    </a>
+                    <ul class="header3-sub-list list-unstyled">
+                        <li><a href="{{route('population.index')}}">Penduduk</a></li>
+                        <li><a href="#">Kartu Keluarga</a></li>
+                        <li><a href="{{route('occupation.index')}}">Master Pekerjaan</a></li>
+                        <li><a href="{{route('education.index')}}">Master Pendidikan</a></li>
+                    </ul>
+                </li>
+                {{-- <li>
+                    <a href="table.html">
+                        <i class="fas fa-university"></i>
+                        <span class="bot-line"></span>Produk Hukum</a>
+                </li> --}}
             </ul>
           </div>
           <div class="header__tool">

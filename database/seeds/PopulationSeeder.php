@@ -12,8 +12,8 @@ class PopulationSeeder extends Seeder
      */
     public function run()
     {
-        $edu = App\Education::count();
-        $ocu = App\Occupation::count();
+        // $edu = App\Education::count();
+        // $ocu = App\Occupation::count();
         DB::table('populations')->truncate();
 
         $data = [
