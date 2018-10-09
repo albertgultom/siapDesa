@@ -11,10 +11,20 @@ class ApparatusController extends Controller
         'image/jpeg',
         'image/png',
     ];
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $data = Apparatus::orderBy('number', 'asc')->get();
+        // $data = Apparatus::where('active', '=', 1)
+        // ->orderBy('updated_at','desc');
         // dd($data);
+        
+        
+
         return view('apparatuses.index', compact('data'));
     }
     public function show($id)
@@ -25,6 +35,8 @@ class ApparatusController extends Controller
     }
     public function store(request $request)
     {
+        
+
         if($request->active == null){
             $active = '0';
         }else{
@@ -62,6 +74,12 @@ class ApparatusController extends Controller
                 'image' => $filename,
                 'active' => $active
                 ]);
+
+        if($request->active == null){
+            $data['active'] = '0';
+        }else{
+            $data['active'] = '1';
+        }
             
         }
         // $data = Apparatus::orderBy('number', 'asc')->get();
