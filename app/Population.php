@@ -20,4 +20,9 @@ class Population extends Model
     {
         return $this->belongsTo('App\Occupation');
     }
+
+    public function servicings()
+    {
+        return $this->belongsToMany('App\Servicing');
+    }
 }
