@@ -126,7 +126,7 @@
                             </a>
                         </li>
                         <li><a href="#">Selesai Diproses</a></li>
-                        <li><a href="#">Master Pelayanan</a></li>
+                        <li><a href="/facility">Master Pelayanan</a></li>
                     </ul>
                 </li>
                 <li class="has-sub"> <!-- ADMINISTRASI -->
