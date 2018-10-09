@@ -39,6 +39,8 @@ Route::get('/galleries/{content}', 'GalleryController@list')->name('galleries');
 
 Route::resource('/population', 'PopulationController');
 Route::resource('/education', 'EducationController');
+Route::get('/educations', 'EducationController@list')->name('educations');
+
 Route::resource('/occupation', 'OccupationController');
 Route::resource('/facility', 'FacilityController');
 Route::resource('/servicing', 'ServicingController');
