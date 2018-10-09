@@ -42,5 +42,7 @@ Route::resource('/education', 'EducationController');
 Route::get('/educations', 'EducationController@list')->name('educations');
 
 Route::resource('/occupation', 'OccupationController');
+Route::get('/occupations', 'OccupationController@list')->name('occupations');
+
 Route::resource('/facility', 'FacilityController');
 Route::resource('/servicing', 'ServicingController');
