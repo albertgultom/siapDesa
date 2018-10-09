@@ -12,7 +12,7 @@
         </div>
     </div>
 </section>
-<!-- SECTION BODY -->
+<!-- SECTION body -->
 <section class="statistic-chart">
     <div class="container">
         <form action="{{route('facility.update', $data->id)}}" method="post" class="row" enctype="multipart/form-data">
@@ -28,14 +28,14 @@
                     @endif
                 </div>
 
-                <div class="form-group{{ $errors->has('detail') ? ' has-danger' : '' }}">
+                {{-- detail --}}
+                <div class="form-group">
                     <label class="form-control-label">Detail</label>
-                    <br>
-                    <textarea name="detail" class="form-control">{{ old('name', $data->detail) }}</textarea>
-                    @if ($errors->has('detail'))
-                        <small class="form-text text-danger">{{ $errors->first('detail') }}</small>
-                    @endif
-                </div>                
+                    <div id="detail" style="background-color: #fff; height: 400px;">
+                        {!! old('detail',$data->detail) !!}
+                    </div>
+                    <input type="hidden" name="detail">
+                </div>
                 <button type="submit" class="btn btn-outline-primary">Simpan</button>
             </div>
         </form>
@@ -57,12 +57,8 @@
             reader.readAsDataURL(this.files[0]);
         });
     });
-
-    var multi = new SlimSelect({
-        select: '#multiple-select'
-    })
     
-    var quill = new Quill('#body',{
+    var quill = new Quill('#detail',{
         modules: {
         toolbar: QuilljsToolbarOptions
         },
@@ -70,7 +66,7 @@
         placeholder: '...'
     });
 
-    content = $("#body").find(".ql-editor p").html();
+    content = $("#detail").find(".ql-editor p").html();
     if(isJson(content) == true){
         quill.setContents(JSON.parse(quill.getContents().ops[0].insert))
     }
@@ -79,7 +75,7 @@
         cfg = {};
         cek = quill.getContents().ops;
         convert = new QuillDeltaToHtmlConverter(cek, cfg).convert();
-        $('input[name="body"]').val(convert);
+        $('input[name="detail"]').val(convert);
     });
 </script>
 @endpush

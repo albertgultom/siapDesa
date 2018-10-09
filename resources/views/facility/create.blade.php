@@ -23,16 +23,20 @@
         <div class="container">
         <form method="post" action="{{url('facility')}}" >
             {{csrf_field()}}    
-            <div class="form-group col-md-6" >
+            <div class="form-group col-md-12" >
                 <br/>
                 <h3 align="left">Tambah Pelayanan</h3>
                 <br/>
                 <label>Nama Pelayanan</label>                
                 <input type="text" name="name" class="form-control" placeholder="Pelayanan"/>    
+            </div>
 
-                <br/>
-                <label>Detail</label>
-                <textarea name="detail" class="form-control"></textarea>
+            <div class="col-md-12">
+                <div class="form-group">
+                <label class="form-control-label">Detail</label>
+                <div id="detail" style="background-color: #fff; height: 400px;"></div>
+                <input type="hidden" name="detail">
+                </div>
             </div>
 
             <div class="form-group col-md-6">
@@ -45,3 +49,22 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    var quill = new Quill('#detail',{
+        modules: {
+        toolbar: QuilljsToolbarOptions,
+        },
+        theme: 'snow',
+        placeholder: '...'
+    });
+
+    $('form').submit(function(e){
+        cfg = {};
+        cek = quill.getContents().ops;
+        convert = new QuillDeltaToHtmlConverter(cek, cfg).convert();
+        $('input[name="detail"]').val(convert);
+    });
+</script>
+@endpush
