@@ -74,13 +74,6 @@ class ApparatusController extends Controller
                 'image' => $filename,
                 'active' => $active
                 ]);
-
-        if($request->active == null){
-            $data['active'] = '0';
-        }else{
-            $data['active'] = '1';
-        }
-            
         }
         // $data = Apparatus::orderBy('number', 'asc')->get();
         return redirect('apparatus');
