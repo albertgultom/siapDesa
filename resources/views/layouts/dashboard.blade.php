@@ -98,7 +98,10 @@
                     </a>
                     <ul class="header3-sub-list list-unstyled">
                         <li>
-                            <a href="#">Dashboard 1</a>
+                            <a href="{{route('criteria.index')}}">Daftar Potensi</a>
+                        </li>
+                        <li>
+                            <a href="#">Tambah Potensi</a>
                         </li>
                     </ul>
                 </li>

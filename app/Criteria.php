@@ -17,7 +17,7 @@ class Criteria extends Model
 
     public function tabulations()
     {
-        return $this->hasMany('App\Tabulation', 'group_id', 'id');
+        return $this->hasMany('App\Tabulation');
     }
 
     public function criteriaable()

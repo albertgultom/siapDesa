@@ -42,3 +42,4 @@ Route::resource('/education', 'EducationController');
 Route::resource('/occupation', 'OccupationController');
 Route::resource('/facility', 'FacilityController');
 Route::resource('/servicing', 'ServicingController');
+Route::resource('/criteria', 'CriteriaController');
