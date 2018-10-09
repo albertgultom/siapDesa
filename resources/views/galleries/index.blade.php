@@ -86,7 +86,7 @@
     scrollCollapse: true,
     paging: false,
     ajax: {
-      url: "{{ route('galleries', $content) }}",
+      url: '{{ route('galleries', $content) }}',
       dataSrc: '',
     },
     order: [[ 1, "desc" ]],

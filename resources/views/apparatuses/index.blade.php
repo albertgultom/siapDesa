@@ -95,12 +95,10 @@
                   <span class="switch-handle"></span>
                 </label>
               </div>
-              {{-- <div class="col-12 mt-4">
-                <button  action="{{route('apparatus.delete')}}" type="submit" class="btn btn-outline-primary">Simpan</button>
-                <button type="reset" class="btn btn-danger btn-sm">
-                    <i class="fa fa-ban"></i> Delete
-                </button>
-              </div> --}}
+              <div class="col-12 mt-4">
+                <button   type="submit" class="btn btn-outline-primary">Simpan</button>
+                
+              </div>
             </form>
           </div>
         </div>
