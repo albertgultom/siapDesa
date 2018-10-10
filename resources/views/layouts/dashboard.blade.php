@@ -100,9 +100,9 @@
                         <li>
                             <a href="{{route('criteria.index')}}">Daftar Potensi</a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="#">Tambah Potensi</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
                 <li class="has-sub"> <!-- PELAYANAN -->

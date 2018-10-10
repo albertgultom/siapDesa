@@ -16,13 +16,11 @@ class CriteriaController extends Controller
     public function index()
     {
         $data = Criteria::where('criteriaable_id', null)
-        // ->with('crits')
-        // ->lists('criteriaable_id')
         ->get();
         
-        dd($data);
-        return response()->json($data);
-        // return view('criterias.index', compact('data'));
+        // dd($data);
+        // return response()->json($data);
+        return view('criterias.index', compact('data'));
     }
     
     public function show($id)

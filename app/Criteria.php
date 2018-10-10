@@ -29,4 +29,9 @@ class Criteria extends Model
     {
         return $this->morphMany(Criteria::class, 'criteriaable');
     }
+
+    // public function childerns()
+    // {
+    //     return $this->hasMany(Criteria::class, 'criteriaable_id');
+    // }
 }

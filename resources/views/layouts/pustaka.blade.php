@@ -2,12 +2,20 @@
 @extends('layouts.public')
 
 @section('content')
-<div class="nav-middle d-flex flex-nowrap text-nowrap bg-light">
-  <a class="p-3" href="/artikel">Daftar Artikel</a>
-  {{-- <a class="p-3" href="#">Daftar Agenda</a> --}}
-  <a class="p-3" href="/foto">Galeri Foto</a>
-  {{-- <a class="p-3" href="#">Galeri Video</a> --}}
-</div>
+<ul class="nav nav-middle d-flex flex-nowrap text-nowrap bg-light">
+  <li class="nav-item">
+    <a class="nav-link p-3" href="/artikel">Daftar Artikel</a>
+  </li>
+  {{-- <li class="nav-item">
+    <a class="nav-link p-3" href="#">Daftar Agenda</a>
+  </li> --}}
+  <li class="nav-item">
+    <a class="nav-link p-3" href="/foto">Galeri Foto</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link p-3 disabled" href="#">Galeri Video</a>
+  </li>
+</ul>
 
 <section class="container-fluid nav-section pt-3">
   @yield('pustaka')
