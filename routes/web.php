@@ -45,5 +45,7 @@ Route::resource('/occupation', 'OccupationController');
 Route::get('/occupations', 'OccupationController@list')->name('occupations');
 
 Route::resource('/facility', 'FacilityController');
+Route::get('/facilitys', 'FacilityController@list')->name('facilitys');
+
 Route::resource('/servicing', 'ServicingController');
 Route::resource('/criteria', 'CriteriaController');
