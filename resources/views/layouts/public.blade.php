@@ -137,8 +137,12 @@
   </div>
   <!-- FOOTER -->
   <footer class="my-5 text-center">
+      @php 
+        $fr = File::get('releases.txt');
+        $ex = explode("\n", $fr);
+      @endphp
     <p class="mb-2">
-      <small>{{ config('app.name') }} - 2018 © Copyright siapDesa v1.0.0</small>
+      <small>{{ config('app.name') }} - 2018 © Copyright siapDesa {{$ex[0]}}</small>
     </p>
     {{-- <small>
       <a href="#" class="m-2">TERMS</a>
