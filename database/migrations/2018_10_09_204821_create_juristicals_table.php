@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOccupationsTable extends Migration
+class CreateJuristicalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateOccupationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('occupations', function (Blueprint $table) {
+        Schema::create('juristicals', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
+            $table->text('detail')->nullable();
+            $table->string('file')->nullable();
+            $table->boolean('active');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateOccupationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('occupations');
+        Schema::dropIfExists('juristicals');
     }
 }

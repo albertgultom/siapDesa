@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOccupationsTable extends Migration
+class AddActivePopulations extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateOccupationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('occupations', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->unique();
-            $table->timestamps();
+        Schema::table('populations', function (Blueprint $table) {
+            $table->boolean('active')->after('status')->default(0);
         });
     }
 
@@ -27,6 +25,8 @@ class CreateOccupationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('occupations');
+        Schema::table('populations', function (Blueprint $table) {
+            $table->dropColumn('active');
+        });
     }
 }

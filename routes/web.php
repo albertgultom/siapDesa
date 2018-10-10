@@ -36,5 +36,13 @@ Route::get('/galleries/{content}', 'GalleryController@list')->name('galleries');
 
 Route::resource('/population', 'PopulationController');
 Route::resource('/education', 'EducationController');
+Route::get('/educations', 'EducationController@list')->name('educations');
+
 Route::resource('/occupation', 'OccupationController');
-// Route::get('/cek', 'CriteriaController@index');
+Route::get('/occupations', 'OccupationController@list')->name('occupations');
+
+Route::resource('/facility', 'FacilityController');
+Route::get('/facilitys', 'FacilityController@list')->name('facilitys');
+
+Route::resource('/servicing', 'ServicingController');
+Route::resource('/criteria', 'CriteriaController');

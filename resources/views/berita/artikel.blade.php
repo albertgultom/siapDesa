@@ -6,7 +6,7 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item list-group-item-primary">WARTA BERITA</li>
       @foreach ($tags as $item)
-        <li class="list-group-item">{!!$item->name!!}</li>
+        <li class="list-group-item" href="">{!!$item->name!!}</li>
       @endforeach
     </ul>
   </div>

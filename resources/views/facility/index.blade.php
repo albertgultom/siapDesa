@@ -6,7 +6,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h3 class="title-5">Master Pendidikan</h3>
+        <h3 class="title-5">Master Pelayanan</h3>
         <hr class="line-seprate">
       </div>
     </div>
@@ -21,15 +21,16 @@
         <div class="table-responsive m-b-40">
           <div class="table-data__tool">
             <div class="table-data__tool-left">
-            <a href="{{route('education.create')}}" class="btn btn-info mt-2 ml-5">Tambah Pendidikan</a>
+            <a href="{{route('facility.create')}}" class="btn btn-info mt-2 ml-5">Tambah Pelayanan</a>
             </div>
           </div>
-          {{-- <table id="educationtable"> --}}
-          <table id="educationtable" class="table table-borderless table-data3">
+          {{-- <table id="facilitytable"> --}}
+          <table id="facilitytable" class="table table-borderless table-data3">
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Nama</th>
+                <th>Detail</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -72,18 +73,19 @@
 
 @push('scripts')
 <script>
-  $("#educationtable").DataTable({
+  $("#facilitytable").DataTable({
     scrollY: "320px",
     scrollCollapse: true,
     paging: false,
     ajax: {
-      url: '{{ route('educations') }}',
+      url: '{{ route('facilitys') }}',
       dataSrc: '',
     },
     order: [[ 0, "asc" ]],
     columns: [
       {data: 'id'},
       {data: 'name'},
+      {data: 'detail'},
     ],
     columnDefs: [
       {
@@ -92,10 +94,10 @@
         searchable: false
       },
       {
-        targets: [2],
+        targets: [3],
         data: 'id',
         render: function ( data, type, row, meta ) {
-          return '<a href="education/'+data+'/edit" class="btn">edit</a>';
+          return '<a href="facility/'+data+'/edit" class="btn">edit</a>';
         }
       }
     ]

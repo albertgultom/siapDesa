@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $row = Profile::find(1);
-        $data = Apparatus::orderBy('number', 'asc')->get();
+        $data = Apparatus::orderBy('number', 'asc')->where('active', '=', 1)->get();
         return view('landing', compact('row','data'));
     }
 
@@ -58,18 +58,21 @@ class HomeController extends Controller
     {
         $row = Profile::find(1);
         $tags = \App\Tag::all();
-        
-        $post = Post::find($id);
+        $posts = Post::where('active', '=', 1)
+            ->orderBy('updated_at','desc')
+            ->paginate(6);
+       
         // dd($posts);
         return view('berita.artikel', compact('row', 'tags', 'posts'));
     }
 
-    public function lihat_artikel($name)
+    public function lihat_artikel($id)
     {
         $row = Profile::find(1);
-        $post = Post::findOrfail($name);
+        $post = Post::findOrFail($id);
+        // $posts = Post::find($id);
         // dd($post);
-        return view('berita.lihat',compact('row'));
+        return view('berita.lihat',compact('row','post'));
     }
     
 }

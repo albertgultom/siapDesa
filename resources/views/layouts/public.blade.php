@@ -42,9 +42,9 @@
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item"> <a class="nav-link" href="/">BERANDA</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/struktur-organisasi">MONOGRAFI</a></li>
-                {{-- <li class="nav-item"> <a class="nav-link" href="/layanan">PELAYANAN</a></li> --}}
                 <li class="nav-item"> <a class="nav-link" href="/artikel">BERITA</a></li>
-                {{-- <li class="nav-item"> <a class="nav-link" href="/produk">PRODUK</a> </li> --}}
+                <li class="nav-item"> <a class="nav-link disabled" href="/layanan">PELAYANAN</a></li>
+                {{-- <li class="nav-item"> <a class="nav-link disabled" href="/produk">PRODUK</a> </li> --}}
               </ul>
             </div>
           </nav>

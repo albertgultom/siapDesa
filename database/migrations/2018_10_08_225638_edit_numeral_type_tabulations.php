@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOccupationsTable extends Migration
+class EditNumeralTypeTabulations extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateOccupationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('occupations', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->unique();
-            $table->timestamps();
+        Schema::table('tabulations', function (Blueprint $table) {
+            $table->decimal('numeral', 10, 2)->nullable()->change();
         });
     }
 
@@ -27,6 +25,8 @@ class CreateOccupationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('occupations');
+        Schema::table('tabulations', function (Blueprint $table) {
+            $table->unsignedInteger('numeral')->change();
+        });
     }
 }

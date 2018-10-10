@@ -115,6 +115,7 @@ class PostController extends Controller
         $data = Post::findOrFail($id);
         $types = Type::all();
         $tags = Tag::select('id', 'name')->get();
+        
         // dd($data->tags);
         return view('posts.edit', compact('data', 'types', 'tags'));
     }

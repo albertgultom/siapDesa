@@ -10,4 +10,5 @@ class Occupation extends Model
     protected $guarded = [];
     protected $fillable = [];
     // protected $hidden = [];
+    public $timestamps = false;
 }

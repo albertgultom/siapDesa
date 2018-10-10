@@ -37,9 +37,9 @@ class TypeController extends Controller
         $types = Type::all();
         $data = $types->map(function($item){
             return [
-                'id' => $item->id,
-                'name' => $item->name,
-                'level' => $item->level,
+                'id'      => $item->id,
+                'name'    => $item->name,
+                'level'   => $item->level,
                 'created' => $item->updated_at->format('d-m-Y')
             ];
         });

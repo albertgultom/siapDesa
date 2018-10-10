@@ -700,3 +700,7 @@ header {
         margin-top: 2rem;
     }
 }
+
+ .disabled {
+     pointer-events: none;
+ }
