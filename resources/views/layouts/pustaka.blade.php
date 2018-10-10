@@ -4,7 +4,7 @@
 @section('content')
 <ul class="nav nav-middle d-flex flex-nowrap text-nowrap bg-light">
   <li class="nav-item">
-    <a class="nav-link p-3" href="/artikel">Daftar Artikel</a>
+    <a class="nav-link p-3" href="/artikel">Warta Berita</a>
   </li>
   {{-- <li class="nav-item">
     <a class="nav-link p-3" href="#">Daftar Agenda</a>
@@ -15,6 +15,9 @@
   <li class="nav-item">
     <a class="nav-link p-3 disabled" href="#">Galeri Video</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link p-3 disabled" href="/artikel">Produk Hukum</a>
+  </li>  
 </ul>
 
 <section class="container-fluid nav-section pt-3">
