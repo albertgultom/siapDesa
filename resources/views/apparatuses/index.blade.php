@@ -96,8 +96,10 @@
                 </label>
               </div>
               <div class="col-12 mt-4">
-                <button   type="submit" class="btn btn-outline-primary">Simpan</button>
-                
+                <button   type="submit" class="btn btn-outline-primary btn-sm">Simpan</button>
+                <button type="reset" onclick="myFunction()" class="float-right btn btn-danger btn-sm">
+                  <i class="fa fa-ban"></i> Reset
+                </button>
               </div>
             </form>
           </div>
@@ -114,7 +116,6 @@
     var toggle= '{{$item->active}}';
     // console.log(toggle);
   });
-  
   $('.aparatur').click(function(e){
     e.preventDefault();
     read = $(this).data('id');
@@ -147,17 +148,23 @@
   $(document).ready(function(){
     $('input[type="file"]').change(function(e) {
       var filename = e.target.files[0].name;
-      // console.log('#bla');
-      $('.custom-file-label').text(filename);
-
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        $('#InputFile01').attr('src', e.target.result);
-        // console.log(e.target.result);
-      }
-      reader.readAsDataURL(this.files[0]);
-    });
+       // console.log('#bla');
+       $('.custom-file-label').text(filename);
+ 
+       var reader = new FileReader();
+       reader.onload = function (e) {
+         $('#InputFile01').attr('src', e.target.result);
+         // console.log(e.target.result);
+       }
+       reader.readAsDataURL(this.files[0]);
+     });
+     
   });
+  function myFunction() {
+    $('#InputFile01').attr('src', "storage/apparatus/who.png");
+    $('#apStatus').removeAttr('checked');
+  }
+  
 </script>
 @endpush
 
