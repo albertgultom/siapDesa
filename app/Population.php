@@ -25,4 +25,12 @@ class Population extends Model
     {
         return $this->belongsToMany('App\Servicing');
     }
+
+    public function gender()
+    {
+        return array(
+                        'L' => 'Laki-Laki',
+                        'P' => 'Perempuan' 
+                    );
+    }    
 }
