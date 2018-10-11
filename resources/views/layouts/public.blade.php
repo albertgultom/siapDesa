@@ -42,9 +42,9 @@
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item"> <a class="nav-link" href="/">BERANDA</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/struktur-organisasi">MONOGRAFI</a></li>
-                {{-- <li class="nav-item"> <a class="nav-link" href="/layanan">PELAYANAN</a></li> --}}
                 <li class="nav-item"> <a class="nav-link" href="/artikel">BERITA</a></li>
-                {{-- <li class="nav-item"> <a class="nav-link" href="/produk">PRODUK</a> </li> --}}
+                <li class="nav-item"> <a class="nav-link disabled" href="/layanan">PELAYANAN</a></li>
+                {{-- <li class="nav-item"> <a class="nav-link disabled" href="/produk">PRODUK</a> </li> --}}
               </ul>
             </div>
           </nav>
@@ -137,8 +137,12 @@
   </div>
   <!-- FOOTER -->
   <footer class="my-5 text-center">
+      @php 
+        $fr = File::get('releases.txt');
+        $ex = explode("\n", $fr);
+      @endphp
     <p class="mb-2">
-      <small>{{ config('app.name') }} - 2018 © Copyright siapDesa v1.0.0</small>
+      <small>{{ config('app.name') }} - 2018 © Copyright siapDesa {{$ex[0]}}</small>
     </p>
     {{-- <small>
       <a href="#" class="m-2">TERMS</a>

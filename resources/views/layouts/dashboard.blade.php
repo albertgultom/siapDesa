@@ -98,8 +98,11 @@
                     </a>
                     <ul class="header3-sub-list list-unstyled">
                         <li>
-                            <a href="#">Dashboard 1</a>
+                            <a href="{{route('criteria.index')}}">Daftar Potensi</a>
                         </li>
+                        {{-- <li>
+                            <a href="#">Tambah Potensi</a>
+                        </li> --}}
                     </ul>
                 </li>
                 <li class="has-sub"> <!-- PELAYANAN -->
@@ -123,7 +126,7 @@
                             </a>
                         </li>
                         <li><a href="#">Selesai Diproses</a></li>
-                        <li><a href="#">Master Pelayanan</a></li>
+                        <li><a href="/facility">Master Pelayanan</a></li>
                     </ul>
                 </li>
                 <li class="has-sub"> <!-- ADMINISTRASI -->
@@ -336,7 +339,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="copyright">
-                        <p>{{ config('app.name') }} - 2018 © Copyright <a href="https://siapdesa.id">siapDesa</a> v1.0.0</p>
+                        @php 
+                            $fr = File::get('releases.txt');
+                            $ex = explode("\n", $fr);
+                        @endphp
+                        <p>{{ config('app.name') }} - 2018 © Copyright <a href="https://siapdesa.id">siapDesa</a> {{$ex[0]}}</p>
                     </div>
                 </div>
             </div>

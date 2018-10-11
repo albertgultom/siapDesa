@@ -17,7 +17,7 @@ class Criteria extends Model
 
     public function tabulations()
     {
-        return $this->hasMany('App\Tabulation', 'group_id', 'id');
+        return $this->hasMany('App\Tabulation');
     }
 
     public function criteriaable()
@@ -29,4 +29,9 @@ class Criteria extends Model
     {
         return $this->morphMany(Criteria::class, 'criteriaable');
     }
+
+    // public function childerns()
+    // {
+    //     return $this->hasMany(Criteria::class, 'criteriaable_id');
+    // }
 }
