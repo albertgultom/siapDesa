@@ -122,12 +122,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/servicing/process_service">
                                 Sedang Diproses
                                 <span class="badge badge-info p-2">12</span>
                             </a>
                         </li>
-                        <li><a href="#">Selesai Diproses</a></li>
+                        <li><a href="/servicing/done_service">Selesai Diproses</a></li>
                         <li><a href="/facility">Master Pelayanan</a></li>
                     </ul>
                 </li>

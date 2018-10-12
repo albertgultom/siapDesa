@@ -72,7 +72,7 @@ class ServicingController extends Controller
         $facilities  = Facility::select('id', 'name')->get();
         $data['status'] = 'dibuat';
         $data['flag']   = 0;
-        $data['title']  = 'Verifikas Daftar Pelayanan';        
+        $data['title']  = 'Verifikasi Daftar Pelayanan';        
         view('servicing.new.edit', compact('populations', 'facilities', 'data'));                
     }
 
@@ -110,9 +110,41 @@ class ServicingController extends Controller
         return redirect()->route('new')->with('success','Data Added');
     } 
     
+    /************************************/
+
+    public function process_service()
+    {
+        # code...
+        return view('servicing.process.index');        
+    }
+
     public function process_services()
     {
         # code...
         return response()->json($this->servicings('diproses'));;
+    }    
+
+    public function process_verify($id)
+    {
+        # code...
+        $data        = Servicing::findOrFail($id);
+        $populations = Population::select('id', 'nik')->get();
+        $facilities  = Facility::select('id', 'name')->get();
+        $data['status'] = 'selesai';
+        $data['flag']   = 1;
+        $data['title']  = 'Verifikasi Layanan Yang Telah diproses';
+        return view('servicing.new.edit', compact('populations', 'facilities', 'data'));                        
+    }
+
+    public function done_service()
+    {
+        # code...
+        return view('servicing.done.index');        
+    }
+
+    public function done_services()
+    {
+        # code...
+        return response()->json($this->servicings('selesai'));;
     }    
 }

@@ -60,11 +60,13 @@ Route::get('/servicing/news/', 'ServicingController@news')->name('news');
 Route::post('/servicing/store_new', 'ServicingController@new_store')->name('new.store');
 Route::delete('/servicing/delete_new/{id}', 'ServicingController@new_delete')->name('new.delete');
 
-// process list route
+// services process list route
 Route::get('/servicing/process_service', 'ServicingController@process_service')->name('process_service');
 Route::get('/servicing/process_services', 'ServicingController@process_services')->name('process_services');
+Route::get('/servicing/process_verify/{id}', 'ServicingController@process_verify')->name('process.verify');
 
-// Route::post('/servicing/', 'ServicingController@list')->name('servicings');
-// Route::get('/servicings', 'ServicingController@list')->name('servicings');
+// services done list route
+Route::get('/servicing/done_service', 'ServicingController@done_service')->name('done_service');
+Route::get('/servicing/done_services', 'ServicingController@done_services')->name('done_services');
 
 Route::resource('/criteria', 'CriteriaController');
