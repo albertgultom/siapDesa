@@ -116,7 +116,7 @@
                     </a>
                     <ul class="header3-sub-list list-unstyled">
                         <li>
-                            <a href="#">
+                            <a href="/servicing/new">
                                 Pendaftaran Baru 
                                 <span class="badge badge-warning p-2">4</span>
                             </a>

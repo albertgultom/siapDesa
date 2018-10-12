@@ -53,7 +53,7 @@ class PopulationController extends Controller
                         ];
                     });
 
-        // dd($data[0]);                                
+        // dd($data);                                
         return response()->json($data);
     }
 
