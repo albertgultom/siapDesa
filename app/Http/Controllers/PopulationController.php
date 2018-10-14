@@ -152,10 +152,11 @@ class PopulationController extends Controller
             'religion'      => 'required',
             'status'        => 'required',
             'nik'           => 'required',
-            'active'        => 'required',
             'education_id'  => 'required',
             'occupation_id' => 'required'
         ]);
+
+        $data['birthdate'] = date('Y-m-d' , strtotime($data['birthdate']));
 
         if($request->active == null){
             $data['active'] = '0';
@@ -194,6 +195,8 @@ class PopulationController extends Controller
             'education_id'  => 'required',
             'occupation_id' => 'required'
         ]);
+
+        $query['birthdate'] = date('Y-m-d' , strtotime($data['birthdate']));
 
         if($request->active == null){
             $query['active'] = '0';

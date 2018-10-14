@@ -111,9 +111,8 @@
                 </div>                 
 
                 <div class="form-group">
-                    <div class="form-control-label">Status Aktif</div>
                     <label class="switch switch-text switch-success mt-3">
-                        <input id="poststatus" type="checkbox" name="active" class="switch-input" checked>
+                        <input type="checkbox" name="active" value="" class="switch-input" >
                         <span data-on="On" data-off="Off" class="switch-label"></span>
                         <span class="switch-handle"></span>
                     </label>
