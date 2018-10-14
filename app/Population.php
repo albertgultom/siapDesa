@@ -26,6 +26,11 @@ class Population extends Model
         return $this->belongsToMany('App\Servicing');
     }
 
+    public function familiars()
+    {
+        return $this->hasMany(Familiar::class);
+    }
+
     public function gender()
     {
         return array(

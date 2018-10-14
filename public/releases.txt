@@ -9,9 +9,11 @@ New:
 - Occupations (admin)
 - Monograph (public)
 - Apparatuses (both)
+- Population (both)
 Improved:
 - Monograph layout
 - Apparatuses Layout
+- Servicing
 Fixed:
 - Type name
 - Type placeholder
@@ -19,6 +21,7 @@ Fixed:
 - Apparatuses action button
 - Landing style changes
 - Landing detail structurer
+- Structure update form
 Other/Operation:
 - Apparatuses reset button
 

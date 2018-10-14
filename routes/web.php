@@ -1,4 +1,10 @@
 <?php
+// SUB-DOMAIN E-NIAGA 
+Route::domain('eniaga.'.env('APP_URL'))->group(function () {
+  Route::get('/', function () {
+      return view('soon');
+  })->name('eniaga.index');
+});
 // PUBLIC ROUTES
 Route::get('/', 'HomeController@index')->name('beranda');
 Route::get('/struktur-organisasi', 'HomeController@struktur')->name('struktur');
@@ -7,15 +13,10 @@ Route::get('/potensi','HomeController@potensi');
 Route::get('/artikel', 'HomeController@artikel')->name('artikel');
 Route::get('/artikel/{name}', 'HomeController@lihat_artikel')->name('artikel.lihat');
 Route::get('/foto','HomeController@foto' )->name('foto');
-
-// Route::get('/layanan', function () {
-//     return view('layanan');
-// })->name('layanan');
-
-// Route::get('/produk', function () {
-//     return view('produk');
-// })->name('produk');
-Route::get('/test/{id}', 'PostController@test');
+Route::get('/pelayanan', function(){
+  $row = App\Profile::find(1);
+  return view('layouts.pelayanan', compact('row'));
+})->name('pelayanan');
 
 Route::resource('/post', 'PostController');
 Route::get('/posts', 'PostController@list')->name('posts');

@@ -22,34 +22,32 @@
   <!-- NAVBAR -->
   <div class="nav-menu fixed-top">
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <nav class="navbar navbar-dark navbar-expand-lg">
-            <a class="navbar-brand" href="/">
-              <img src="{{asset('storage/images/logo.png')}}" class="img-fluid" alt="logo">
-            </a>
-            <button 
-              class="navbar-toggler" 
-              type="button" 
-              data-toggle="collapse" 
-              data-target="#navbar" 
-              aria-controls="navbar" 
-              aria-expanded="false" 
-              aria-label="Toggle navigation"> 
-                <span class="navbar-toggler-icon"></span> 
-            </button>
-            <div class="collapse navbar-collapse" id="navbar">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item"> <a class="nav-link" href="/">BERANDA</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/struktur-organisasi">MONOGRAFI</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/artikel">BERITA</a></li>
-                <li class="nav-item"> <a class="nav-link disabled" href="/layanan">PELAYANAN</a></li>
-                {{-- <li class="nav-item"> <a class="nav-link disabled" href="/produk">PRODUK</a> </li> --}}
-              </ul>
-            </div>
-          </nav>
-        </div>
-      </div>
+        <nav class="navbar navbar-dark navbar-expand-lg">
+          <a class="navbar-brand" href="/">
+            <img src="{{asset('storage/images/logo.png')}}" class="img-fluid" alt="logo">
+          </a>
+          <button 
+            class="navbar-toggler" 
+            type="button" 
+            data-toggle="collapse" 
+            data-target="#navbar" 
+            aria-controls="navbar" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation"> 
+              <span class="navbar-toggler-icon"></span> 
+          </button>
+          <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav ml-auto text-uppercase">
+              <li class="nav-item"><a class="nav-link" href="/">beranda</a></li>
+              <li class="nav-item"><a class="nav-link" href="/struktur-organisasi">monografi</a></li>
+              <li class="nav-item"><a class="nav-link" href="/artikel">berita</a></li>
+              <li class="nav-item"><a class="nav-link disabled" href="{{route('pelayanan')}}">pelayanan</a></li>
+              {{-- <li class="nav-item"><a class="nav-link disabled" href="{{route('eniaga.index')}}">e-niaga</a></li>
+              <li class="nav-item"><a class="nav-link disabled" href="{{route('eniaga.index')}}">e-pustaka</a></li>
+              <li class="nav-item"><a class="nav-link disabled" href="{{route('eniaga.index')}}">e-ronda</a></li> --}}
+            </ul>
+          </div>
+        </nav>
     </div>
   </div>
   <!-- HEADER -->

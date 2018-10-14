@@ -10,4 +10,14 @@ class Familiar extends Model
     protected $guarded = [];
     protected $fillable = [];
     // protected $hidden = [];
+
+    public function karkel()
+    {
+        return $this->belongsTo(Karkel::class);
+    }
+
+    public function population()
+    {
+        return $this->belongsTo(Population::class);
+    }
 }
