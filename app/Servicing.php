@@ -13,11 +13,11 @@ class Servicing extends Model
 
     public function populations()
     {
-        return $this->belongsToMany('App\Population');
+        return $this->belongsTo('App\Population','population_id');
     }
 
     public function facilities()
     {
-        return $this->belongsToMany('App\Facility');
+        return $this->belongsTo('App\Facility','facility_id');
     }
 }

@@ -25,10 +25,20 @@ class PopulationController extends Controller
         //
     }
 
-    public function list()
+    public function list($id=NULL)
     {
         # code...
-        $population = Population::orderBy('updated_at', 'desc')->get();
+        // dd($id);
+        $population = "";
+        if ($id != NULL) {
+            # code...
+            $population = Population::where('id', $id)->get();            
+        }
+        else
+        {
+            $population = Population::orderBy('updated_at', 'desc')->get();
+        }
+
         $data       = $population->map(function($item){
                         $i = 1;
                         if($item->active !== 0){
@@ -53,7 +63,7 @@ class PopulationController extends Controller
                         ];
                     });
 
-        // dd($data[0]);                                
+        // dd($data);                                
         return response()->json($data);
     }
 
@@ -142,10 +152,11 @@ class PopulationController extends Controller
             'religion'      => 'required',
             'status'        => 'required',
             'nik'           => 'required',
-            'active'        => 'required',
             'education_id'  => 'required',
             'occupation_id' => 'required'
         ]);
+
+        $data['birthdate'] = date('Y-m-d' , strtotime($data['birthdate']));
 
         if($request->active == null){
             $data['active'] = '0';
@@ -185,13 +196,21 @@ class PopulationController extends Controller
             'occupation_id' => 'required'
         ]);
 
+        $query['birthdate'] = date('Y-m-d' , strtotime($data['birthdate']));
+
         if($request->active == null){
-            $data['active'] = '0';
+            $query['active'] = '0';
         }else{
-            $data['active'] = '1';
+            $query['active'] = '1';
         }
 
         Population::find($id)->update($query);        
         return redirect()->route('population.index')->with('success','Data Updated');
     }    
+
+    public function get_population($id)
+    {
+        # code...
+        $this->list($id);
+    }
 }

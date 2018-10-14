@@ -64,7 +64,7 @@
                 {{-- birthdate --}}
                 <div class="form-group{{ $errors->has('birthdate') ? ' has-danger' : '' }}">
                     <label class="form-control-label">Tanggal Lahir</label>
-                    <input type="text" name="birthdate" placeholder="Tanggal Lahir" value="{{ old('birthdate', $data->birthdate) }}" class="form-control">
+                    <input type="text" name="birthdate" placeholder="Tanggal Lahir" value="{{ old('birthdate', $data->birthdate) }}" class="form-control datepicker">
                     @if ($errors->has('birthdate'))
                         <small class="form-text text-danger">{{ $errors->first('birthdate') }}</small>
                     @endif
@@ -81,7 +81,7 @@
 
             </div>
             <div class="col-md-6">
-            <div class="form-group">
+                <div class="form-group">
                     <label class="form-control-label">Agama</label>
                     <div class="select">
                         <select name="religion" class="form-control">
@@ -113,16 +113,6 @@
                 </div>                 
 
                 <div class="form-group">
-                    <div class="form-control-label">Status Aktif</div>
-                    <label class="switch switch-text switch-success mt-3">
-                        <input id="poststatus" type="checkbox" name="active" class="switch-input" checked>
-                        <span data-on="On" data-off="Off" class="switch-label"></span>
-                        <span class="switch-handle"></span>
-                    </label>
-                </div>                                                               
-
-
-                <div class="form-group">
                     <label class="form-control-label">Pendidikan</label>
                     <div class="select">
                         <select name="education_id" class="form-control">
@@ -150,9 +140,20 @@
                             <small class="form-text text-danger">{{ $errors->first('occupation_id') }}</small>
                         @endif
                     </div>
-                </div>                
+                </div>
+
+                <div class="form-group">
+                    <label class="switch switch-text switch-success mt-3">
+                        <input type="checkbox" name="active" value="{{$data->active}}" class="switch-input" {{$data->active == true ? 'checked' : ''}}>
+                        <span data-on="On" data-off="Off" class="switch-label"></span>
+                        <span class="switch-handle"></span>
+                    </label>
+                </div>
             </div>
-            <button type="submit" class="btn btn-outline-primary">Simpan</button>
+
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-outline-primary">Simpan</button>                                                
+            </div>
         </form>
     </div>
 </section>  
@@ -160,5 +161,11 @@
 
 @push('scripts')
 <script>
+    $('.datepicker').datepicker({
+        maxDate: new Date,
+        format: 'dd-mm-yyyy',
+        todayHighlight: true,
+        daysOfWeekHighlighted: "0,6"        
+    });    
 </script>
 @endpush

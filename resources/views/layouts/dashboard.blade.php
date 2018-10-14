@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>{{ config('app.name', 'Laravel') }}</title>
-  <!-- Fontfaces CSS-->
-  <link href="{{ asset('css/font-face.css') }}" rel="stylesheet" media="all">
-  <link href="{{ asset('vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
-  <link href="{{ asset('vendor/font-awesome-5/css/fontawesome-all.min.css') }}" rel="stylesheet" media="all">
-  <link href="{{ asset('vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
-  <!-- Bootstrap CSS-->
-  <link href="{{ asset('vendor/bootstrap-4.1/bootstrap.min.css') }}" rel="stylesheet" media="all">
-  <!-- Vendor CSS-->
-  <link href="{{ asset('vendor/animsition/animsition.min.css') }}" rel="stylesheet" media="all">
-  <link href="{{ asset('vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css') }}" rel="stylesheet" media="all">
-  <link href="{{ asset('vendor/wow/animate.css') }}" rel="stylesheet" media="all">
-  <link href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}" rel="stylesheet" media="all">
-  <link href="{{ asset('vendor/slick/slick.css') }}" rel="stylesheet" media="all">
-  <link href="{{ asset('vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
-  <link href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
-  <link href="{{ asset('css/slimselect.min.css') }}" rel="stylesheet" media="all">
-  <!-- Datatables -->
-  <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" rel="stylesheet" type="text/css" >
-  <!-- Main CSS-->
-  <link href="{{ asset('css/theme.css') }}" rel="stylesheet" media="all">
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet" media="all">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Fontfaces CSS-->
+    <link href="{{ asset('css/font-face.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/font-awesome-5/css/fontawesome-all.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
+    <!-- Bootstrap CSS-->
+    <link href="{{ asset('vendor/bootstrap-4.1/bootstrap.min.css') }}" rel="stylesheet" media="all">
+    <!-- Vendor CSS-->
+    <link href="{{ asset('vendor/animsition/animsition.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/wow/animate.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/slick/slick.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('css/slimselect.min.css') }}" rel="stylesheet" media="all">
+    <!-- datepicker -->
+    <link href="{{ asset('vendor/datepicker/css/bootstrap-datepicker3.css') }}" rel="stylesheet" media="all">
+    <!-- Datatables -->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" rel="stylesheet" type="text/css" >
+    <!-- Main CSS-->
+    <link href="{{ asset('css/theme.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" media="all">
   @stack('styles')
 </head>
 <body class="animsition">
@@ -114,18 +116,18 @@
                     </a>
                     <ul class="header3-sub-list list-unstyled">
                         <li>
-                            <a href="#">
+                            <a href="/servicing/new">
                                 Pendaftaran Baru 
-                                <span class="badge badge-warning p-2">4</span>
+                                <span class="badge badge-warning p-2">{{route('counter_services', ['name' => 'dibuat'])}}</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/servicing/process_service">
                                 Sedang Diproses
                                 <span class="badge badge-info p-2">12</span>
                             </a>
                         </li>
-                        <li><a href="#">Selesai Diproses</a></li>
+                        <li><a href="/servicing/done_service">Selesai Diproses</a></li>
                         <li><a href="/facility">Master Pelayanan</a></li>
                     </ul>
                 </li>
@@ -367,7 +369,9 @@
   <script src="{{ asset('vendor/chartjs/Chart.bundle.min.js') }}"></script>
   <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
   <script src="{{ asset('js/slimselect.min.js') }}"></script>
-  <!-- Datatables -->
+  <!-- datepicker       -->
+  <script src="{{ asset('vendor/datepicker/bootstrap-datepicker.js') }}"></script>
+<!-- Datatables -->
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
   <!-- Main JS-->
   <script src="{{ asset('js/main.js') }}"></script>

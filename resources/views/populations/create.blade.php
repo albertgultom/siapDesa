@@ -63,7 +63,7 @@
                 {{-- birthdate --}}
                 <div class="form-group{{ $errors->has('birthdate') ? ' has-danger' : '' }}">
                     <label class="form-control-label">Tanggal Lahir</label>
-                    <input type="text" name="birthdate" placeholder="Tanggal Lahir" value="{{ old('birthdate') }}" class="form-control">
+                    <input type="text" name="birthdate" placeholder="Tanggal Lahir" value="{{ old('birthdate') }}" class="form-control datepicker">
                     @if ($errors->has('birthdate'))
                         <small class="form-text text-danger">{{ $errors->first('birthdate') }}</small>
                     @endif
@@ -111,9 +111,8 @@
                 </div>                 
 
                 <div class="form-group">
-                    <div class="form-control-label">Status Aktif</div>
                     <label class="switch switch-text switch-success mt-3">
-                        <input id="poststatus" type="checkbox" name="active" class="switch-input" checked>
+                        <input type="checkbox" name="active" value="" class="switch-input" >
                         <span data-on="On" data-off="Off" class="switch-label"></span>
                         <span class="switch-handle"></span>
                     </label>
@@ -158,5 +157,11 @@
 
 @push('scripts')
 <script>
+    $('.datepicker').datepicker({
+        maxDate: new Date,
+        format: 'dd-mm-yyyy',
+        todayHighlight: true,
+        daysOfWeekHighlighted: "0,6"        
+    });     
 </script>
 @endpush
