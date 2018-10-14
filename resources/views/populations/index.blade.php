@@ -29,16 +29,9 @@
             <thead>
               <tr>
                 <th>ID</th>
-                <!-- <th>No</th> -->
                 <th>NIK</th>
                 <th>Nama</th>
-                <th>Jenis Kelamin</th>
-                <th>Tempat, Tanggal Lahir</th>
-                <th>Golongan Darah</th>
-                <th>Agama</th>
-                <th>Status</th>
-                <th>Pendidikan</th>
-                <th>Pekerjaan</th>
+                <th>Status Aktif</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -55,24 +48,79 @@
   </div>
 </section>
 <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div 
+  class="modal fade bd-example-modal-lg" 
+  id="viewModal" 
+  tabindex="-1" 
+  role="dialog" 
+  aria-labelledby="viewModalLabel" 
+  aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title" id="viewModalLabel">Modal title</h5>
+        <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam laborum quas laudantium repellat? Veniam, porro voluptates accusamus aut exercitationem rem facere, tempora molestias odio quam obcaecati et, eos recusandae beatae!</p>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, voluptate similique? Nemo delectus, quae magnam odio culpa nesciunt! Nam necessitatibus molestiae assumenda maxime odit explicabo atque ducimus placeat, repellat voluptatem?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur consectetur voluptatum alias aperiam nam impedit ea quasi optio eius, odit quisquam eveniet sunt incidunt perspiciatis sed corporis. Ducimus, quod cum.</p>
+      <div class="modal-body bg-white">
+        <div class="row">
+          <div class="col-lg-6">
+
+            <div class="form-group">
+                <label class="form-control-label">NIK</label>
+                <input type="text" id="viewModalnik" class="form-control" disabled="disabled">
+            </div>                            
+
+            <div class="form-group">
+                <label class="form-control-label">Nama</label>
+                <input type="text" id="viewModalname" class="form-control" disabled="disabled">
+            </div>                            
+
+            <div class="form-group">
+                <label class="form-control-label">Jenis Kelamin</label>
+                <input type="text" id="viewModalgender" class="form-control" disabled="disabled">
+            </div>                            
+
+            <div class="form-group">
+                <label class="form-control-label">Tempat, tanggal lahir</label>
+                <input type="text" id="viewModalbirthdate_and_place" class="form-control" disabled="disabled">
+            </div>                                        
+
+            <div class="form-group">
+                <label class="form-control-label">Golongan Darah</label>
+                <input type="text" id="viewModalbloodtype" class="form-control" disabled="disabled">
+            </div>                                       
+
+          </div>
+
+          <div class="col-lg-6">
+
+            <div class="form-group">
+                <label class="form-control-label">Agama</label>
+                <input type="text" id="viewModalreligion" class="form-control" disabled="disabled">
+            </div>                                      
+
+            <div class="form-group">
+                <label class="form-control-label">Status</label>
+                <input type="text" id="viewModalstatus" class="form-control" disabled="disabled">
+            </div>                                      
+
+            <div class="form-group">
+                <label class="form-control-label">Pekerjaan</label>
+                <input type="text" id="viewModaloccupy" class="form-control" disabled="disabled">
+            </div>                                           
+
+            <div class="form-group">
+                <label class="form-control-label">Pendidikan</label>
+                <input type="text" id="viewModaleducation" class="form-control" disabled="disabled">
+            </div>                                                                                                      
+          </div>
+        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -92,16 +140,8 @@
     order: [[ 0, "asc" ]],
     columns: [
       {data: 'id'},
-      // {data: 'number_'},
       {data: 'nik'},
       {data: 'name'},
-      {data: 'gender'},            
-      {data: 'birthplace_and_birthdate'},
-      {data: 'bloodtype'},
-      {data: 'religion'},
-      {data: 'status'},
-      {data: 'education'},
-      {data: 'occupation'},
     ],
     columnDefs: [
       {
@@ -110,14 +150,60 @@
         searchable: false
       },
       {
-        targets: [10],
+        targets: [ 3 ],
+        data: 'active',
+        render: function ( data, type, row, meta ) {
+          return `
+            <label class="au-checkbox">
+              <input type="checkbox" `+data+`>
+              <span class="au-checkmark"></span>
+            </label>`;
+        }
+      },      
+      {
+        targets: [4],
         data: 'id',
         render: function ( data, type, row, meta ) {
-          return '<a href="population/'+data+'/edit" class="btn">edit</a>';
+          return '<a href="#!" class="btn view-detail" data-view="'+data+'" data-toggle="modal">detail</a>'+
+                  '| <a href="population/'+data+'/edit" class="btn">edit</a>';
         }
       }
     ]
   });
+
+  $(document).on('click', '.view-detail', function(e){
+    e.preventDefault();
+    id = $(this).data('view');
+    $.ajax({
+      url: "population/list/"+id,
+      method: "get",
+      dataType: "json"
+    }).done(function(res) {
+      // console.log(res[0].id)
+      $('#viewModalnik').val(res[0].nik);
+      $('#viewModalname').val(res[0].name);      
+      $('#viewModalgender').val(res[0].gender);
+      $('#viewModalbirthdate_and_place').val(res[0].birthplace_and_birthdate);
+      $('#viewModalbloodtype').val(res[0].bloodtype);
+      $('#viewModalreligion').val(res[0].religion);
+      $('#viewModalstatus').val(res[0].status);
+      $('#viewModaloccupy').val(res[0].occupation);      
+      $('#viewModaleducation').val(res[0].education);
+
+      $('#viewModalLabel').text('Data Penduduk '+res[0].nik+' ('+res[0].name+') ');
+      // $('#viewModalTags').empty();
+      // $('#viewModalContents').empty();
+
+      // $.each(res.tags, function(i, v){
+      //   $('#viewModalTags').append('<span class="ml-2 badge badge-info">'+v+'</span>');
+      // });
+      
+      $("#viewModal").modal('show');
+    }).fail(function( jqXHR, textStatus ) {
+      alert( "Request failed: " + textStatus );
+    });
+  });
+
 
   // $('#myModal').on('shown.bs.modal', function () {
   //   $('#myInput').trigger('focus')

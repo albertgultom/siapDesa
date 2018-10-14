@@ -147,4 +147,10 @@ class ServicingController extends Controller
         # code...
         return response()->json($this->servicings('selesai'));;
     }    
+
+    public function counter_services($name)
+    {
+        # code...
+        return response()->json(count($this->servicings($name)));;        
+    }
 }

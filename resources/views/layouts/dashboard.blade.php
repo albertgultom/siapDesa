@@ -118,7 +118,7 @@
                         <li>
                             <a href="/servicing/new">
                                 Pendaftaran Baru 
-                                <span class="badge badge-warning p-2">4</span>
+                                <span class="badge badge-warning p-2">{{route('counter_services', ['name' => 'dibuat'])}}</span>
                             </a>
                         </li>
                         <li>

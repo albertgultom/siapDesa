@@ -38,7 +38,9 @@ Route::resource('/gallery', 'GalleryController');
 Route::get('/galleries/{content}', 'GalleryController@list')->name('galleries');
 
 Route::resource('/population', 'PopulationController');
+Route::get('/population/list/{id}', 'PopulationController@list')->name('populations.list');
 Route::get('/populations', 'PopulationController@list')->name('populations');
+Route::post('/population/get_population/{id}', 'ServicingController@get_population')->name('get_population');
 
 Route::resource('/education', 'EducationController');
 Route::get('/educations', 'EducationController@list')->name('educations');
@@ -68,5 +70,8 @@ Route::get('/servicing/process_verify/{id}', 'ServicingController@process_verify
 // services done list route
 Route::get('/servicing/done_service', 'ServicingController@done_service')->name('done_service');
 Route::get('/servicing/done_services', 'ServicingController@done_services')->name('done_services');
+
+// counter notify services
+Route::get('/servicing/counter_services/{name}', 'ServicingController@counter_services')->name('counter_services');
 
 Route::resource('/criteria', 'CriteriaController');
