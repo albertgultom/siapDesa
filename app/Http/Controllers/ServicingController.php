@@ -14,21 +14,22 @@ class ServicingController extends Controller
         // $this->middleware('auth');
     }
 
-    public function servicings($name=NULL)
+    public function servicings($name=NULL,$arg)
     {
         # code...
-        $servicing = Servicing::where('status',$name)->get();
+        $servicing = Servicing::where($arg,$name)->orderBy('updated_at', 'desc')->get();
         $data      = $servicing->map(function($item){
                         $i = 1;
                         return [
-                            'id'      => $item->id,
-                            'nik'     => $item->populations['nik'],
-                            'name'    => $item->populations['name'],
-                            'facilty' => $item->facilities['name']
+                            'id'            => $item->id,
+                            'population_id' => $item->population_id,
+                            'facility_id'   => $item->facility_id,
+                            'nik'           => $item->populations['nik'],
+                            'name'          => $item->populations['name'],
+                            'facilty'       => $item->facilities['name']
                         ];
                     });
 
-        // dd($data);                                   
         return $data;        
     }    
 
@@ -41,7 +42,7 @@ class ServicingController extends Controller
     public function news()
     {
         # code...
-        return response()->json($this->servicings('dibuat'));;
+        return response()->json($this->servicings('dibuat','status'));;
     }
 
     public function new_create()
@@ -72,8 +73,8 @@ class ServicingController extends Controller
         $facilities  = Facility::select('id', 'name')->get();
         $data['status'] = 'dibuat';
         $data['flag']   = 0;
-        $data['title']  = 'Verifikasi Daftar Pelayanan';        
-        view('servicing.new.edit', compact('populations', 'facilities', 'data'));                
+        $data['title']  = 'Ubah Daftar Pelayanan';  
+        return view('servicing.new.edit', compact('populations', 'facilities', 'data'));                
     }
 
     public function new_verify($id)
@@ -84,7 +85,7 @@ class ServicingController extends Controller
         $facilities  = Facility::select('id', 'name')->get();
         $data['status'] = 'diproses';
         $data['flag']   = 1;
-        $data['title']  = 'Verifikas Daftar Pelayanan';
+        $data['title']  = 'Verifikasi Daftar Pelayanan';
         return view('servicing.new.edit', compact('populations', 'facilities', 'data'));                
     }    
 
@@ -121,7 +122,7 @@ class ServicingController extends Controller
     public function process_services()
     {
         # code...
-        return response()->json($this->servicings('diproses'));;
+        return response()->json($this->servicings('diproses','status'));
     }    
 
     public function process_verify($id)
@@ -145,12 +146,12 @@ class ServicingController extends Controller
     public function done_services()
     {
         # code...
-        return response()->json($this->servicings('selesai'));;
+        return response()->json($this->servicings('selesai','status'));;
     }    
 
     public function counter_services($name)
     {
         # code...
-        return response()->json(count($this->servicings($name)));;        
+        return response()->json(count($this->servicings($name,'status')));;        
     }
 }

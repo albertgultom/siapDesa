@@ -98,7 +98,7 @@
         targets: [4],
         data: 'id',
         render: function ( data, type, row, meta ) {
-          return '<a href="/servicing/process_verify/'+data+'" class="btn">Memproses Berkas</a>';
+          return '<a href="/servicing/process_verify/'+data+'" class="btn">Status Selesai</a>';
         }
       }
     ]

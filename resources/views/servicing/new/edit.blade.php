@@ -15,10 +15,11 @@
 <!-- SECTION BODY -->
 <section class="statistic-chart">
     <div class="container">
+    <input type="hidden" id="oid" value="{{$data->id}}">
     <form action="{{route('new.update', $data->id)}}" method="post" class="row" enctype="multipart/form-data">
             {{csrf_field()}}
             <input type="hidden" name="_method" value="PUT">            
-            <div class="col-md-8">
+            <div class="col-md-6">
 
                 <div class="form-group">
                     <input type="hidden" name="status" value="{{ old('name', $data->status) }}">
@@ -37,9 +38,16 @@
                 </div>                
 
                 <div class="form-group">
+                    <label class="form-control-label">Nama</label>
+                    <input type="text" id="res_name" class="form-control" disabled="disabled">
+                </div>   
+                <button type="submit" class="btn btn-outline-primary">Simpan</button>
+            </div>
+            <div class="col-md-6">            
+                <div class="form-group">
                     <label class="form-control-label">Layanan</label>
                     <div class="select">
-                        <select name="facility_id" class="form-control" {{ $data->flag == 1 ? 'disabled="disabled"' : '' }}>
+                            <select name="facility_id" class="form-control" {{ $data->flag == 1 ? 'disabled="disabled"' : '' }}>
                             <option selected disabled value="">Pilih Pekerjaan</option>
                             @foreach ($facilities as $item)
                             <option {{ $data->facility_id == $item->id ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }}</option>                            
@@ -50,9 +58,7 @@
                         @endif
                     </div>
                 </div>
-
-                <button type="submit" class="btn btn-outline-primary">Simpan</button>
-            </div>
+            </div>            
         </form>
     </div>
 </section>  
@@ -65,6 +71,20 @@
         format: 'dd-mm-yyyy',
         todayHighlight: true,
         daysOfWeekHighlighted: "0,6"        
-    });     
+    }); 
+    
+    $(document).ready(function(){
+        oid = $("#oid").val();
+        $.ajax({
+            url: "/servicing/servicings/"+oid+"/id",
+            method: "get",
+            dataType: "json"
+        }).done(function(res) {
+            // console.log(res[0].id)
+            $("#res_name").val(res[0].name);
+        }).fail(function( jqXHR, textStatus ) {
+            alert( "Request failed: " + textStatus );
+        });
+    });        
 </script>
 @endpush

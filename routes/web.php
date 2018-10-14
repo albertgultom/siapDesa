@@ -51,7 +51,11 @@ Route::get('/occupations', 'OccupationController@list')->name('occupations');
 Route::resource('/facility', 'FacilityController');
 Route::get('/facilitys', 'FacilityController@list')->name('facilitys');
 
-// services list Routes
+// ---------------------------- API services ----------------------------
+/* servicings/value/field */
+Route::get('/servicing/servicings/{id}/{name}', 'ServicingController@servicings')->name('servicings');
+
+//services list Routes
 Route::get('/servicing/new', 'ServicingController@new')->name('new');
 Route::get('/servicing/create_new', 'ServicingController@new_create')->name('new.create');
 Route::get('/servicing/show_new/{id}', 'ServicingController@new_show')->name('new.show');
