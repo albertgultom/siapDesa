@@ -21,7 +21,7 @@
 <body>
   <!-- NAVBAR -->
   <div class="nav-menu fixed-top">
-    <div class="container">
+    <div class="containerj">
         <nav class="navbar navbar-dark navbar-expand-lg">
           <a class="navbar-brand" href="/">
             <img src="{{asset('storage/images/logo.png')}}" class="img-fluid" alt="logo">
