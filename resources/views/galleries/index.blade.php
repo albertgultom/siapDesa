@@ -81,6 +81,7 @@
 
 @push('scripts')
 <script>
+  view_content = "{!!$content!!}";
   $("#gallerytable").DataTable({
     scrollY: "320px",
     scrollCollapse: true,
@@ -118,6 +119,7 @@
         data: 'id',
         render: function ( data, type, row, meta ) {
           return `
+            <a href="/gallery/content/`+view_content+`/`+data+`" class="btn">konten</a>          
             <a 
               href="#!" 
               class="btn view-detail" 

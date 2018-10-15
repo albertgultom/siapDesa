@@ -7,6 +7,8 @@ use Illuminate\Support\Collection;
 use App\Gallery;
 use App\Content;
 use App\Tag;
+use App\Type;
+use Carbon\Carbon;
 
 class GalleryController extends Controller
 {
@@ -22,12 +24,17 @@ class GalleryController extends Controller
 
     public function index(Request $request)
     {
-        return view('galleries.index', ['content' => $request->content]);
+        $content = $request->content;        
+        return view('galleries.index', compact('content'));
     }
 
     public function create(Request $request)
     {
-        return view('galleries.create', ['content' => $request->content]);
+        // dd($request);
+        $types           = Type::all();
+        $tags            = Tag::select('id', 'name')->get();
+        $request_content = $request->content;
+        return view('galleries.create', compact('tags','types','request_content'));
     }
 
     public function edit($id)
@@ -87,4 +94,44 @@ class GalleryController extends Controller
         // dd($data);
         return response()->json($data);
     }
+
+    public function store(Request $request)
+    {
+        $data = $this->validate($request, [
+            'type_id' => 'required',
+            'name'    => 'required|max:191',
+            'content' => 'required',
+        ]);
+        // test user
+        $data['user_id'] = '2';
+        $data['created_at'] = Carbon::now(); 
+        $data['updated_at'] = Carbon::now();       
+
+        if($request->active == null){
+            $data['active'] = '0';
+        }else{
+            $data['active'] = '1';
+        }
+
+        $gallery = Gallery::insertGetId($data);
+        if(!$gallery){
+            return back()->with('alert-danger', 'Gallery '.$request->content.' tidak dapat di simpan.');
+        }
+
+        $count = count($request->tags);
+        if($count > 0){
+            $galleryId = Gallery::find($gallery);
+            $galleryId->tags()->attach($request->tags);
+        }
+        // dd($request->tags);
+        return redirect()->route('gallery.index', ['content' => $request->content])->with('success','Data Added');
+    }
+
+    public function content($request,$id)
+    {   
+        $contents        = Content::find($id);
+        $request_content = $request;
+        return view('galleries.content', compact('request_content','contents'));
+    }    
+
 }
