@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Profile;
 use App\Post;
 use App\Apparatus;
+use App\Gallery;
 
 class HomeController extends Controller
 {
@@ -51,7 +52,14 @@ class HomeController extends Controller
     public function  foto()
     {
         $row = Profile::find(1);
-        return view('berita.foto',compact('row'));
+        $tags = \App\Tag::all();
+        $foto = Gallery::where('active', '=', 1)
+        // ->where('#')
+            ->orderBy('updated_at','asc')
+            ->paginate(20)
+            ;
+        // dd($foto);
+        return view('berita.foto',compact('row','tags', 'foto'));
     }
 
     public function artikel(Request $request)
@@ -60,7 +68,8 @@ class HomeController extends Controller
         $row = Profile::find(1);
         $tags = \App\Tag::all();
         $posts = Post::where('active', '=', 1)
-            // ->has('tagable.name', '=',$request->tag)
+            // ->where('#')
+            
             ->orderBy('updated_at','desc')
             ->paginate(20)
             ;
@@ -83,6 +92,32 @@ class HomeController extends Controller
         // $posts = Post::find($id);
         // dd($post);
         return view('berita.lihat',compact('row','post','berita'));
+    }
+
+    public function galeri_foto(Request $request)
+    {
+        $row = Profile::find(1);
+        
+    }
+    
+    public function lihat_foto(Request $request, $id)
+    {
+        $row = Profile::find(1);
+        $query = Gallery::findOrFail($id);
+        $contents = $query
+            ->contents()
+            ->select(['name','image'])
+            ->get();
+        $data = collect([
+            'name' => $query->name,
+            'date' => $query->updated_at->format('d-m-Y'),
+            'type' => $query->type->name,
+            'tags' => $query->tags->pluck('name'),
+            'contents' => $contents,
+        
+        ]);
+        return view('berita.lihat_foto',compact ('row','query','data'));
+        // return response()->json($data);
     }
     
 }
