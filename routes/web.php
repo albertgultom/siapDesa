@@ -79,4 +79,6 @@ Route::get('/servicing/done_services', 'ServicingController@done_services')->nam
 // counter notify services
 Route::get('/servicing/counter_services/{name}', 'ServicingController@counter_services')->name('counter_services');
 
-Route::resource('/criteria', 'CriteriaController');
+Route::prefix('potency')->group(function(){
+  Route::resource('criteria', 'CriteriaController');
+});
