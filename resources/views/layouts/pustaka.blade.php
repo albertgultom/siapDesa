@@ -7,7 +7,7 @@
     <a class="nav-link p-3" href="/artikel">Warta Berita</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link p-3 disabled" href="#">Daftar Agenda</a>
+    <a class="nav-link p-3" href="{{route('soon')}}">Daftar Agenda</a>
   </li>
   <li class="nav-item">
     <a class="nav-link p-3" href="/foto">Galeri Foto</a>

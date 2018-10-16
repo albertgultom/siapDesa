@@ -17,7 +17,10 @@ Route::get('/pelayanan', function(){
   $row = App\Profile::find(1);
   // return view('layouts.pelayanan', compact('row'));
   return view('soon');
-})->name('pelayanan');  
+})->name('pelayanan');
+Route::get('/soon', function(){
+  return view('soon');
+})->name('soon');
 
 Route::resource('/post', 'PostController');
 Route::get('/posts', 'PostController@list')->name('posts');

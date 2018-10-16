@@ -701,6 +701,6 @@ header {
     }
 }
 
- .disabled {
+ /* .disabled {
      pointer-events: none;
- }
+ } */

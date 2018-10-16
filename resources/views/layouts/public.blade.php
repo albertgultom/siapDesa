@@ -19,6 +19,11 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.css" rel="stylesheet">
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <link href="{{ asset('css/seamless.css') }}" rel="stylesheet">
+  <style>
+    .disabled {
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body>
   <!-- NAVBAR -->
