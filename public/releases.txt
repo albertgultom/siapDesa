@@ -1,0 +1,38 @@
+v1.0.0-alpha.beta
+0000-00-00
+==========
+New:
+- Categories (admin)
+- Types (admin)
+- Profiles (both)
+- Education (admin)
+- Occupations (admin)
+- Monograph (public)
+- Apparatuses (both)
+- Population (both)
+Improved:
+- Monograph layout
+- Apparatuses Layout
+- Servicing
+Fixed:
+- Type name
+- Type placeholder
+- Active statuses
+- Apparatuses action button
+- Landing style changes
+- Landing detail structurer
+- Structure update form
+Other/Operation:
+- Apparatuses reset button
+
+v1.0.0-alpha
+2018-09-23
+==========
+New:
+- 0
+Improved:
+- 0
+Fixed:
+- 0
+Other/Operation:
+- 0

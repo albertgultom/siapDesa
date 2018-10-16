@@ -9,3 +9,9 @@
 	{{ Session::get('alert-info') }}
 </div>
 @endif
+
+@if(Session::has('alert-success'))
+<div class="alert alert-success" style="background-color: #fff; text-align: center" role="alert">
+	{{ Session::get('alert-success') }}
+</div>
+@endif

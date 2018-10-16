@@ -9,6 +9,7 @@ use App\Apparatus;
 
 class HomeController extends Controller
 {
+    private $row;
     /**
      * Create a new controller instance.
      *
@@ -17,6 +18,7 @@ class HomeController extends Controller
     public function __construct()
     {
         // $this->middleware('auth');
+        $this->row = Profile::find(1);
     }
 
     /**
@@ -54,14 +56,18 @@ class HomeController extends Controller
         return view('berita.foto',compact('row'));
     }
 
-    public function artikel()
+    public function artikel(Request $request)
     {
+        // dd($request->tag);
+        // $tag = 'Perkebunan';
         $row = Profile::find(1);
         $tags = \App\Tag::all();
         $posts = Post::where('active', '=', 1)
+            // ->whereHas('tags.id', '=', 1)
             ->orderBy('updated_at','desc')
-            ->paginate(6);
-       
+            ->paginate(9)
+            ;
+        
         // dd($posts);
         return view('berita.artikel', compact('row', 'tags', 'posts'));
     }
@@ -70,9 +76,21 @@ class HomeController extends Controller
     {
         $row = Profile::find(1);
         $post = Post::findOrFail($id);
+        // dd($post->type_id);
+        $berita = Post::where('type_id','=',$post->type_id)
+                ->whereNotIn('id',[$post->id])
+                ->orderBy('updated_at','desc')
+                ->limit(4)->get();
+        // dd($berita);
+
         // $posts = Post::find($id);
         // dd($post);
-        return view('berita.lihat',compact('row','post'));
+        return view('berita.lihat',compact('row','post','berita'));
+    }
+
+    public function pelayanan()
+    {
+        return view('layouts.pelayanan', ['row' => $this->row]);
     }
     
 }

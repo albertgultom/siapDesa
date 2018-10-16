@@ -35,13 +35,12 @@ class ApparatusController extends Controller
     }
     public function store(request $request)
     {
-        
-
         if($request->active == null){
-            $active = '0';
+            $request['active'] = '0';
         }else{
-            $active = '1';
+            $request['active'] = '1';
         }
+        
         if($request->hasFile('apImage')){
             $extension = $request->apImage->getMimeType();
             if (! in_array($extension, $this->allowedImage)) {
@@ -51,45 +50,35 @@ class ApparatusController extends Controller
                 $file = $request->apImage->getClientOriginalName();
                 $filename = $date . str_replace(' ', '_', strtolower($file));
                 $store = $request->apImage->storeAs('public/apparatus', $filename);
+                $request['image'] = $filename;
                
             }
         }
-        // dd($request->apparatusId);
+        $data = $this->validate($request, [
+            'position' => 'required',
+            'name' => 'required|max:191',
+            'image' => '',
+            'number' => 'required',
+            'active' => 'required'
+        ]);
+
         if($request->apparatusId != null){
-            $result = Apparatus::find($request->apparatusId)->update([
-                'name' => $request->name,
-                'position' => $request->position,
-                'number' => $request->number,
-                'image' => $filename,
-                'active' => $active
-                ]);
-           
-            // return response()->json($request, 200);
-        
+            Apparatus::find($request->apparatusId)->update($data);
+            return back()->with('alert-success', 'Data Aparatur berhasil diupdate.');
+            
         }else{
             $result = Apparatus::create([
                 'name' => $request->name,
                 'position' => $request->position,
                 'number' => $request->number,
-                'image' => $filename,
-                'active' => $active
-                ]);
-
-        if($request->active == null){
-            $data['active'] = '0';
-        }else{
-            $data['active'] = '1';
-        }
+                'image' => $request->image,
+                'active' => $request->active
+            ]);
             
+            return back()->with('alert-success', 'Data Aparatur berhasil diupdate.');
         }
-        // $data = Apparatus::orderBy('number', 'asc')->get();
-        return redirect('apparatus');
+        
+        // return redirect('apparatus');
     }
-    public function delete($id)
-    {
-        $delete = Apparatus::find($id);
-        $delete->delete();
-        return redirect('apparatus');
-
-    }
+    
 }

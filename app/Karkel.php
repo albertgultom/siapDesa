@@ -10,4 +10,9 @@ class Karkel extends Model
     protected $guarded = [];
     protected $fillable = [];
     // protected $hidden = [];
+
+    public function familiars()
+    {
+        return $this->hasMany(Familiar::class);
+    }
 }

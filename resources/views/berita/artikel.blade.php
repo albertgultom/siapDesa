@@ -6,9 +6,12 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item list-group-item-primary">WARTA BERITA</li>
       @foreach ($tags as $item)
-        <li class="list-group-item" href="">{!!$item->name!!}</li>
+      <a href="{{route('artikel',['tag' => $item->name])}}">
+    <li class="list-group-item" >{!!$item->name!!}</li>
+      </a>
       @endforeach
     </ul>
+      </a>
   </div>
   <div class="col-lg-9">
       <div class="row">
@@ -33,19 +36,9 @@
           </a>
         @endforeach
       </div>
-      <nav aria-label="Page navigation example" style="padding-top: 20px;">
-          <ul class="pagination justify-content-end">
-              <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1">Previous</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-              </li>
-          </ul>
-      </nav>
+     <div class="text-center">
+       {!! $posts->links();!!}
+     </div>
   </div>
 </div>
 @endsection
