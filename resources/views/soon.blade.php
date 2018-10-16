@@ -79,7 +79,7 @@
         </div>
         <script>
             function Redirect() {
-                window.location="{{env('APP_URL')}}";
+                window.location="{{env('APP_URL')}}/";
             }
             setTimeout('Redirect()',2000);
         </script>
