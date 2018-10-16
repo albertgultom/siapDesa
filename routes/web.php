@@ -16,7 +16,7 @@ Route::get('/foto','HomeController@foto' )->name('foto');
 Route::get('/pelayanan', function(){
   $row = App\Profile::find(1);
   return view('layouts.pelayanan', compact('row'));
-})->name('pelayanan');
+})->name('pelayanan');  
 
 Route::resource('/post', 'PostController');
 Route::get('/posts', 'PostController@list')->name('posts');
