@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Profile;
 use App\Post;
 use App\Apparatus;
+use App\Tag;
+use App\Facility;
 
 class HomeController extends Controller
 {
@@ -88,9 +90,27 @@ class HomeController extends Controller
         return view('berita.lihat',compact('row','post','berita'));
     }
 
-    public function pelayanan()
+    public function service(Request $request)
     {
-        return view('layouts.pelayanan', ['row' => $this->row]);
+        $row   = Profile::find(1);
+        $tags  = Facility::all();
+        $posts = '';
+        
+        // dd($posts);
+        return view('service_public.index', compact('row', 'tags', 'posts'));
+        // return view('layouts.pelayanan', ['row' => $this->row]);
     }
+
+    public function services(Request $request,$oid)
+    {
+        $row   = Profile::find(1);
+        $tags  = Facility::all();
+        $posts = Post::findOrFail($oid);
+        
+        dd($posts);
+        return view('service_public.index', compact('row', 'tags', 'posts'));
+        // return view('layouts.pelayanan', ['row' => $this->row]);
+    }    
+
     
 }

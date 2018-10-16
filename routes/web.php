@@ -13,10 +13,12 @@ Route::get('/potensi','HomeController@potensi');
 Route::get('/artikel', 'HomeController@artikel')->name('artikel');
 Route::get('/artikel/{name}', 'HomeController@lihat_artikel')->name('artikel.lihat');
 Route::get('/foto','HomeController@foto' )->name('foto');
-Route::get('/pelayanan', function(){
-  $row = App\Profile::find(1);
-  return view('layouts.pelayanan', compact('row'));
-})->name('pelayanan');
+Route::get('/pelayanan', 'HomeController@service')->name('pelayanan');
+Route::get('/pelayanan/{name}', 'HomeController@services')->name('pelayanan.index');
+// Route::get('/pelayanan', function(){
+//   $row = App\Profile::find(1);
+//   return view('layouts.pelayanan', compact('row'));
+// })->name('pelayanan');
 
 Route::resource('/post', 'PostController');
 Route::get('/posts', 'PostController@list')->name('posts');
