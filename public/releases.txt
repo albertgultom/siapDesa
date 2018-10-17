@@ -1,5 +1,15 @@
-v1.0.0-alpha.beta
+v1.0.0-beta
 0000-00-00
+==========
+New:
+- Public servicing
+Improved:
+- Notification navbar
+Fixed:
+- Galleries
+
+v1.0.0-alpha.beta
+2018-10-16
 ==========
 New:
 - Categories (admin)
