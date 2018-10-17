@@ -19,6 +19,11 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.css" rel="stylesheet">
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <link href="{{ asset('css/seamless.css') }}" rel="stylesheet">
+  <style>
+    .disabled {
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body>
   <!-- NAVBAR -->
@@ -43,7 +48,7 @@
               <li class="nav-item"><a class="nav-link" href="/">beranda</a></li>
               <li class="nav-item"><a class="nav-link" href="/struktur-organisasi">monografi</a></li>
               <li class="nav-item"><a class="nav-link" href="/artikel">berita</a></li>
-              <li class="nav-item"><a class="nav-link disabled" href="{{route('pelayanan')}}">pelayanan</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{route('pelayanan')}}">pelayanan</a></li>
               {{-- <li class="nav-item"><a class="nav-link disabled" href="{{route('eniaga.index')}}">e-niaga</a></li> --}}
               {{-- <li class="nav-item"><a class="nav-link disabled" href="{{route('eniaga.index')}}">e-pustaka</a></li>
               <li class="nav-item"><a class="nav-link disabled" href="{{route('eniaga.index')}}">e-ronda</a></li> --}}
