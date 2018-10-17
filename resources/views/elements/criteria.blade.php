@@ -9,7 +9,10 @@
     @endif
 
     @if($k->tabulations->count() > 0)
-      @include('elements.tabulation', ['tabulations' => $k->tabulations])
+      @include('elements.tabulation', [
+        'tabulations' => $k->tabulations,
+        'id' => $k->id
+      ])
     @endif
 @endforeach
 </ol>

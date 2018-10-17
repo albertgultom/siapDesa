@@ -10,6 +10,7 @@ use App\Gallery;
 
 class HomeController extends Controller
 {
+    private $row;
     /**
      * Create a new controller instance.
      *
@@ -18,6 +19,7 @@ class HomeController extends Controller
     public function __construct()
     {
         // $this->middleware('auth');
+        $this->row = Profile::find(1);
     }
 
     /**
@@ -65,13 +67,13 @@ class HomeController extends Controller
     public function artikel(Request $request)
     {
         // dd($request->tag);
+        // $tag = 'Perkebunan';
         $row = Profile::find(1);
         $tags = \App\Tag::all();
         $posts = Post::where('active', '=', 1)
-            // ->where('#')
-            
+            // ->whereHas('tags.id', '=', 1)
             ->orderBy('updated_at','desc')
-            ->paginate(20)
+            ->paginate(9)
             ;
         
         // dd($posts);

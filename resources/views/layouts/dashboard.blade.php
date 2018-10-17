@@ -102,9 +102,9 @@
                         <li>
                             <a href="{{route('criteria.index')}}">Daftar Potensi</a>
                         </li>
-                        {{-- <li>
-                            <a href="#">Tambah Potensi</a>
-                        </li> --}}
+                        <li>
+                            <a href="#">Infografik Potensi</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="has-sub"> <!-- PELAYANAN -->
