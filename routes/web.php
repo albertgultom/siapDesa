@@ -15,6 +15,8 @@ Route::get('/artikel/{name}', 'HomeController@lihat_artikel')->name('artikel.lih
 Route::get('/foto','HomeController@foto' )->name('foto');
 Route::get('/pelayanan', 'HomeController@service')->name('pelayanan');
 Route::get('/pelayanan/{name}', 'HomeController@services')->name('pelayanan.index');
+Route::post('/propose_service', 'HomeController@propose_service')->name('propose_service.store');
+// Route::get('/propose_service', 'HomeController@propose_service')->name('propose_service');
 // Route::get('/pelayanan', function(){
 //   $row = App\Profile::find(1);
 //   return view('layouts.pelayanan', compact('row'));
