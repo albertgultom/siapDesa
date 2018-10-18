@@ -13,6 +13,7 @@ Route::get('/potensi','HomeController@potensi');
 Route::get('/artikel', 'HomeController@artikel')->name('artikel');
 Route::get('/artikel/{name}', 'HomeController@lihat_artikel')->name('artikel.lihat');
 Route::get('/foto','HomeController@foto' )->name('foto');
+Route::get('/galeri/{content}/{file?}', 'HomeController@galeri');
 Route::get('/pelayanan', function(){
   $row = App\Profile::find(1);
   // return view('layouts.pelayanan', compact('row'));

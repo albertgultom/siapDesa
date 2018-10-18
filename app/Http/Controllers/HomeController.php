@@ -100,5 +100,10 @@ class HomeController extends Controller
     {
         return view('layouts.pelayanan', ['row' => $this->row]);
     }
+
+    public function galeri($content, $file=null)
+    {
+        //
+    }
     
 }
