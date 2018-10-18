@@ -671,7 +671,8 @@ header {
 /*  FOOTER
 ----------------------*/
 
-.social-icons {
+.
+social-icons {
     text-align: right;
 }
 
@@ -701,6 +702,6 @@ header {
     }
 }
 
- /* .disabled {
+ .disabled {
      pointer-events: none;
- } */
+ }
