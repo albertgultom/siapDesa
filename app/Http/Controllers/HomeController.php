@@ -100,9 +100,13 @@ class HomeController extends Controller
         return view('berita.lihat',compact('row','post','berita'));
     }
 
-    public function galeri_foto(Request $request)
+    public function galeri($content, $file=false)
     {
-        $row = Profile::find(1);
+        if(!$file){
+            return view('berita.galeri', ['row' => $this->row]);
+        }else{
+            return 'liat '. $content . " " . $file;
+        }
         
     }
     
