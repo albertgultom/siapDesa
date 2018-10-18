@@ -83,7 +83,7 @@
       url: '{{ route('posts') }}',
       dataSrc: '',
     },
-    order: [[ 1, "desc" ]],
+    order: [[ 1, "asc" ]],
     columns: [
       {data: 'id'},
       {data: 'created'},
