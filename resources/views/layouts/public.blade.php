@@ -24,6 +24,7 @@
       pointer-events: none;
     }
   </style>
+  @stack('styles')
 </head>
 <body>
   <!-- NAVBAR -->
