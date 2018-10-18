@@ -16,9 +16,9 @@ Route::get('/foto', 'HomeController@foto' )->name('foto');
 Route::get('/foto/{name}', 'HomeController@lihat_foto')->name('foto.lihat');
 Route::get('/video','HomeController@video' )->name('video');
 Route::get('/galeri/{content}/{file?}', 'HomeController@galeri');
-Route::get('/pelayanan', function(){
-  return view('soon');
-})->name('pelayanan');
+Route::get('/pelayanan', 'HomeController@service')->name('pelayanan');
+Route::get('/pelayanan/{name}', 'HomeController@services')->name('pelayanan.index');
+Route::post('/propose_service', 'HomeController@propose_service')->name('propose_service.store');
 Route::get('/soon', function(){
   return view('soon');
 })->name('soon');
@@ -41,7 +41,9 @@ Route::get('profil/{name}', 'ProfileController@profil');
 // Route::get('profil/{name}', 'ProfileController@struktur');
 
 Route::resource('/gallery', 'GalleryController');
+Route::get('/gallery/content/{gallery}/{id}', 'GalleryController@content')->name('gallery.content');
 Route::get('/galleries/{content}', 'GalleryController@list')->name('galleries');
+Route::post('/gallery/store_content', 'ServicingController@store_content')->name('gallery.store_content');
 
 Route::resource('/population', 'PopulationController');
 Route::get('/population/list/{id}', 'PopulationController@list')->name('populations.list');

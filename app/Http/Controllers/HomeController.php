@@ -7,6 +7,10 @@ use App\Profile;
 use App\Post;
 use App\Apparatus;
 use App\Gallery;
+use App\Tag;
+use App\Facility;
+use App\Population;
+use App\Servicing;
 
 class HomeController extends Controller
 {
@@ -128,6 +132,91 @@ class HomeController extends Controller
         ]);
         return view('berita.lihat_foto',compact ('row','query','data'));
         // return response()->json($data);
+    }
+    
+    public function service(Request $request)
+    {
+        $row      = Profile::find(1);
+        $tags     = Facility::all();
+        $facility = '';
+        $tag      = $request->tag;    
+        // dd($request->tag);
+        return view('service_public.index', compact('row', 'tags', 'tag', 'facility'));
+        // return view('layouts.pelayanan', ['row' => $this->row]);
+    }
+
+    public function services(Request $request,$oid)
+    {
+        $row      = Profile::find(1);
+        $tags     = Facility::all();
+        $facility = Facility::findOrFail($oid);
+        $tag      = $request->tag;
+        return view('service_public.index', compact('row', 'tags', 'tag', 'facility', 'oid'));
+    }    
+
+    public function propose_service(Request $request)
+    {
+        # code...
+        $res_data = "";
+        $data     = $this->validate($request,[
+                                                'nik'         => 'required',
+                                                'facility_id' => 'required'
+                                            ]);
+
+        $check = Population::where('nik','=',$data['nik'])->get();
+
+        $data_store  = $check->map(function($item){
+            return [
+                'population_id'         => $item->id
+            ];
+        });
+
+        if ($data_store->count() == 0) {
+            # code...
+            $res_data = array
+            (
+                'status' => 0,
+                'text'   => 'NIK tidak ditemukan'
+            );
+        }
+        else {
+            # code...
+            $data = $this->validate($request,[
+                'facility_id' => 'required'
+            ]);
+            $data['population_id'] = $data_store[0]['population_id'];
+
+            $check = Servicing::where([['facility_id','=',$data['facility_id']],['population_id','=',$data['population_id']],['status','=','dibuat']])->get();
+            $data_store  = $check->map(function($item){
+                return [
+                    'population_id'         => $item->population_id
+                ];
+            });            
+            // dd($data_store->count());
+            $data_view     = $this->validate($request,[
+                'nik'         => 'required',
+                'facility_id' => 'required'
+            ]);
+
+            if ($data_store->count() == 0) {
+                Servicing::create($data);
+                $res_data = array
+                (
+                    'status' => 1,
+                    'text'   => 'NIK dengan '.$data_view['nik'].' Telah berhasil mengajukan layanan ini.'
+                );                
+            }            
+            else {
+                # code...
+                $res_data = array
+                (
+                    'status' => 0,
+                    'text'   => 'NIK dengan '.$data_view['nik'].' Telah mengajukan layanan ini sebelumnya, mungkin saat ini layanan anda telah diproses.'
+                );                
+            }
+        }
+
+        return response()->json($res_data);        
     }
     
 }
