@@ -15,6 +15,7 @@
   <div class="col-lg-9">
         @if ($tag)
         <h3>{{ $tag }}</h3>
+        <p>{!! $facility->detail !!}</p>        
         <div class="card features">
             <div class="card-body">
                 <div class="media">
@@ -42,7 +43,6 @@
                 </div>
             </div>
         </div>
-        <p>{{$facility->detail}}</p>
         @endif
   </div>
 </div>
@@ -59,12 +59,15 @@
             type:"post",
             data:{_token: CSRF_TOKEN, nik : nik, facility_id : facility_id},
             beforeSend:function(){
+                $("#loadprosess").modal('hide');                
+                $("#loadprosess").modal('show');                        
                 $('#success-block').html('');                    
                 $('#error-block').html('');
             },
             success:function(msg)
             {
                 console.log(msg.text);
+                $("#loadprosess").modal('hide');                                        
                 if (msg.status == 1)
                 {
                     $('#success-block').html(msg.text);
