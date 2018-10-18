@@ -188,4 +188,71 @@ class HomeController extends Controller
         return response()->json($res_data);        
     }
     
+    public function trace_service()
+    {
+        # code...
+        $row  = Profile::find(1);
+        $tags = Facility::all();
+        $tag  = '';
+        return view('service_public.trace', compact('row', 'tags', 'tag'));        
+    }
+
+    public function trace_services(Request $request)
+    {
+        # code...
+        $res_data   = "";
+        $data       = $this->validate($request,['nik' => 'required']);
+
+        $check      = Population::where('nik','=',$data['nik'])->get();
+        $data_store = $check->map(function($item){
+            return [
+                'population_id'         => $item->id
+            ];
+        });
+
+        if ($data_store->count() == 0) {
+            # code...
+            $res_data = array
+            (
+                'status' => 0,
+                'text'   => 'NIK tidak ditemukan',
+                'data'   => ''
+            );
+        }        
+        else {
+            # code...
+            $check      = Servicing::where([['population_id','=',$data_store[0]['population_id']]])->get();
+            $data_store = $check->map(function($item){
+                return [
+                    'id'            => $item->id,
+                    'population_id' => $item->population_id,
+                    'facility_id'   => $item->facility_id,
+                    'nik'           => $item->populations['nik'],
+                    'name'          => $item->populations['name'],
+                    'facilty'       => $item->facilities['name']
+                ];
+            });      
+            
+            if ($data_store->count() == 0) {
+                # code...
+                $res_data = array
+                (
+                    'status' => 1,
+                    'text'   => '',
+                    'data'   => 0
+                );                
+            }
+            else {
+                # code...
+                $res_data = array
+                (
+                    'status' => 0,
+                    'text'   => '',
+                    'data'   => $data_store
+                );                
+            }
+        }
+
+        return response()->json($res_data);        
+    }
 }

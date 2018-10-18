@@ -13,10 +13,13 @@ Route::get('/potensi','HomeController@potensi');
 Route::get('/artikel', 'HomeController@artikel')->name('artikel');
 Route::get('/artikel/{name}', 'HomeController@lihat_artikel')->name('artikel.lihat');
 Route::get('/foto','HomeController@foto' )->name('foto');
+// PUBLIC ROUTES --services--
 Route::get('/pelayanan', 'HomeController@service')->name('pelayanan');
 Route::get('/pelayanan/{name}', 'HomeController@services')->name('pelayanan.index');
 Route::post('/propose_service', 'HomeController@propose_service')->name('propose_service.store');
 Route::get('/propose_service', 'HomeController@propose_service')->name('propose_service');
+Route::get('/trace_service', 'HomeController@trace_service')->name('trace_service');
+Route::post('/trace_services', 'HomeController@trace_services')->name('trace_services');
 // Route::get('/pelayanan', function(){
 //   $row = App\Profile::find(1);
 //   return view('layouts.pelayanan', compact('row'));
