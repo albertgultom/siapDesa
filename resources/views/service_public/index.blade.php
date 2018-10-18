@@ -15,6 +15,7 @@
   <div class="col-lg-9">
         @if ($tag)
         <h3>{{ $tag }}</h3>
+        <p>{!! $facility->detail !!}</p>        
         <div class="card features">
             <div class="card-body">
                 <div class="media">
@@ -42,7 +43,6 @@
                 </div>
             </div>
         </div>
-        <p>{{$facility->detail}}</p>
         @endif
   </div>
 </div>
