@@ -4,19 +4,18 @@
 <div class="row">
   <div class="col-lg-3">
     <ul class="list-group list-group-flush">
-      <li class="list-group-item list-group-item-primary">WARTA BERITA</li>
+      <li class="list-group-item list-group-item-primary">KATEGORI</li>
       @foreach ($tags as $item)
-      <a href="{{route('artikel',['tag' => $item->name])}}">
-    <li class="list-group-item" >{!!$item->name!!}</li>
-      </a>
+        <a href="{{route('artikel',['tag' => $item->name])}}">
+          <li class="list-group-item" >{!!$item->name!!}</li>
+        </a>
       @endforeach
     </ul>
-      </a>
   </div>
   <div class="col-lg-9">
       <div class="row">
         @foreach ($posts as $item)            
-      <a href="{{route('artikel.lihat',$item->id)}}" class="col-12 col-lg-4 mb-2 berita">
+          <a href="{{route('artikel.lihat',$item->name)}}" class="col-12 col-lg-4 mb-2 berita">
             <div class="card features">
               <img class="card-img-top" src="{{'/storage/images//'.$item->image}}" alt="Card image cap">
               <div class="card-body">
@@ -36,9 +35,7 @@
           </a>
         @endforeach
       </div>
-     <div class="text-center">
-       {!! $posts->links();!!}
-     </div>
+     <div class="text-center">{!!$posts->appends(Request::except('page'))->links()!!}</div>
   </div>
 </div>
 @endsection
