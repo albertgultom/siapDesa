@@ -57,6 +57,7 @@
         </nav>
     </div>
   </div>
+  
   <!-- HEADER -->
   <header class="bg-gradient" id="home">
     <div class="container-fluid">
