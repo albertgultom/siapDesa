@@ -19,6 +19,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.css" rel="stylesheet">
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <link href="{{ asset('css/seamless.css') }}" rel="stylesheet">
+  <link href="{{ asset('vendor/loadme/style/loadme.css') }}" rel="stylesheet">  
   <style>
     .disabled {
       pointer-events: none;
@@ -156,6 +157,24 @@
       <a href="#" class="m-2">PRIVACY</a>
     </small> --}}
   </footer>
+
+<!-- modal -->
+<div class="example-modal">
+    <div class="modal modal-success fade" id="loadprosess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="box-content">
+
+                <div class="modal-dialog">
+                    <div class="modal-content" style="background: transparent;border: transparent;">
+                        <div style="margin-top: 320px;">
+                            <div class="loadme-rotateplane"></div>
+                            <div class="loadme-mask"></div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
   <!-- Custom JS -->
   <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
   <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
