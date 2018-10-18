@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Input;
 use App\Profile;
 use App\Post;
 use App\Apparatus;
@@ -74,34 +76,41 @@ class HomeController extends Controller
 
     public function artikel(Request $request)
     {
-        // dd($request->tag);
-        // $tag = 'Perkebunan';
-        $row = Profile::find(1);
-        $tags = \App\Tag::all();
-        $posts = Post::where('active', '=', 1)
-            // ->whereHas('tags.id', '=', 1)
-            ->orderBy('updated_at','desc')
-            ->paginate(9)
-            ;
-        
+        $tagName = Input::get('tag', false);
+        if($tagName){
+            $posts = Post::orderBy('updated_at', 'asc')
+            ->where('active', '=', 1)
+            ->whereHas('tags', function($q) use ($tagName){
+                return $q->where('name', '=', $tagName);
+            })->paginate(9);
+        }else{
+            $posts = Post::orderBy('updated_at', 'asc')
+            ->where('active', '=', 1)
+            ->paginate(9);
+        }
         // dd($posts);
-        return view('berita.artikel', compact('row', 'tags', 'posts'));
+        return view('berita.artikel', [
+            'row'  => $this->row,
+            'tags' => $this->tags,
+            'posts'=> $posts
+        ]);
     }
 
-    public function lihat_artikel($id)
+    public function lihat_artikel($name)
     {
-        $row = Profile::find(1);
-        $post = Post::findOrFail($id);
-        // dd($post->type_id);
+        $post = Post::where('name', '=', $name)->first();
         $berita = Post::where('type_id','=',$post->type_id)
-                ->whereNotIn('id',[$post->id])
-                ->orderBy('updated_at','desc')
-                ->limit(4)->get();
-        // dd($berita);
-
-        // $posts = Post::find($id);
+            ->whereNotIn('id',[$post->id])
+            ->where('active', 1)
+            ->orderBy('updated_at','desc')
+            ->limit(4)
+            ->get();
         // dd($post);
-        return view('berita.lihat',compact('row','post','berita'));
+        return view('berita.lihat',[
+            'row'    => $this->row,
+            'post'   => $post,
+            'berita' => $berita
+        ]);
     }
 
     public function galeri($content, $file=false)
