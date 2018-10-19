@@ -111,20 +111,20 @@
                     <a href="#">
                         <i class="fab fa-pinterest-p"></i>
                         Pelayanan 
-                        <span class="badge badge-warning ml-1">4</span>
+                        <span class="badge badge-warning ml-1" id="service_all"></span>
                         <span class="bot-line"></span>
                     </a>
                     <ul class="header3-sub-list list-unstyled">
                         <li>
                             <a href="/servicing/new">
                                 Pendaftaran Baru 
-                                <span class="badge badge-warning p-2">{{route('counter_services', ['name' => 'dibuat'])}}</span>
+                                <span class="badge badge-warning p-2" id="service_new"></span>
                             </a>
                         </li>
                         <li>
                             <a href="/servicing/process_service">
                                 Sedang Diproses
-                                <span class="badge badge-info p-2">12</span>
+                                <span class="badge badge-info p-2" id="service_process"></span>
                             </a>
                         </li>
                         <li><a href="/servicing/done_service">Selesai Diproses</a></li>
@@ -376,6 +376,27 @@
   <!-- Main JS-->
   <script src="{{ asset('js/main.js') }}"></script>
   <script src="{{ asset('js/app.js') }}"></script>
+  <script>
+    counter_badge('all','service_all');
+    counter_badge('dibuat','service_new');
+    counter_badge('diproses','service_process');    
+    function counter_badge(params,id) {
+        $.ajax({
+        url :'/servicing/counter_services/'+params,
+        type:"get",
+        beforeSend:function(){
+        },
+        success:function(msg)
+        {
+            $("#"+id).html(msg);                                                                                                            
+        },
+        error:function(){
+            $('#error-block').html('error');
+        }
+    })        
+    }
+
+</script>  
   @stack('scripts')
 </body>
 </html>

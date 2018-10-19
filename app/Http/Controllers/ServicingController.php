@@ -17,7 +17,22 @@ class ServicingController extends Controller
     public function servicings($name=NULL,$arg)
     {
         # code...
-        $servicing = Servicing::where($arg,$name)->orderBy('updated_at', 'desc')->get();
+        $servicing = '';
+        if ($arg == 'status') {
+            # code...
+            if ($name == 'all') {
+                # code...
+                $servicing = Servicing::where([['status','<>','selesai']])->orderBy('updated_at', 'desc')->get();
+            } else {
+                # code...
+                $servicing = Servicing::where($arg,$name)->orderBy('updated_at', 'desc')->get();                
+            }
+        }
+        else {
+            # code...
+            $servicing = Servicing::where($arg,$name)->orderBy('updated_at', 'desc')->get();            
+        }
+
         $data      = $servicing->map(function($item){
                         $i = 1;
                         return [
