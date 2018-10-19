@@ -229,7 +229,9 @@ class HomeController extends Controller
                     'facility_id'   => $item->facility_id,
                     'nik'           => $item->populations['nik'],
                     'name'          => $item->populations['name'],
-                    'facilty'       => $item->facilities['name']
+                    'facilty'       => $item->facilities['name'],
+                    'status'        => $item->status,
+                    'time_update'   => $item->updated_at 
                 ];
             });      
             
@@ -246,7 +248,7 @@ class HomeController extends Controller
                 # code...
                 $res_data = array
                 (
-                    'status' => 0,
+                    'status' => 1,
                     'text'   => '',
                     'data'   => $data_store
                 );                
