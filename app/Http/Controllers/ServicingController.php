@@ -61,8 +61,26 @@ class ServicingController extends Controller
             'facility_id'   => 'required'
         ]);
 
-        Servicing::create($data);
-        return redirect()->route('new')->with('success','Data Added');
+        $check = Population::where([['id','=',$data['population_id']],['active','=',1]])->get();
+        $data_store  = $check->map(function($item){
+            return [
+                'population_id'         => $item->id
+            ];
+        });
+        
+        if ($data_store->count() == 0) {
+            # code...
+            $res_data = array
+            (
+                'status' => 0,
+                'text'   => 'NIK tidak aktif.'
+            );
+        }
+        else 
+        {        
+            Servicing::create($data);
+            return redirect()->route('new')->with('success','Data Added');        
+        }
     }    
 
     public function new_edit($id)
