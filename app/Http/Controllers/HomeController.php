@@ -147,9 +147,7 @@ class HomeController extends Controller
         $tags     = Facility::all();
         $facility = '';
         $tag      = $request->tag;    
-        // dd($request->tag);
         return view('service_public.index', compact('row', 'tags', 'tag', 'facility'));
-        // return view('layouts.pelayanan', ['row' => $this->row]);
     }
 
     public function services(Request $request,$oid)
@@ -188,38 +186,57 @@ class HomeController extends Controller
         }
         else {
             # code...
-            $data = $this->validate($request,[
-                'facility_id' => 'required'
-            ]);
-            $data['population_id'] = $data_store[0]['population_id'];
 
-            $check = Servicing::where([['facility_id','=',$data['facility_id']],['population_id','=',$data['population_id']],['status','=','dibuat']])->get();
+            $check = Population::where([['nik','=',$data['nik']],['active','=',1]])->get();
             $data_store  = $check->map(function($item){
                 return [
-                    'population_id'         => $item->population_id
+                    'population_id'         => $item->id
                 ];
-            });            
-            // dd($data_store->count());
-            $data_view     = $this->validate($request,[
-                'nik'         => 'required',
-                'facility_id' => 'required'
-            ]);
-
+            });
+            
             if ($data_store->count() == 0) {
-                Servicing::create($data);
-                $res_data = array
-                (
-                    'status' => 1,
-                    'text'   => 'NIK dengan '.$data_view['nik'].' Telah berhasil mengajukan layanan ini.'
-                );                
-            }            
-            else {
                 # code...
                 $res_data = array
                 (
                     'status' => 0,
-                    'text'   => 'NIK dengan '.$data_view['nik'].' Telah mengajukan layanan ini sebelumnya, mungkin saat ini layanan anda telah diproses.'
-                );                
+                    'text'   => 'NIK tidak aktif, silahkan melapor ke petugas.'
+                );
+            }
+            else 
+            {
+                $data = $this->validate($request,[
+                    'facility_id' => 'required'
+                ]);
+                $data['population_id'] = $data_store[0]['population_id'];
+    
+                $check = Servicing::where([['facility_id','=',$data['facility_id']],['population_id','=',$data['population_id']],['status','=','dibuat']])->get();
+                $data_store  = $check->map(function($item){
+                    return [
+                        'population_id'         => $item->population_id
+                    ];
+                });            
+                // dd($data_store->count());
+                $data_view     = $this->validate($request,[
+                    'nik'         => 'required',
+                    'facility_id' => 'required'
+                ]);
+    
+                if ($data_store->count() == 0) {
+                    Servicing::create($data);
+                    $res_data = array
+                    (
+                        'status' => 1,
+                        'text'   => 'NIK dengan '.$data_view['nik'].' Telah berhasil mengajukan layanan ini.'
+                    );                
+                }            
+                else {
+                    # code...
+                    $res_data = array
+                    (
+                        'status' => 0,
+                        'text'   => 'NIK dengan '.$data_view['nik'].' Telah mengajukan layanan ini sebelumnya, mungkin saat ini layanan anda telah diproses.'
+                    );                
+                }            
             }
         }
 

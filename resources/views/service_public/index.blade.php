@@ -78,9 +78,7 @@
                 }
             },
             error:function(){
-                Lobibox.notify('error', {
-                    msg: 'Gagal melakukan transaksi'
-                });
+                $('#error-block').html('Error system');
             }
         })
 
