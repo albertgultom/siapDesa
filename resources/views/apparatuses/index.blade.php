@@ -45,7 +45,7 @@
       <div class="col-lg-4">
         <div class="card border-secondary">
           <div class="card-header">
-            <strong>Kategori</strong>
+            <strong>Aparatur</strong>
             <small> form</small>
           </div>
           <div class="card-body card-block">

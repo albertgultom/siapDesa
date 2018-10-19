@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Profile;
 use App\Post;
 use App\Apparatus;
+use App\Gallery;
 use App\Tag;
 use App\Facility;
 use App\Population;
@@ -73,6 +74,7 @@ class HomeController extends Controller
 
     public function artikel(Request $request)
     {
+<<<<<<< HEAD
         // dd($request->tag);
         // $tag = 'Perkebunan';
         $row = Profile::find(1);
@@ -83,12 +85,31 @@ class HomeController extends Controller
             ->paginate(9)
             ;
         
+=======
+        $tagName = Input::get('tag', false);
+        if($tagName){
+            $posts = Post::orderBy('updated_at', 'asc')
+            ->where('active', '=', 1)
+            ->whereHas('tags', function($q) use ($tagName){
+                return $q->where('name', '=', $tagName);
+            })->paginate(9);
+        }else{
+            $posts = Post::orderBy('updated_at', 'asc')
+            ->where('active', '=', 1)
+            ->paginate(9);
+        }
+>>>>>>> 4f9b33c617235a8c575cdf059be2f87e6be7f06e
         // dd($posts);
-        return view('berita.artikel', compact('row', 'tags', 'posts'));
+        return view('berita.artikel', [
+            'row'  => $this->row,
+            'tags' => $this->tags,
+            'posts'=> $posts
+        ]);
     }
 
     public function lihat_artikel($id)
     {
+<<<<<<< HEAD
         $row = Profile::find(1);
         $post = Post::findOrFail($id);
         // dd($post->type_id);
@@ -99,10 +120,53 @@ class HomeController extends Controller
         // dd($berita);
 
         // $posts = Post::find($id);
+=======
+        $post = Post::where('name', '=', $name)->first();
+        $berita = Post::where('type_id','=',$post->type_id)
+            ->whereNotIn('id',[$post->id])
+            ->where('active', 1)
+            ->orderBy('updated_at','desc')
+            ->limit(4)
+            ->get();
+>>>>>>> 4f9b33c617235a8c575cdf059be2f87e6be7f06e
         // dd($post);
-        return view('berita.lihat',compact('row','post','berita'));
+        return view('berita.lihat',[
+            'row'    => $this->row,
+            'post'   => $post,
+            'berita' => $berita
+        ]);
     }
 
+    public function galeri($content, $file=false)
+    {
+        if(!$file){
+            return view('berita.galeri', ['row' => $this->row]);
+        }else{
+            return 'liat '. $content . " " . $file;
+        }
+        
+    }
+    
+    public function lihat_foto(Request $request, $id)
+    {
+        $row = Profile::find(1);
+        $query = Gallery::findOrFail($id);
+        $contents = $query
+            ->contents()
+            ->select(['name','image'])
+            ->get();
+        $data = collect([
+            'name' => $query->name,
+            'date' => $query->updated_at->format('d-m-Y'),
+            'type' => $query->type->name,
+            'tags' => $query->tags->pluck('name'),
+            'contents' => $contents,
+        
+        ]);
+        return view('berita.lihat_foto',compact ('row','query','data'));
+        // return response()->json($data);
+    }
+    
     public function service(Request $request)
     {
         $row      = Profile::find(1);
@@ -188,6 +252,7 @@ class HomeController extends Controller
         return response()->json($res_data);        
     }
     
+<<<<<<< HEAD
     public function trace_service()
     {
         # code...
@@ -257,4 +322,6 @@ class HomeController extends Controller
 
         return response()->json($res_data);        
     }
+=======
+>>>>>>> 4f9b33c617235a8c575cdf059be2f87e6be7f06e
 }
