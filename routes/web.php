@@ -24,6 +24,15 @@ Route::get('/soon', function(){
   return view('soon');
 })->name('soon');
 
+// PUBLIC ROUTES --services--
+Route::get('/pelayanan', 'HomeController@service')->name('pelayanan');
+Route::get('/pelayanan/{name}', 'HomeController@services')->name('pelayanan.index');
+Route::post('/propose_service', 'HomeController@propose_service')->name('propose_service.store');
+Route::get('/propose_service', 'HomeController@propose_service')->name('propose_service');
+Route::get('/trace_service', 'HomeController@trace_service')->name('trace_service');
+Route::post('/trace_services', 'HomeController@trace_services')->name('trace_services');
+
+
 Route::resource('/post', 'PostController');
 Route::get('/posts', 'PostController@list')->name('posts');
 
