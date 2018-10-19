@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Profile;
 use App\Post;
 use App\Apparatus;
@@ -80,7 +86,8 @@ class HomeController extends Controller
             ->where('active', '=', 1)
             ->whereHas('tags', function($q) use ($tagName){
                 return $q->where('name', '=', $tagName);
-            })->paginate(9);
+            })
+            ->paginate(9);
         }else{
             $posts = Post::orderBy('updated_at', 'asc')
             ->where('active', '=', 1)
@@ -94,7 +101,7 @@ class HomeController extends Controller
         ]);
     }
 
-    public function lihat_artikel($id)
+    public function lihat_artikel($name)
     {
         $post = Post::where('name', '=', $name)->first();
         $berita = Post::where('type_id','=',$post->type_id)
@@ -111,15 +118,58 @@ class HomeController extends Controller
         ]);
     }
 
-    public function galeri($content, $file=false)
+    public function galeri(Request $request)
     {
-        if(!$file){
-            return view('berita.galeri', ['row' => $this->row]);
+        $content = Input::get('content', false);
+        $tagName = Input::get('tag', false);
+
+        if($tagName){
+            $a = Gallery::where([
+                    ['active', '=', 1],
+                    ['content', '=', $content]
+                ])
+                ->orderBy('updated_at', 'desc')
+                ->whereHas('tags', function($q) use ($tagName){
+                    return $q->where('name', '=', $tagName);
+                })
+                ->paginate(9);
         }else{
-            return 'liat '. $content . " " . $file;
+            $a = Gallery::where([
+                    ['active', '=', 1],
+                    ['content', '=', $content]
+                ])
+                ->orderBy('updated_at', 'desc')
+                ->paginate(9);
         }
-        
+
+        return view('berita.galeri', [
+            'row'     => $this->row,
+            'tags'    => $this->tags,
+            'content' => $content,
+            'data'    => $a
+        ]);
     }
+
+    public function lihat_album($content, $name)
+    {
+        $query = Gallery::where('name', '=', $name)->first();
+        $galleries = Gallery::where([
+            ['active', '=', 1],
+            ['content', '=', $content]
+        ])
+        ->whereNotIn('id', [$query->id])
+        ->orderBy('updated_at', 'desc')
+        ->limit(4)
+        ->select(['name', 'updated_at'])
+        ->get();
+        // dd($galleries);
+        return view('berita.album', [
+            'row'  => $this->row,
+            'content' => $content,
+            'data' => $query,
+            'list' => $galleries
+        ]);
+    } 
     
     public function lihat_foto(Request $request, $id)
     {

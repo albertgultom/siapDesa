@@ -13,6 +13,6 @@ class Content extends Model
 
     public function gallery()
     {
-        $this->belongsTo(Gallery::class);
+        $this->belongsTo(Gallery::class, 'gallery_id', 'id');
     }
 }

@@ -10,14 +10,14 @@
     <a class="nav-link p-3" href="{{route('soon')}}">Daftar Agenda</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link p-3" href="/foto">Galeri Foto</a>
+    <a class="nav-link p-3" href="{{route('galeri', ['content' => 'photo'])}}">Galeri Foto</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link p-3 disabled" href="#">Galeri Video</a>
+    <a class="nav-link p-3 disabled" href="{{route('soon')}}">Galeri Video</a>
   </li>
-  <li class="nav-item">
+  {{-- <li class="nav-item">
     <a class="nav-link p-3 disabled" href="/artikel">Produk Hukum</a>
-  </li>  
+  </li>   --}}
 </ul>
 
 <section class="container-fluid nav-section pt-3">

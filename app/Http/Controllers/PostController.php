@@ -70,8 +70,6 @@ class PostController extends Controller
             'name' => 'required|max:191',
             'image' => 'required',
             'body' => 'required',
-            
-            
         ]);
         // test user
         $data['user_id'] = Auth::id();

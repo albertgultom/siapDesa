@@ -13,7 +13,7 @@ class Gallery extends Model
 
     public function contents()
     {
-        return $this->hasMany(Content::class);
+        return $this->hasMany('App\Content', 'gallery_id', 'id');
     }
 
     public function user()

@@ -15,9 +15,9 @@
   <li class="nav-item">
     <a class="nav-link p-3 disabled" href="/infografik">Infografik</a>
   </li>
-  <li class="nav-item">
+  {{-- <li class="nav-item">
     <a class="nav-link p-3 disabled" href="/lembaga">Lembaga</a>
-  </li>
+  </li> --}}
 </ul>
 
 <section data-spy="scroll" data-target="#list-profil" data-offset="0" class="container nav-section pt-3">

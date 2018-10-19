@@ -81,9 +81,9 @@
       url: '{{ route('process_services') }}',
       dataSrc: '',
     },
-    order: [[ 0, "asc" ]],
+    order: [[ 0, "desc" ]],
     columns: [
-      {data: 'id'},
+      {data: 'updated_at'},
       {data: 'nik'},
       {data: 'name'},
       {data: 'facilty'},

@@ -5,8 +5,13 @@ New:
 - Public servicing
 Improved:
 - Notification navbar
+- Photo gallery
+- Video gallery
+- Monografi
 Fixed:
 - Galleries
+- Articel
+
 
 v1.0.0-alpha.beta
 2018-10-16
