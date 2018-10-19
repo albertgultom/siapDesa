@@ -101,7 +101,7 @@ class HomeController extends Controller
         ]);
     }
 
-    public function lihat_artikel($id)
+    public function lihat_artikel($name)
     {
         $post = Post::where('name', '=', $name)->first();
         $berita = Post::where('type_id','=',$post->type_id)
