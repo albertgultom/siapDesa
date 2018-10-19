@@ -74,18 +74,6 @@ class HomeController extends Controller
 
     public function artikel(Request $request)
     {
-<<<<<<< HEAD
-        // dd($request->tag);
-        // $tag = 'Perkebunan';
-        $row = Profile::find(1);
-        $tags = \App\Tag::all();
-        $posts = Post::where('active', '=', 1)
-            // ->whereHas('tags.id', '=', 1)
-            ->orderBy('updated_at','desc')
-            ->paginate(9)
-            ;
-        
-=======
         $tagName = Input::get('tag', false);
         if($tagName){
             $posts = Post::orderBy('updated_at', 'asc')
@@ -98,7 +86,6 @@ class HomeController extends Controller
             ->where('active', '=', 1)
             ->paginate(9);
         }
->>>>>>> 4f9b33c617235a8c575cdf059be2f87e6be7f06e
         // dd($posts);
         return view('berita.artikel', [
             'row'  => $this->row,
@@ -109,18 +96,6 @@ class HomeController extends Controller
 
     public function lihat_artikel($id)
     {
-<<<<<<< HEAD
-        $row = Profile::find(1);
-        $post = Post::findOrFail($id);
-        // dd($post->type_id);
-        $berita = Post::where('type_id','=',$post->type_id)
-                ->whereNotIn('id',[$post->id])
-                ->orderBy('updated_at','desc')
-                ->limit(4)->get();
-        // dd($berita);
-
-        // $posts = Post::find($id);
-=======
         $post = Post::where('name', '=', $name)->first();
         $berita = Post::where('type_id','=',$post->type_id)
             ->whereNotIn('id',[$post->id])
@@ -128,7 +103,6 @@ class HomeController extends Controller
             ->orderBy('updated_at','desc')
             ->limit(4)
             ->get();
->>>>>>> 4f9b33c617235a8c575cdf059be2f87e6be7f06e
         // dd($post);
         return view('berita.lihat',[
             'row'    => $this->row,
@@ -252,7 +226,6 @@ class HomeController extends Controller
         return response()->json($res_data);        
     }
     
-<<<<<<< HEAD
     public function trace_service()
     {
         # code...
@@ -322,6 +295,4 @@ class HomeController extends Controller
 
         return response()->json($res_data);        
     }
-=======
->>>>>>> 4f9b33c617235a8c575cdf059be2f87e6be7f06e
 }
