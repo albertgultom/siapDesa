@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Type;
 use App\Tag;
@@ -69,11 +70,9 @@ class PostController extends Controller
             'name' => 'required|max:191',
             'image' => 'required',
             'body' => 'required',
-            
-            
         ]);
         // test user
-        $data['user_id'] = '2';
+        $data['user_id'] = Auth::id();
         $data['created_at'] = Carbon::now(); 
         $data['updated_at'] = Carbon::now();       
 

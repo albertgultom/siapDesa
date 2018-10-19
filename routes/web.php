@@ -12,15 +12,26 @@ Route::get('/sejarah', 'HomeController@sejarah')->name('sejarah');
 Route::get('/potensi','HomeController@potensi'); 
 Route::get('/artikel', 'HomeController@artikel')->name('artikel');
 Route::get('/artikel/{name}', 'HomeController@lihat_artikel')->name('artikel.lihat');
-Route::get('/foto','HomeController@foto' )->name('foto');
-Route::get('/pelayanan', function(){
-  $row = App\Profile::find(1);
-  // return view('layouts.pelayanan', compact('row'));
-  return view('soon');
-})->name('pelayanan');
+// Route::get('/foto', 'HomeController@foto' )->name('foto');
+// Route::get('/foto/{name}', 'HomeController@lihat_foto')->name('foto.lihat');
+// Route::get('/video','HomeController@video' )->name('video');
+Route::get('/galeri', 'HomeController@galeri')->name('galeri');
+Route::get('/galeri/{content}/{name}', 'HomeController@lihat_album')->name('galeri.lihat');
+Route::get('/pelayanan', 'HomeController@service')->name('pelayanan');
+Route::get('/pelayanan/{name}', 'HomeController@services')->name('pelayanan.index');
+Route::post('/propose_service', 'HomeController@propose_service')->name('propose_service.store');
 Route::get('/soon', function(){
   return view('soon');
 })->name('soon');
+
+// PUBLIC ROUTES --services--
+Route::get('/pelayanan', 'HomeController@service')->name('pelayanan');
+Route::get('/pelayanan/{name}', 'HomeController@services')->name('pelayanan.index');
+Route::post('/propose_service', 'HomeController@propose_service')->name('propose_service.store');
+Route::get('/propose_service', 'HomeController@propose_service')->name('propose_service');
+Route::get('/trace_service', 'HomeController@trace_service')->name('trace_service');
+Route::post('/trace_services', 'HomeController@trace_services')->name('trace_services');
+
 
 Route::resource('/post', 'PostController');
 Route::get('/posts', 'PostController@list')->name('posts');
@@ -40,7 +51,9 @@ Route::get('profil/{name}', 'ProfileController@profil');
 // Route::get('profil/{name}', 'ProfileController@struktur');
 
 Route::resource('/gallery', 'GalleryController');
+Route::get('/gallery/content/{gallery}/{id}', 'GalleryController@content')->name('gallery.content');
 Route::get('/galleries/{content}', 'GalleryController@list')->name('galleries');
+Route::post('/gallery/store_content', 'ServicingController@store_content')->name('gallery.store_content');
 
 Route::resource('/population', 'PopulationController');
 Route::get('/population/list/{id}', 'PopulationController@list')->name('populations.list');

@@ -18,50 +18,45 @@
     <form action="{{route('gallery.store')}}" method="post" class="row" enctype="multipart/form-data">
       {{csrf_field()}}
       <input type="hidden" name="content" value="{{$request_content}}">
-      <div class="col-md-6">
+
+    <div class="col-md-12">
         {{-- NAME --}}
         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-          <label class="form-control-label">Judul</label>
+          <label class="form-control-label">Nama</label>
           <input type="text" name="name" placeholder="Isi Judul..." value="{{ old('name') }}" class="form-control">
           @if ($errors->has('name'))
             <small class="form-text text-danger">{{ $errors->first('name') }}</small>
           @endif
         </div>
-        {{-- TYPE & STATUS --}}
-        <div class="row">
-          <div class="form-group col-md-6">
-            <label class="form-control-label">Tipe</label>
-            <div class="select">
-              <select name="type_id" class="form-control">
-                <option selected disabled value="">Pilih Tipe</option>
-                @foreach ($types as $item)
-                  <option value="{{ $item->id }}">{{ $item->name }}</option>
-                @endforeach
-              </select>
-              @if ($errors->has('type_id'))
-                <small class="form-text text-danger">{{ $errors->first('type_id') }}</small>
-              @endif
+    </div>
+
+
+      <div class="col-md-12">
+        {{-- IMAGES --}}
+        <div class="form-group{{ $errors->has('image') ? ' has-danger' : '' }}">
+          <label class="form-control-label">Upload <span style="text-transform: lowercase;">{{$request_content}}</span></label>
+          <img id="imageFile01" src="{{asset('storage\images\no-img.png')}}" class="img-fluid mx-auto d-block mb-3" alt="">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+              <input 
+                type="file" 
+                class="custom-file-input" 
+                id="inputGroupFile01" 
+                name="image"
+                accept="image/png, image/jpeg" 
+                aria-describedby="inputGroupFileAddon01">
+              <label class="custom-file-label" for="inputGroupFile01"></label>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form-control-label">Status Aktif</div>
-            <label class="switch switch-text switch-success mt-3">
-              <input id="poststatus" type="checkbox" name="active" class="switch-input" checked>
-              <span data-on="On" data-off="Off" class="switch-label"></span>
-              <span class="switch-handle"></span>
-            </label>
-          </div>
+          @if ($errors->has('image'))
+            <small class="form-text text-danger">{{ $errors->first('image') }}</small>
+          @endif
         </div>
       </div>
-      <div class="col-lg-6">
-        {{-- TAGS --}}
-        <label for="multiple-select" class=" form-control-label">Kategori</label>
-        <select name="tags[]" id="multiple-select" multiple="" class="">
-          @foreach($tags as $item)
-            <option value="{{$item->id}}">{!! $item->name !!}</option>
-          @endforeach
-        </select>      
-      </div>
+
       <div class="col-md-12">
         <button type="submit" class="btn btn-outline-primary">Simpan</button>        
       </div>
@@ -86,17 +81,17 @@
     });
   });
 
-  var multi = new SlimSelect({
-    select: '#multiple-select'
-  })
+//   var multi = new SlimSelect({
+//     select: '#multiple-select'
+//   })
 
-  var quill = new Quill('#body',{
-    modules: {
-      toolbar: QuilljsToolbarOptions,
-    },
-    theme: 'snow',
-    placeholder: '...'
-  });
+//   var quill = new Quill('#body',{
+//     modules: {
+//       toolbar: QuilljsToolbarOptions,
+//     },
+//     theme: 'snow',
+//     placeholder: '...'
+//   });
 
   $('form').submit(function(e){
     cfg = {};

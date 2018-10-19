@@ -26,7 +26,8 @@ class ServicingController extends Controller
                             'facility_id'   => $item->facility_id,
                             'nik'           => $item->populations['nik'],
                             'name'          => $item->populations['name'],
-                            'facilty'       => $item->facilities['name']
+                            'facilty'       => $item->facilities['name'],
+                            'updated_at'    => $item->updated_at->format('d-m-Y')
                         ];
                     });
 
