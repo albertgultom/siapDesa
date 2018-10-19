@@ -360,6 +360,7 @@ header {
 }
 .card-img-top{
     max-height: 155px;
+    /* object-fit: contain; */
 }
 .client-logo{
     overflow-x: auto; 
