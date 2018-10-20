@@ -2,22 +2,21 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <!-- Global Site Tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{env('APP_GTI')}}"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{config('app.gti')}}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', "{{env('APP_GTI')}}");
+    gtag('config', "{{config('app.gti')}}");
   </script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <meta name="keywords" content="{{env('APP_NAME')}}">
-  <meta name="description" content="Situs Resmi {{env('APP_NAME')}}, Website {{env('APP_NAME')}}">
-  <meta name="google-site-verification" content="{{env('APP_GSV')}}">
-  <title>{{ config('app.name', 'Laravel') }}</title>
-  <meta name="google-site-verification" content="Mpbm3xNH7UJn-I5Pb6cmwFN-B8-yTGJ1uO0RW211hhQ">
+  <meta name="keywords" content="{{config('app.name')}}">
+  <meta name="description" content="Situs Resmi {{config('app.name')}}, Website {{config('app.name')}}">
+  <meta name="google-site-verification" content="{{config('app.gsv')}}">
+  <title>{{ config('app.name') }}</title>
   <link rel="shorcut icon" href="{{ asset('storage/images/favicon.png') }}">
   <!-- Fonts -->
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
