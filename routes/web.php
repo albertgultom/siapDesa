@@ -54,6 +54,8 @@ Route::resource('/gallery', 'GalleryController');
 Route::get('/gallery/content/{gallery}/{id}', 'GalleryController@content')->name('gallery.content');
 Route::get('/galleries/{content}', 'GalleryController@list')->name('galleries');
 Route::post('/gallery/store_content', 'GalleryController@store_content')->name('gallery.store_content');
+Route::get('/gallery/edit/{gallery}/{id}', 'GalleryController@edit')->name('gallery.edit');
+Route::put('/gallery/update/{id}', 'GalleryController@update')->name('gallery.update');
 
 Route::resource('/population', 'PopulationController');
 Route::get('/population/list/{id}', 'PopulationController@list')->name('populations.list');

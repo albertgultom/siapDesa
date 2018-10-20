@@ -125,7 +125,7 @@
               class="btn view-detail" 
               data-view="`+data+`" 
               data-toggle="modal">detail</a> | 
-            <a href="/gallery/`+data+`/edit" class="btn">edit</a>
+            <a href="/gallery/edit/`+view_content+`/`+data+`" class="btn">edit</a>
           `;
         }
       }

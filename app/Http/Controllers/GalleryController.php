@@ -37,10 +37,14 @@ class GalleryController extends Controller
         return view('galleries.create', compact('tags','types','request_content'));
     }
 
-    public function edit($id)
+    public function edit($request,$id)
     {
-        $query = Gallery::find($id);
-        return view('galleries.edit', ['content' => $query->content]);
+        $types           = Type::all();
+        $tags            = Tag::select('id', 'name')->get();
+        $request_content = $request;
+        $data            = Gallery::findOrFail($id);
+        // dd($data->type_id);
+        return view('galleries.edit', compact('tags','types','request_content', 'data'));
     }
 
     public function show(Request $request, $id)
@@ -195,4 +199,32 @@ class GalleryController extends Controller
         return redirect()->route('gallery.index', ['content' => $request->content])->with('success','Data Added');        
     }
 
+    public function update(Request $request, $id)
+    {
+        $gallery = Gallery::find($id);
+
+        $data = $this->validate($request, [
+            'type_id' => 'required',
+            'name'    => 'required|max:191',
+            'content' => 'required',
+        ]);
+        // test user
+        // $data['user_id'] = '2';
+
+        if($request->active == null){
+            $data['active'] = '0';
+        }else{
+            $data['active'] = '1';
+        }
+
+        if(!$gallery->tags()->sync($request->tags)){
+            return back()->with('alert-danger', 'Data kategori tidak dapat di update.');
+        }
+
+        if(!$gallery->update($data)){
+            return back()->with('alert-danger', 'Gallery tidak dapat di update.');
+        }
+
+        return redirect()->route('gallery.index', ['content' => $request->content])->with('alert-info', 'Gallery telah di update.');
+    }
 }
