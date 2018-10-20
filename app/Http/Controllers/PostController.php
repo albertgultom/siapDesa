@@ -129,8 +129,9 @@ class PostController extends Controller
             'image' => '',
             'body' => 'required',
         ]);
-        // test user
-        $data['user_id'] = '2';
+
+        $data['user_id'] = Auth::id();
+        $data['updated_at'] = Carbon::now();
 
         if($request->active == null){
             $data['active'] = '0';
