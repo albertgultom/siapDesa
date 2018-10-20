@@ -53,7 +53,7 @@ Route::get('profil/{name}', 'ProfileController@profil');
 Route::resource('/gallery', 'GalleryController');
 Route::get('/gallery/content/{gallery}/{id}', 'GalleryController@content')->name('gallery.content');
 Route::get('/galleries/{content}', 'GalleryController@list')->name('galleries');
-Route::post('/gallery/store_content', 'ServicingController@store_content')->name('gallery.store_content');
+Route::post('/gallery/store_content', 'GalleryController@store_content')->name('gallery.store_content');
 
 Route::resource('/population', 'PopulationController');
 Route::get('/population/list/{id}', 'PopulationController@list')->name('populations.list');

@@ -15,9 +15,10 @@
 <!-- SECTION BODY -->
 <section class="statistic-chart">
   <div class="container">
-    <form action="{{route('gallery.store')}}" method="post" class="row" enctype="multipart/form-data">
+    <form action="{{route('gallery.store_content')}}" method="post" class="row" enctype="multipart/form-data">
       {{csrf_field()}}
       <input type="hidden" name="content" value="{{$request_content}}">
+      <input type="hidden" name="gallery_id" value="{{$id}}">
 
     <div class="col-md-12">
         {{-- NAME --}}
@@ -31,6 +32,20 @@
     </div>
 
 
+    @if ($request_content == 'video')
+    <div class="col-md-12">
+        {{-- NAME --}}
+        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+          <label class="form-control-label">Link Video</label>
+          <input type="text" name="video" placeholder="Link video..." value="{{ old('video') }}" class="form-control">
+          @if ($errors->has('video'))
+            <small class="form-text text-danger">{{ $errors->first('video') }}</small>
+          @endif
+        </div>
+    </div>      
+    @endif            
+
+      @if ($request_content == 'photo')
       <div class="col-md-12">
         {{-- IMAGES --}}
         <div class="form-group{{ $errors->has('image') ? ' has-danger' : '' }}">
@@ -56,6 +71,7 @@
           @endif
         </div>
       </div>
+      @endif      
 
       <div class="col-md-12">
         <button type="submit" class="btn btn-outline-primary">Simpan</button>        

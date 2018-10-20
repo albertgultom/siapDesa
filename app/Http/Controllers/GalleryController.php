@@ -131,7 +131,68 @@ class GalleryController extends Controller
     {   
         $contents        = Content::find($id);
         $request_content = $request;
-        return view('galleries.content', compact('request_content','contents'));
+        return view('galleries.content', compact('request_content','contents','id'));
     }    
+
+    public function store_content(Request $request)
+    {
+        # code...
+        $data = $this->validate($request, [
+            'name'       => 'required|max:191',
+            'content'    => 'required',
+            'gallery_id' => 'required',
+        ]);        
+
+
+        if ($request->content == 'photo') {
+            # code...
+            $data_store = $this->validate($request, [
+                'name'       => 'required|max:191',
+                'image'      => 'required',
+                'gallery_id' => 'required',
+            ]);        
+
+            if($request->hasFile('image')){
+                $extension = $request->image->getMimeType();
+                if (! in_array($extension, $this->allowedImage)) {
+                    return back()->withInput()->withErrors(array('image' => 'Tipe file tidak di dukung.'));
+                }else{
+                    $date = date('ymdhis_');
+                    $file = $request->image->getClientOriginalName();
+                    $filename = $date . str_replace(' ', '_', strtolower($file));
+                    $store = $request->image->storeAs('public/photos', $filename);
+                    $data_store['image'] = $filename;
+                }
+            }
+    
+            $data_store['active'] = '1';
+    
+            $gallery = Content::insertGetId($data_store);
+            if(!$gallery){
+                return back()->with('alert-danger', 'Gallery '.$request->content.' tidak dapat di simpan.');
+            }            
+        }
+        else if ($request->content == 'video') {
+            # code...
+            $data_store = $this->validate($request, [
+                'name'       => 'required|max:191',
+                'video'      => 'required',
+                'gallery_id' => 'required',
+            ]);                    
+            $data_store['active'] = '1';            
+
+            if (strpos($data_store['video'], 'youtube.com/watch?v=') !== false) {
+                $data_store['video'] = str_replace('youtube.com/watch?v=','youtube.com/embed/',$data_store['video']);            
+            }
+
+            $gallery = Content::insertGetId($data_store);
+            if(!$gallery){
+                return back()->with('alert-danger', 'Gallery '.$request->content.' tidak dapat di simpan.');
+            }                        
+        }
+
+
+        return redirect()->route('gallery.index', ['content' => $request->content])->with('success','Data Added');        
+    }
 
 }
