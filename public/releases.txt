@@ -2,7 +2,7 @@ v1.0.0-rc1
 2018-10-22
 ==========
 New:
-- Potensial dashborad
+- Potensial dashboard
 Improved:
 - Database schemas
 Fixed:
