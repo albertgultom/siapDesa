@@ -1,5 +1,15 @@
+v1.0.0-rc1
+2018-10-22
+==========
+New:
+- Potensial dashborad
+Improved:
+- Database schemas
+Fixed:
+- Articel schemas
+
 v1.0.0-beta
-2019-10-19
+2018-10-19
 ==========
 New:
 - Public servicing
