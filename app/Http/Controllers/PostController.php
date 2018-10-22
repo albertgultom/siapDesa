@@ -19,7 +19,7 @@ class PostController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['list']);
     }
 
     public function index()
@@ -129,8 +129,8 @@ class PostController extends Controller
             'image' => '',
             'body' => 'required',
         ]);
-        // test user
-        $data['user_id'] = '2';
+        
+        $data['updated_at'] = Carbon::now();
 
         if($request->active == null){
             $data['active'] = '0';

@@ -79,11 +79,12 @@
     scrollY: "320px",
     scrollCollapse: true,
     paging: false,
+    ordering: false,
     ajax: {
       url: '{{ route('posts') }}',
       dataSrc: '',
     },
-    order: [[ 1, "asc" ]],
+    // order: [[ 1, "desc" ]],
     columns: [
       {data: 'id'},
       {data: 'created'},
@@ -116,12 +117,5 @@
       }
     ]
   });
-
-  // $('#myModal').on('shown.bs.modal', function () {
-  //   $('#myInput').trigger('focus')
-  // });
-
-  // var ctx = document.getElementById("tesChart");
-  // var myChart = new Chart(ctx, {});
 </script>
 @endpush

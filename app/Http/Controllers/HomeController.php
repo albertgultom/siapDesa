@@ -82,14 +82,14 @@ class HomeController extends Controller
     {
         $tagName = Input::get('tag', false);
         if($tagName){
-            $posts = Post::orderBy('updated_at', 'asc')
+            $posts = Post::orderBy('updated_at', 'desc')
             ->where('active', '=', 1)
             ->whereHas('tags', function($q) use ($tagName){
                 return $q->where('name', '=', $tagName);
             })
             ->paginate(9);
         }else{
-            $posts = Post::orderBy('updated_at', 'asc')
+            $posts = Post::orderBy('updated_at', 'desc')
             ->where('active', '=', 1)
             ->paginate(9);
         }

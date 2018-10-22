@@ -1,5 +1,5 @@
 v1.0.0-beta
-0000-00-00
+2019-10-19
 ==========
 New:
 - Public servicing
