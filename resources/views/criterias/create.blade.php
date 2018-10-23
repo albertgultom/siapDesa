@@ -6,7 +6,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h3 class="title-5 text-uppercase">daftar potensi <a href="{{route('criteria.create')}}" class="btn btn-info mt-2 ml-5 text-uppercase">Formasi Daftar Potensi</a></h3>        
+        <h3 class="title-5 text-uppercase">formasi daftar potensi</h3>        
+        <a href="/potency/criteria/branch/0" class="btn btn-info float-right"><i class="fas fa-code-branch"></i> Buat Kepala</a>        
         <hr class="line-seprate">
       </div>
     </div>
@@ -30,12 +31,13 @@
                             aria-controls="collapse{{$k['id']}}">
                             {{$k['name']}}
                         </button>
+                        <a href="/potency/criteria/branch/{{$k->id}}" class="btn btn-info float-right"><i class="fas fa-code-branch"></i> Buat Cabang</a>                        
                     </h5>
                 </div>
                 <div id="collapse{{$k['id']}}" class="collapse show" aria-labelledby="heading{{$k['id']}}" data-parent="#accordionExample">
                     <div class="card-body">
                         @if($k->criterias->count() > 0)
-                            @include('elements.criteria', ['criterias' => $k->criterias])
+                            @include('elements.criteria_create', ['criterias' => $k->criterias])
                         @endif
 
                         @if($k->tabulations->count() > 0)

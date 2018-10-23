@@ -100,4 +100,5 @@ Route::get('/servicing/counter_services/{name}', 'ServicingController@counter_se
 
 Route::prefix('potency')->group(function(){
   Route::resource('criteria', 'CriteriaController');
+  Route::get('/criteria/branch/{id}', 'CriteriaController@branch')->name('criteria.branch');;  
 });
