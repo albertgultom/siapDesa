@@ -55,14 +55,13 @@ class CriteriaController extends Controller
     {
         # code...
         $res_data = "";
-        $data     = $this->validate($request,[
-                                                'name'     => 'required',
-                                                'numeral'  => 'required',
-                                                'identity' => 'required'
-                                            ]);
-
         if ($request->tree == 4) {
             # code...
+            $data     = $this->validate($request,[
+                'name'     => 'required',
+                'numeral'  => 'required',
+                'identity' => 'required'
+            ]);            
             $data['criteria_id']        = $request->oid;
             $data['numeral_2']          = 0;
             $data['identity_2']         = 0;
@@ -77,7 +76,9 @@ class CriteriaController extends Controller
 
         } else {
             # code...
-            $data_1['name']              = $request->name;
+            $data_1     = $this->validate($request,[
+                'name'     => 'required'
+            ]);            
             $data_1['criteriaable_id']   = $request->oid;
             $data_1['criteriaable_type'] = 'App\Criteria';
             $data_1['tree']              = $request->tree + 1;

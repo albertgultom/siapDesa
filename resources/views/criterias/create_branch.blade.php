@@ -3,35 +3,39 @@
 @section('content')
 <!-- TITLE -->
 <section class="welcome p-t-10">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h3 class="title-5 text-uppercase">buat cabang</h3>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @if ($data != null)      
+                <h3 class="title-5 text-uppercase">buat cabang</h3>
+                @endif
+                @if ($data == null)      
+                <h3 class="title-5 text-uppercase">buat Kepala</h3>
+                @endif                                
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <hr class="line-seprate">
 <!-- SECTION BODY -->
 <section class="statistic-chart">
+    @if ($data != null)
     <div class="container">
         <div class="col-md-6">
-
             <div class="row">
                 <div class="form-group{{ $errors->has('nik') ? ' has-danger' : '' }}">
                     <label class="form-control-label text-uppercase">Nama Induk</label>
                     <input type="text" name="nik" value="{{ $data != null ? $data->name : '' }}" class="form-control" disabled="disabled">
-                    <input type="hidden" id="oid_parent" value="{{ $id }}">
-                    <input type="hidden" id="tree_parent" value="{{ $data != null ? $data->name : null }}"
                 </div>            
-            </div>
-            
+            </div>            
         </div>
-
-    </div>
+    </div>  
     <hr class="line-seprate">
+    @endif    
     <div class="container" style="padding-top: 10px;">
+            <input type="hidden" id="oid_parent" value="{{ $id }}">
+            <input type="hidden" id="tree_parent" value="{{ $data != null ? $data->tree : null }}">                
         <div class="row">
         <div class="col-md-6">
                 {{-- NAME --}}
@@ -44,24 +48,32 @@
                 </div>                
 
                 {{-- IDENTITY --}}
-                <div class="form-group{{ $errors->has('identity') ? ' has-danger' : '' }}">
-                    <label class="form-control-label">Satuan</label>
-                    <input type="text" name="identity" id="identity" placeholder="Satuan" value="{{ old('identity') }}" class="form-control">
-                    @if ($errors->has('identity'))
-                        <small class="form-text text-danger">{{ $errors->first('identity') }}</small>
+                @if ($data != null)                      
+                    @if ($data->tree == 4)
+                    <div class="form-group{{ $errors->has('identity') ? ' has-danger' : '' }}">
+                        <label class="form-control-label">Satuan</label>
+                        <input type="text" name="identity" id="identity" placeholder="Satuan" value="{{ old('identity') }}" class="form-control">
+                        @if ($errors->has('identity'))
+                            <small class="form-text text-danger">{{ $errors->first('identity') }}</small>
+                        @endif
+                    </div>    
                     @endif
-                </div>                
+                @endif                            
 
             </div>
             <div class="col-md-6">
                 {{-- NUMERAL --}}
-                <div class="form-group{{ $errors->has('numeral') ? ' has-danger' : '' }}">
-                    <label class="form-control-label">Numerik</label>
-                    <input type="text" name="numeral" id="numeral" placeholder="Numerik" value="{{ old('numeral') }}" class="form-control">
-                    @if ($errors->has('numeral'))
-                        <small class="form-text text-danger">{{ $errors->first('numeral') }}</small>
+                @if ($data != null)       
+                    @if ($data->tree == 4)                                               
+                    <div class="form-group{{ $errors->has('numeral') ? ' has-danger' : '' }}">
+                        <label class="form-control-label">Numerik</label>
+                        <input type="text" name="numeral" id="numeral" placeholder="Numerik" value="{{ old('numeral') }}" class="form-control">
+                        @if ($errors->has('numeral'))
+                            <small class="form-text text-danger">{{ $errors->first('numeral') }}</small>
+                        @endif
+                    </div>
                     @endif
-                </div>                
+                @endif                                    
 
             </div>
             <button type="submit" class="btn btn-outline-primary" id="btn-submit-form">Simpan</button>        
