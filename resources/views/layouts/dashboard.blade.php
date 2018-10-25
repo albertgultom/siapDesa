@@ -73,24 +73,13 @@
                         <span class="bot-line"></span>
                     </a>
                     <ul class="header3-sub-list list-unstyled">
-                        <li>
-                            <a href="/apparatus">Perangkat Desa</a>
-                        </li>
-                        <li>
-                            <a href="/profil/desa">Desa</a>
-                        </li>
-                        <li>
-                            <a href="/profil/sejarah">Sejarah</a>
-                        </li>
-                        <li>
-                            <a href="/profil/vismis">Visi dan Misi</a>
-                        </li>
-                        <li>
-                            <a href="/profil/struktur">Struktur Organisasi</a>
-                        </li>
-                        <li>
-                        <a href="/profil/map">Map</a>
-                    </li>
+                        <li><a href="/apparatus">Perangkat Desa</a></li>
+                        <li><a href="/profil/desa">Desa</a></li>
+                        <li><a href="/profil/sejarah">Sejarah</a></li>
+                        <li><a href="/profil/vismis">Visi dan Misi</a></li>
+                        <li><a href="/profil/struktur">Struktur Organisasi</a></li>
+                        <li><a href="/profil/map">Map</a></li>
+                        <li><a href="{{route('juristical.index')}}">Produk Hukum</a></li>
                     </ul>
                 </li>
                 <li class="has-sub"> <!-- POTENSI -->

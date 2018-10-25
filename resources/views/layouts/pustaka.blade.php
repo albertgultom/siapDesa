@@ -6,18 +6,18 @@
   <li class="nav-item">
     <a class="nav-link p-3" href="/artikel">Warta Berita</a>
   </li>
-  <li class="nav-item">
+  {{-- <li class="nav-item">
     <a class="nav-link p-3" href="{{route('soon')}}">Daftar Agenda</a>
-  </li>
+  </li> --}}
   <li class="nav-item">
     <a class="nav-link p-3" href="{{route('galeri', ['content' => 'photo'])}}">Galeri Foto</a>
   </li>
   <li class="nav-item">
     <a class="nav-link p-3 disabled" href="{{route('soon')}}">Galeri Video</a>
   </li>
-  {{-- <li class="nav-item">
-    <a class="nav-link p-3 disabled" href="/artikel">Produk Hukum</a>
-  </li>   --}}
+  <li class="nav-item">
+  <a class="nav-link p-3" href="{{route('soon')}}">Produk Hukum</a>
+  </li>  
 </ul>
 
 <section class="container-fluid nav-section pt-3">
