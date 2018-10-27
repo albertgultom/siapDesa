@@ -15,6 +15,7 @@ class AddFieldCriterias extends Migration
     {
         Schema::table('criterias', function (Blueprint $table) {
             $table->tinyInteger('tree')->default(0);
+            $table->tinyInteger('comparative')->default(1);            
             $table->timestamps();                                   
         });
     }
@@ -29,6 +30,7 @@ class AddFieldCriterias extends Migration
         //
         Schema::table('criterias', function (Blueprint $table) {
             $table->dropColumn('tree');
+            $table->dropColumn('comparative');            
         });        
     }
 }

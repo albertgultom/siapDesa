@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use App\Criteria;
 use App\Tabulation;
+use App\Tabulations_detail;
 
 class CriteriaController extends Controller
 {
@@ -36,19 +37,56 @@ class CriteriaController extends Controller
         } 
     }
 
+    public function show_tabulations($id,$arg=NULL)
+    {
+        $query = Tabulation::where([['criteria_id','=',$id]])->get();
+        if ($arg == 'data') {
+            # code...
+            if (count($query) == 0) {
+                # code...
+                return array();
+            } else {
+                # code...
+                return $query;
+            }                        
+        } elseif ($arg == 'json') {
+            # code...
+            return response()->json($query);            
+        } 
+    }    
+
     public function create()
     {
         $data = Criteria::where('criteriaable_id', null)->get();
-        // dd($data);
         return view('criterias.create', compact('data'));
     }
 
     public function branch($id)
     {
         # code...
-        $data = $this->show($id,'data');
-        // dd($data);
-        return view('criterias.create_branch', compact('data','id'));        
+        $data               = $this->show($id,'data');
+        $comparative        = ($data != null) ? $data->comparative : '1';
+        $tabulations        = 0;
+        $detail_tabulations = null;
+        if ($comparative == 1) {
+            # code...
+            $tabulations = 0;
+        } 
+        else {
+            # code...
+            $tabulations = $this->show_tabulations($data->id,'data');
+            // dd($tabulations);
+            if ($tabulations != array()) {
+                # code...
+                $detail_tabulations = Tabulations_detail::where([['tabulations_id','=',$tabulations[0]->id]])->get();
+            }
+            else {
+                # code...
+                $detail_tabulations = 0;
+            }
+        }
+
+        return view('criterias.create_branch', compact('data', 'id', 'comparative', 'tabulations', 'detail_tabulations'));        
     }
 
     public function store(Request $request)
@@ -63,9 +101,6 @@ class CriteriaController extends Controller
                 'identity' => 'required'
             ]);            
             $data['criteria_id']        = $request->oid;
-            $data['numeral_2']          = 0;
-            $data['identity_2']         = 0;
-            $data['status_available_2'] = 0;
             Tabulation::create($data);
             $res_data = array
             (
@@ -76,27 +111,111 @@ class CriteriaController extends Controller
 
         } else {
             # code...
-            $data_1     = $this->validate($request,[
-                'name'     => 'required'
-            ]);            
-            $data_1['criteriaable_id']   = $request->oid;
-            $data_1['criteriaable_type'] = 'App\Criteria';
-            $data_1['tree']              = $request->tree + 1;
-            if (($request->tree + 1) == 1) {
+            if ($request->comparative_parent == 0) {
                 # code...
-                $data_1['criteriaable_id']   = NULL;                
+                $data_1     = $this->validate($request,[
+                    'name'     => 'required'
+                ]);            
+                $data_1['criteriaable_id']   = $request->oid;
+                $data_1['criteriaable_type'] = 'App\Criteria';
+                $data_1['tree']              = $request->tree + 1;
+                $data_1['comparative']       = $request->comparative;
+                if (($request->tree + 1) == 1) {
+                    # code...
+                    $data_1['criteriaable_id']   = NULL;                
+                }
+                Criteria::create($data_1);
+                $res_data = array
+                (
+                    'status' => 1,
+                    'text'   => 'Formasi daftar potensi telah ditambahkan',
+                    'url'    => '/potency/criteria/create '
+                );                                            
             }
-            Criteria::create($data_1);
-            $res_data = array
-            (
-                'status' => 1,
-                'text'   => 'Formasi daftar potensi telah ditambahkan',
-                'url'    => '/potency/criteria/create '
-            );                            
+            elseif ($request->comparative_parent == 1) {
+                # code...
+                $data     = $this->validate($request,[
+                    'name'     => 'required',
+                    'numeral'  => 'required',
+                    'identity' => 'required'
+                ]);            
+                $data['criteria_id'] = $request->oid;
+                $data['comparative'] = $request->comparative;
+                Tabulation::create($data);
+                $res_data = array
+                (
+                    'status' => 1,
+                    'text'   => 'Formasi daftar potensi telah ditambahkan',
+                    'url'    => '/potency/criteria/create '
+                );                
+            }
         }
         
         return response()->json($res_data);        
 
     }
 
+    public function new_store(Request $request)
+    {
+        $data_detail = $request->data_detail;
+        $tabulations = $this->show_tabulations($request->oid_parent,'data');
+        $data['criteria_id'] = $request->oid_parent;
+        $data['name']        = 0;
+        $data['numeral']     = 0;
+        $data['identity']    = 0;
+        $data['comparative'] = $request->comparative_parent;
+        $header_id = Tabulation::insertGetId($data);
+        $res_data = array
+        (
+            'status' => 1,
+            'text'   => 'Formasi daftar potensi telah ditambahkan',
+            'url'    => '/potency/criteria/create '
+        );
+        
+        if ($request->comparative_parent > 1) {
+            # code...
+            for ($i=0; $i <= $request->comparative_parent; $i++) { 
+                # code...
+                $data_detail_store['tabulations_id'] = $header_id;
+                if ($tabulations == array()) {
+                    # code...
+                    $data_detail_store['name']     = $data_detail[$i]['data'];
+                    $data_detail_store['title']    = $data_detail[$i]['data'];
+                    $data_detail_store['numeral']  = 0;
+                    $data_detail_store['identity'] = 0;
+                } else {
+                    # code...
+                    if ($i == 0) {
+                        # code...
+                        $data_detail_store['name']     = $data_detail[$i]['data'];
+                        $data_detail_store['numeral']  = 0;
+                        $data_detail_store['identity'] = 0;
+                        $data_detail_store['title']    = 0;
+                    }
+                    else {
+                        # code...
+                        $data_detail_store['name']     = 0;
+                        $data_detail_store['numeral']  = $data_detail[$i]['data'];
+                        $data_detail_store['identity'] = 0;
+                        $data_detail_store['title']    = 0;                        
+                    }
+                }
+                $data_detail_store['comparative']    = $request->comparative_parent;
+                Tabulations_detail::create($data_detail_store);
+                $res_data = array
+                (
+                    'status' => 1,
+                    'text'   => 'Formasi daftar potensi telah ditambahkan',
+                    'url'    => '/potency/criteria/create '
+                );                
+            }
+        }
+
+        return response()->json($res_data);        
+    }    
+
+    public function detail_tabulations($id)
+    {
+        # code...
+    }
 }
