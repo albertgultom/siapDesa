@@ -15,9 +15,7 @@ class AddFieldTabulation extends Migration
     {
         Schema::table('tabulations', function (Blueprint $table) {
             $table->tinyInteger('status_available')->default(2);
-            $table->decimal('numeral_2', 10, 2)->default(0);            
-            $table->string('identity_2', 50)->default(0);       
-            $table->tinyInteger('status_available_2')->default(2);      
+            $table->tinyInteger('comparative')->default(0);                        
             $table->timestamps();                       
         });
     }
@@ -32,9 +30,7 @@ class AddFieldTabulation extends Migration
         //
         Schema::table('tabulations', function (Blueprint $table) {
             $table->dropColumn('status_available');
-            $table->dropColumn('numeral_2');            
-            $table->dropColumn('identity_2');            
-            $table->dropColumn('status_available_2');            
+            $table->dropColumn('comparative');            
         });        
     }
 }

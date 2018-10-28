@@ -39,7 +39,7 @@
                         @endif
 
                         @if($k->tabulations->count() > 0)
-                            @include('elements.tabulation', ['tabulations' => $k->tabulations])
+                            @include('elements.tabulation', ['tabulations' => $k->tabulations, 'criterias' => $k->criterias])
                         @endif
                     </div>
                 </div>

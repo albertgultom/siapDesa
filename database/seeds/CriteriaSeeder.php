@@ -80,28 +80,19 @@ class CriteriaSeeder extends Seeder
                 'name'               => 'Sawah irigasi teknis',
                 'numeral'            => 190.95,
                 'identity'           => 'Ha',
-                'status_available'   => 2,
-                'numeral_2'          => 0,
-                'identity_2'         => 0,
-                'status_available_2' => 2
+                'status_available'   => 2
             ],[
                 'cid'                => 4,
                 'name'               => 'Sawah irigasi 1/2 teknis',
                 'numeral'            => 10,
                 'identity'           => 'Ha',
-                'status_available'   => 2,
-                'numeral_2'          => 0,
-                'identity_2'         => 0,
-                'status_available_2' => 2
+                'status_available'   => 2
             ],[
                 'cid'                => 4,
                 'name'               => 'Sawah Tadah Hujan',
                 'numeral'            => .5,
                 'identity'           => 'Ha',
-                'status_available'   => 2,
-                'numeral_2'          => 0,
-                'identity_2'         => 0,
-                'status_available_2' => 2
+                'status_available'   => 2
             ]
         ];
 
@@ -112,9 +103,6 @@ class CriteriaSeeder extends Seeder
                 'numeral'            => $value['numeral'],
                 'identity'           => $value['identity'],
                 'status_available'   => $value['status_available'],
-                'numeral_2'          => $value['numeral_2'],
-                'identity_2'         => $value['identity_2'],
-                'status_available_2' => $value['status_available_2'],
             ]);
         }
     }
