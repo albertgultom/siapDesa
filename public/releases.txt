@@ -1,3 +1,15 @@
+v1.0.0-rc2
+0000-00-00
+==========
+New:
+- Juristical schemas
+- Juristical (admin)
+Improved:
+- Servicing (public)
+- Potensial (admin)
+Fixed:
+- Juristical display panel
+
 v1.0.0-rc1
 2018-10-22
 ==========

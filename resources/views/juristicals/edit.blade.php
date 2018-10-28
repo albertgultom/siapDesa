@@ -89,7 +89,7 @@
     cfg = {};
     cek = quill.getContents().ops;
     convert = new QuillDeltaToHtmlConverter(cek, cfg).convert();
-    $('input[name="body"]').val(convert);
+    $('input[name="detail"]').val(convert);
   });
 </script>
 @endpush
