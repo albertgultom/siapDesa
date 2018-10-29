@@ -11,7 +11,7 @@ class PopulationController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['list']);
     }
     
     public function index()
@@ -57,7 +57,7 @@ class PopulationController extends Controller
                             'religion'                 => $item->religion,
                             'status'                   => $item->status,
                             'education'                => $item->education->name,
-                            'occupation'               => $item->occupation->name,
+                            // 'occupation'               => $item->occupation->name,
                             'active'                   => $active,
                             'created'                  => $item->updated_at->format('d-m-Y')
                         ];
