@@ -4,9 +4,11 @@ v1.0.0-rc2
 New:
 - Juristical schemas
 - Juristical (admin)
+- Juristical (public)
 Improved:
 - Servicing (public)
 - Potensial (admin)
+- Population rendering
 Fixed:
 - Juristical display panel
 

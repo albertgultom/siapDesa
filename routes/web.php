@@ -12,11 +12,9 @@ Route::get('/sejarah', 'HomeController@sejarah')->name('sejarah');
 Route::get('/potensi','HomeController@potensi'); 
 Route::get('/artikel', 'HomeController@artikel')->name('artikel');
 Route::get('/artikel/{name}', 'HomeController@lihat_artikel')->name('artikel.lihat');
-// Route::get('/foto', 'HomeController@foto' )->name('foto');
-// Route::get('/foto/{name}', 'HomeController@lihat_foto')->name('foto.lihat');
-// Route::get('/video','HomeController@video' )->name('video');
 Route::get('/galeri', 'HomeController@galeri')->name('galeri');
 Route::get('/galeri/{content}/{name}', 'HomeController@lihat_album')->name('galeri.lihat');
+Route::get('/produk-hukum/{name?}', 'HomeController@hukum')->name('produk-hukum');
 Route::get('/pelayanan', 'HomeController@service')->name('pelayanan');
 Route::get('/pelayanan/{name}', 'HomeController@services')->name('pelayanan.index');
 Route::post('/propose_service', 'HomeController@propose_service')->name('propose_service.store');
@@ -108,3 +106,6 @@ Route::prefix('potency')->group(function(){
 // PRODUK HUKUM
 Route::resource('/juristical', 'JuristicalController')->except(['destroy', 'show']);
 Route::get('/juristicals', 'JuristicalController@list')->name('juristicals');
+
+// E-NIAGA
+Route::prefix('eniaga')->group(function(){});

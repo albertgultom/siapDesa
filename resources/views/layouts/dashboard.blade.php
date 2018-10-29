@@ -132,11 +132,15 @@
                         <li><a href="{{route('education.index')}}">Master Pendidikan</a></li>
                     </ul>
                 </li>
-                {{-- <li>
-                    <a href="table.html">
-                        <i class="fas fa-university"></i>
-                        <span class="bot-line"></span>Produk Hukum</a>
-                </li> --}}
+                <li class="has-sub"> <!-- E-NIAGA -->
+                    <a href="#">
+                        <i class="fas fa-shopping-basket"></i>E-Niaga
+                        <span class="bot-line"></span>
+                    </a>
+                    <ul class="header3-sub-list list-unstyled">
+                        <li><a href="{{route('soon')}}">segera hadir...</a></li>
+                    </ul>
+                </li>
             </ul>
           </div>
           <div class="header__tool">

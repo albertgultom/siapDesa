@@ -16,7 +16,7 @@
     <a class="nav-link p-3 disabled" href="{{route('soon')}}">Galeri Video</a>
   </li>
   <li class="nav-item">
-  <a class="nav-link p-3" href="{{route('soon')}}">Produk Hukum</a>
+  <a class="nav-link p-3" href="{{route('produk-hukum')}}">Produk Hukum</a>
   </li>  
 </ul>
 
