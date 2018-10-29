@@ -46,7 +46,7 @@
                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                     <label class="form-control-label">Nama</label>
                     <input type="text" name="name" id="name" placeholder="Nama" value="{{ old('name') }}" class="form-control">
-                    <small class="form-text text-danger" id="msg_name">{{ $errors->first('name') }}</small>
+                    <small class="form-text text-danger" id="msg_name"></small>
                 </div>                
 
                 {{-- IDENTITY --}}
@@ -55,7 +55,7 @@
                     <div class="form-group{{ $errors->has('identity') ? ' has-danger' : '' }}">
                         <label class="form-control-label">Satuan</label>
                         <input type="text" name="identity" id="identity" placeholder="Satuan" value="{{ old('identity') }}" class="form-control">
-                        <small class="form-text text-danger">{{ $errors->first('identity') }}</small>
+                        <small class="form-text text-danger" id="msg_satuan"></small>
                     </div>    
                     @endif
                 @endif                            
@@ -64,8 +64,8 @@
                 {{-- comparative --}}
                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                     <label class="form-control-label">Data Pembanding</label>
-                    <input type="text" name="comparative" id="comparative" placeholder="Data Pembanding" value="{{ old('comparative') }}" class="form-control">
-                    <small class="form-text text-danger" id="msg_comparative">{{ $errors->first('comparative') }}</small>
+                    <input type="number" name="comparative" id="comparative" placeholder="Data Pembanding" value="{{ old('comparative') }}" class="form-control">
+                    <small class="form-text text-danger" id="msg_comparative"></small>
                 </div>                
 
                 {{-- NUMERAL --}}
@@ -73,8 +73,8 @@
                     @if ($data->tree == 4 || $comparative == 1)                                               
                     <div class="form-group{{ $errors->has('numeral') ? ' has-danger' : '' }}">
                         <label class="form-control-label">Numerik</label>
-                        <input type="text" name="numeral" id="numeral" placeholder="Numerik" value="{{ old('numeral') }}" class="form-control">
-                        <small class="form-text text-danger">{{ $errors->first('numeral') }}</small>
+                        <input type="number" name="numeral" id="numeral" placeholder="Numerik" value="{{ old('numeral') }}" class="form-control">
+                        <small class="form-text text-danger"></small>
                     </div>
                     @endif
                 @endif                                    

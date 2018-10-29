@@ -15,6 +15,7 @@ class AddFieldDetailTabulation extends Migration
     {
         Schema::create('tabulations_detail', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('criteria_id');
             $table->unsignedInteger('tabulations_id');
             $table->string('name', 100);
             $table->string('title', 100);            
@@ -35,6 +36,7 @@ class AddFieldDetailTabulation extends Migration
     {
         Schema::create('tabulations_detail', function (Blueprint $table) {
             $table->dropColumn('id');
+            $table->dropColumn('criteria_id');            
             $table->dropColumn('tabulations_id');
             $table->dropColumn('name', 100);
             $table->dropColumn('title', 100);            

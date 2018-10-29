@@ -65,10 +65,10 @@ class CriteriaController extends Controller
     {
         # code...
         $data               = $this->show($id,'data');
-        $comparative        = ($data != null) ? $data->comparative : '1';
+        $comparative        = ($data != null) ? $data->comparative : '0';
         $tabulations        = 0;
         $detail_tabulations = null;
-        if ($comparative == 1) {
+        if ($comparative == 0) {
             # code...
             $tabulations = 0;
         } 
@@ -176,6 +176,7 @@ class CriteriaController extends Controller
             # code...
             for ($i=0; $i <= $request->comparative_parent; $i++) { 
                 # code...
+                $data_detail_store['criteria_id']    = $request->oid_parent;
                 $data_detail_store['tabulations_id'] = $header_id;
                 if ($tabulations == array()) {
                     # code...
