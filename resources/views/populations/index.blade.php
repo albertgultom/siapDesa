@@ -21,7 +21,7 @@
         <div class="table-responsive m-b-40">
           <div class="table-data__tool">
             <div class="table-data__tool-left">
-            <a href="{{route('population.create')}}" class="btn btn-info mt-2 ml-5">Tambah Penduduk</a>
+              <a href="{{route('population.create')}}" class="btn btn-info mt-2 ml-5">Tambah Penduduk</a>
             </div>
           </div>
           {{-- <table id="populationtable"> --}}
@@ -37,13 +37,9 @@
             </thead>
             <tbody></tbody>
           </table>
+          <div class="table-data__load"></div>
         </div>
       </div>
-      <!-- Button trigger modal -->
-      {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Launch demo modal
-      </button> --}}
-      {{-- <canvas id="tesChart"></canvas> --}}
     </div>
   </div>
 </section>
@@ -129,48 +125,56 @@
 
 @push('scripts')
 <script>
-  $("#populationtable").DataTable({
-    scrollY: "320px",
-    scrollCollapse: true,
-    paging: false,
-    ajax: {
-      url: '{{ route('populations') }}',
-      dataSrc: '',
-    },
-    order: [[ 0, "asc" ]],
-    columns: [
-      {data: 'id'},
-      {data: 'nik'},
-      {data: 'name'},
-    ],
-    columnDefs: [
-      {
-        targets: [ 0 ],
-        visible: false,
-        searchable: false
+  $('<div class="loading">Loading, please wait...!</div>').appendTo('div.table-data__load');
+  $(document).ready(function(){
+    $("#populationtable").DataTable({
+      "bProcessing": true,
+      "bServerSide": true,
+      deferRender: true,
+      scrollY: "320px",
+      scrollCollapse: true,
+      paging: false,
+      ajax: {
+        url: '{{ route('populations') }}',
+        dataSrc: '',
       },
-      {
-        targets: [ 3 ],
-        data: 'active',
-        render: function ( data, type, row, meta ) {
-          return `
-            <label class="au-checkbox">
-              <input type="checkbox" `+data+`>
-              <span class="au-checkmark"></span>
-            </label>`;
+      order: [[ 0, "asc" ]],
+      columns: [
+        {data: 'id'},
+        {data: 'nik'},
+        {data: 'name'},
+      ],
+      columnDefs: [
+        {
+          targets: [ 0 ],
+          visible: false,
+          searchable: false
+        },
+        {
+          targets: [ 3 ],
+          data: 'active',
+          render: function ( data, type, row, meta ) {
+            return `
+              <label class="au-checkbox">
+                <input type="checkbox" `+data+`>
+                <span class="au-checkmark"></span>
+              </label>`;
+          }
+        },      
+        {
+          targets: [4],
+          data: 'id',
+          render: function ( data, type, row, meta ) {
+            return '<a href="#!" class="btn view-detail" data-view="'+data+'" data-toggle="modal">detail</a>'+
+                    '| <a href="population/'+data+'/edit" class="btn">edit</a>';
+          }
         }
-      },      
-      {
-        targets: [4],
-        data: 'id',
-        render: function ( data, type, row, meta ) {
-          return '<a href="#!" class="btn view-detail" data-view="'+data+'" data-toggle="modal">detail</a>'+
-                  '| <a href="population/'+data+'/edit" class="btn">edit</a>';
-        }
+      ],
+      "initComplete": function( settings, json ) {
+        $('div.loading').remove();
       }
-    ]
+    });
   });
-
   $(document).on('click', '.view-detail', function(e){
     e.preventDefault();
     id = $(this).data('view');
@@ -203,7 +207,6 @@
       alert( "Request failed: " + textStatus );
     });
   });
-
 
   // $('#myModal').on('shown.bs.modal', function () {
   //   $('#myInput').trigger('focus')

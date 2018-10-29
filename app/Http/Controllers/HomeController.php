@@ -362,4 +362,16 @@ class HomeController extends Controller
 
         return response()->json($res_data);        
     }
+
+    public function hukum($name=null)
+    {
+        $row = Profile::find(1);
+        if(!$name){
+            $data = \App\Juristical::orderBy('updated_at', 'desc')->paginate(9);
+            return view('juristicals.board', compact('data','row'));
+        }else{
+            $data = \App\Juristical::where('name', '=', $name)->first();
+            return view('juristicals.show', compact('data','row'));
+        }
+    }
 }

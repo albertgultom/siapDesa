@@ -1,5 +1,29 @@
+v1.0.0-rc2
+0000-00-00
+==========
+New:
+- Juristical schemas
+- Juristical (admin)
+- Juristical (public)
+Improved:
+- Servicing (public)
+- Potensial (admin)
+- Population rendering
+Fixed:
+- Juristical display panel
+
+v1.0.0-rc1
+2018-10-22
+==========
+New:
+- Potensial dashboard
+Improved:
+- Database schemas
+Fixed:
+- Articel schemas
+
 v1.0.0-beta
-2019-10-19
+2018-10-19
 ==========
 New:
 - Public servicing

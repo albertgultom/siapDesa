@@ -201,7 +201,7 @@ p.lead {
 .nav-middle.is-scrolling {
     position: fixed;
     top: 56px;
-    z-index: 1;
+    z-index: 99;
     width: 100%;
     -webkit-box-shadow: 0 0 6px 0 #6D4C41;
     -moz-box-shadow: 0 0 6px 0 #6D4C41;
