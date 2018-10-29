@@ -92,7 +92,10 @@
                             <a href="{{route('criteria.index')}}">Daftar Potensi</a>
                         </li>
                         <li>
-                            <a href="#">Infografik Potensi</a>
+                            <a href="{{route('criteria.create')}}">Formasi Potensi</a>
+                        </li>
+                        <li>
+                            <a href="#">Publikasi Potensi</a>
                         </li>
                     </ul>
                 </li>

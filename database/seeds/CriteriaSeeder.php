@@ -70,7 +70,9 @@ class CriteriaSeeder extends Seeder
                 'name'              => $value['name'],
                 'criteriaable_id'   => $value['criteriaable_id'],
                 'criteriaable_type' => $value['criteriaable_type'],
-                'tree'              => $value['tree']
+                'tree'              => $value['tree'],
+                'created_at'         => Carbon\Carbon::now(),
+                'updated_at'         => Carbon\Carbon::now()
             ]);
         }
 
@@ -103,6 +105,8 @@ class CriteriaSeeder extends Seeder
                 'numeral'            => $value['numeral'],
                 'identity'           => $value['identity'],
                 'status_available'   => $value['status_available'],
+                'created_at'         => Carbon\Carbon::now(),
+                'updated_at'         => Carbon\Carbon::now()
             ]);
         }
     }
