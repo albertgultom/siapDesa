@@ -31,7 +31,7 @@ $query = Tabulation::where([['criteria_id','=',$tabulations[0]['criteria_id']]])
         @endfor
         @php
         $datasets = json_encode($datasets);
-        echo $datasets;
+        //echo $datasets;
         @endphp                    
     </tbody>
 </table>
@@ -41,8 +41,9 @@ $query = Tabulation::where([['criteria_id','=',$tabulations[0]['criteria_id']]])
 
     var dataset_source = jQuery.parseJSON ('@php echo $datasets @endphp');
     var dataset_name   = dataset_source['name']
+    var dataset_label  = dataset_source['label']
     //   var dataset_data   = dataset_source['data']
-    console.log(dataset_source);  
+    console.log(dataset_label);  
 
   var densityCanvas = document.getElementById("chart_x_{{$id}}");
   if(densityCanvas){
@@ -68,7 +69,7 @@ $query = Tabulation::where([['criteria_id','=',$tabulations[0]['criteria_id']]])
     };
 
     var planetData = {
-      labels: ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
+      labels: dataset_label,
       datasets: [densityData, gravityData]
     };
 
