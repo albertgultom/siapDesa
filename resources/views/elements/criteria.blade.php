@@ -20,10 +20,16 @@
     @endif
 
     @if($k->tabulations->count() > 0)
+    <div class="row">    
       @include('elements.tabulation', [
         'tabulations' => $k->tabulations,
         'id' => $k->id
       ])
+
+      @include('elements.tabulation_detail_chart', [
+                                                'tabulations' => $k->tabulations,
+                                                'id' => $k->id])
+    </div>                                                
     @endif
 @endforeach
 </ol>

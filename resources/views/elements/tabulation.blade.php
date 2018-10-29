@@ -6,15 +6,18 @@
 </style>
 @php
 use App\Tabulations_detail;
-$xx = 0;
+$xx               = 0;
 $flag_comparative = 0;
+$query            = '';
+$datasets[] = '';
 @endphp
-<div class="row">
+
   <div class="col-md-7">
       <table class="table">
         <tbody>
           @foreach ($tabulations as $t)
             @php $flag_comparative = $t['comparative']@endphp
+            <input type="hidden" id="hdn_comparative_{{$id}}" value="{{$t['comparative']}}">            
             @if ($t['comparative'] <= 1)
               <tr>
                 <td class="label_td">{{$t['name']}}</td>
@@ -29,6 +32,12 @@ $flag_comparative = 0;
                 @if($xx == 0)
                 <tr>
                   @for($i=0;$i<=$t['comparative'];$i++)
+                    @php
+                      if($i != 0)
+                      {
+                        $datasets['name'][$i-1] = $query[$i]->name; 
+                      }
+                    @endphp                                      
                     <td class="label_td">{{$query[$i]->name}}</td>
                   @endfor
                 </tr>
@@ -38,6 +47,9 @@ $flag_comparative = 0;
                     @if($i == 0)
                     <td class="label_td">{{$query[$i]->name}}</td>
                     @else
+                    @php
+                        $datasets['data'][$i-1] = array($query[$i]->numeral); 
+                    @endphp                                                          
                     <td class="label_td">{{$query[$i]->numeral}}</td>
                     @endif                    
                   @endfor
@@ -47,15 +59,19 @@ $flag_comparative = 0;
             @endif
             @php $xx++; @endphp
           @endforeach
+          @php
+            $datasets = json_encode($datasets);
+            //echo $datasets;            
+          @endphp
         </tbody>
       </table>
   </div>
-  <div class="col-md-5">
-    @if($flag_comparative == 0)
+
+  @if($flag_comparative == 0)
+  <div class="col-md-5">    
     <canvas id="chart{{$id}}"></canvas>
-    @endif
   </div>
-</div>
+  @endif
 
 @push('scripts')
 <script>
@@ -110,5 +126,14 @@ $flag_comparative = 0;
       // }
     });
   }
+
+
+var flag_comparative = $("#hdn_comparative_{{$id}}").val();
+if (flag_comparative > 1) {
+  // var dataset_source = jQuery.parseJSON ('@php echo $datasets @endphp');
+  // var dataset_name   = dataset_source['name']
+  // var dataset_data   = dataset_source['data']
+  // console.log(dataset_data);      
+}
 </script>
 @endpush
