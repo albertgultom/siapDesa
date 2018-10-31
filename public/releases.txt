@@ -9,6 +9,7 @@ Improved:
 - Servicing (public)
 - Potensial (admin)
 - Population rendering
+- Potensial rendering
 Fixed:
 - Juristical display panel
 
