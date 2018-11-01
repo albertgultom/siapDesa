@@ -183,7 +183,7 @@
       method: "get",
       dataType: "json"
     }).done(function(res) {
-      // console.log(res[0].id)
+      console.log(res[0])
       $('#viewModalnik').val(res[0].nik);
       $('#viewModalname').val(res[0].name);      
       $('#viewModalgender').val(res[0].gender);

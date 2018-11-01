@@ -265,13 +265,14 @@ class HomeController extends Controller
                         'population_id'         => $item->population_id
                     ];
                 });            
-                // dd($data_store->count());
+
                 $data_view     = $this->validate($request,[
                     'nik'         => 'required',
                     'facility_id' => 'required'
                 ]);
     
                 if ($data_store->count() == 0) {
+                    $data['note'] = $request->note;
                     Servicing::create($data);
                     $res_data = array
                     (
