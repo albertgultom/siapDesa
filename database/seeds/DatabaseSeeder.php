@@ -27,5 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ServicingSeeder::class);
         $this->call(GallerySeeder::class);
         $this->call(CriteriaSeeder::class);
+        $this->call(JuristicalSeeder::class);
     }
 }
