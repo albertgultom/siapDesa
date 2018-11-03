@@ -112,9 +112,9 @@
 
                 <div class="form-group">
                     <label class="switch switch-text switch-success mt-3">
-                        <input type="checkbox" name="active" value="" class="switch-input" >
-                        <span data-on="On" data-off="Off" class="switch-label"></span>
-                        <span class="switch-handle"></span>
+                    <input id="poststatus" type="checkbox" name="active" class="switch-input" checked>
+                    <span data-on="On" data-off="Off" class="switch-label"></span>
+                    <span class="switch-handle"></span>
                     </label>
                 </div>                                                               
 

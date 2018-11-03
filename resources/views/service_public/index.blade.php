@@ -32,9 +32,17 @@
                                     @if ($errors->has('nik'))
                                         <small class="form-text text-danger">{{ $errors->first('nik') }}</small>
                                     @endif
+                                </div>         
+
+                                <h4 class="card-title">Catatan</h4>                        
+                                <div class="form-group{{ $errors->has('nik') ? ' has-danger' : '' }}">
+                                    <textarea name="note" id="note" class="form-control">{{ old('note') }}</textarea>
+                                    @if ($errors->has('note'))
+                                        <small class="form-text text-danger">{{ $errors->first('nik') }}</small>
+                                    @endif
                                     <small class="form-text text-danger" id="error-block"></small>
                                     <small class="form-text text-success" id="success-block"></small>                                    
-                                </div>                            
+                                </div>                                                            
 
                                 <button type="submit" id="btn-submit-form" class="btn btn-outline-primary">Ajukan Pelayanan</button>                                                            
                             <!-- </form>                         -->
@@ -52,36 +60,68 @@
 
     $("#btn-submit-form").click(function() {
         var nik         = $("#nik").val();
+        var note         = $("#note").val();        
         var facility_id = $("#facility_id").val();
         var CSRF_TOKEN  = $('meta[name="csrf-token"]').attr('content');
+
+        if (nik.length <= 0) {
+            Lobibox.alert("warning", //AVAILABLE TYPES: "error", "info", "success", "warning"
+            {
+                title: 'Peringatan',
+                msg  : "NIK Wajib Diisi."
+            });
+        }
+        else
+        {
+
         $.ajax({
             url :'{{route('propose_service.store')}}',
             type:"post",
-            data:{_token: CSRF_TOKEN, nik : nik, facility_id : facility_id},
+            data:{_token: CSRF_TOKEN, nik : nik, facility_id : facility_id, note : note},
             beforeSend:function(){
-                $("#loadprosess").modal('hide');                
-                $("#loadprosess").modal('show');                        
+                Lobibox.progress({
+                    title: 'Memproses Data',
+                    label: '',          
+                    onShow: function ($this) {
+                        var i = 0;
+                        var inter = setInterval(function () {
+                            if (i > 100) {
+                                inter = clearInterval(inter);
+                            }
+                            i = i + 1;
+                            $this.setProgress(i);
+                        }, 10);
+                    }
+                });            
                 $('#success-block').html('');                    
                 $('#error-block').html('');
             },
             success:function(msg)
             {
-                console.log(msg.text);
-                $("#loadprosess").modal('hide');                                        
                 if (msg.status == 1)
                 {
-                    $('#success-block').html(msg.text);
+                    Lobibox.notify('success', {
+                        msg: msg.text
+                    });                    
+                    setTimeout(function(){
+                        setTimeout(function(){
+                            location.reload();
+                        }, 500);
+                    }, 500);                    
                 }
                 else
                 {
-                    $('#error-block').html(msg.text);
+                    Lobibox.notify('warning', {
+                        msg: msg.text
+                    });                    
+                    $('#error-block').html(msg.text);                    
                 }
             },
             error:function(){
                 $('#error-block').html('Error system');
             }
-        })
-
+        })            
+        }
     });
 
 </script>

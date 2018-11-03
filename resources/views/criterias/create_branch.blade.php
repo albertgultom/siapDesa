@@ -37,6 +37,7 @@
         <input type="hidden" id="oid_parent" value="{{ $id }}">
         <input type="hidden" id="tree_parent" value="{{ $data != null ? $data->tree : null }}">                
         <input type="hidden" id="comparative_parent" value="{{ $comparative }}">                
+        <input type="hidden" id="flag_decimal_parent" value="{{ $data->flag_decimal }}">                
 
         @if ($comparative <= 1)                              
         <div class="row">
@@ -59,14 +60,27 @@
                     </div>    
                     @endif
                 @endif                            
+
+                @if ($data->tree != 4 && $comparative < 1)                
+                <div class="form-group">
+                    <div class="form-control-label">Desimal</div>
+                    <label class="switch switch-text switch-success mt-3">
+                        <input id="flag_decimal" type="checkbox" name="flag_decimal" class="switch-input" checked>
+                        <span data-on="On" data-off="Off" class="switch-label"></span>
+                        <span class="switch-handle"></span>
+                    </label>
+                </div>                
+                @endif
             </div>
             <div class="col-md-6">
                 {{-- comparative --}}
+                @if ($data->tree != 4 && $comparative > 1)                
                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                     <label class="form-control-label">Data Pembanding</label>
                     <input type="number" name="comparative" id="comparative" placeholder="Data Pembanding" value="{{ old('comparative') }}" class="form-control">
                     <small class="form-text text-danger" id="msg_comparative"></small>
                 </div>                
+                @endif
 
                 {{-- NUMERAL --}}
                 @if ($data != null)       
@@ -78,7 +92,6 @@
                     </div>
                     @endif
                 @endif                                    
-
             </div>
 
             <button type="submit" class="btn btn-outline-primary" id="btn-submit-form">Simpan</button>        
@@ -121,17 +134,24 @@
         todayHighlight: true,
         daysOfWeekHighlighted: "0,6"        
     }); 
+
+    $("#flag_decimal").click(function() {
+        if (this.value == 'on')$(this).val('off');
+        else if(this.value == 'off')$(this).val('on');
+    })
     
     $("#btn-submit-form").click(function() {        
-        var name               = $("#name").val();
-        var numeral            = $("#numeral").val();
-        var identity           = $("#identity").val();
-        var comparative        = $("#comparative").val();
-        var oid                = $("#oid_parent").val();
-        var tree               = $("#tree_parent").val();
-        var comparative_parent = $("#comparative_parent").val();
-        var CSRF_TOKEN         = $('meta[name="csrf-token"]').attr('content');
-        var valid              = 0;
+        var name                = $("#name").val();
+        var numeral             = $("#numeral").val();
+        var identity            = $("#identity").val();
+        var comparative         = $("#comparative").val();
+        var oid                 = $("#oid_parent").val();
+        var tree                = $("#tree_parent").val();
+        var comparative_parent  = $("#comparative_parent").val();
+        var flag_decimal_parent = $("#flag_decimal_parent").val(); 
+        var CSRF_TOKEN          = $('meta[name="csrf-token"]').attr('content');
+        var valid               = 0;
+        var flag_decimal        = $('#flag_decimal').val();
 
         $("#msg_name").html("");        
         if (tree == "" || tree != 4) {   
@@ -151,14 +171,16 @@
                 url :'{{route('criteria.store')}}',
                 type:"post",
                 data:{
-                        _token            : CSRF_TOKEN,
-                        name              : name,
-                        numeral           : numeral,
-                        identity          : identity,
-                        comparative       : comparative,
-                        comparative_parent: comparative_parent,
-                        tree              : tree,
-                        oid               : oid
+                        _token             : CSRF_TOKEN,
+                        name               : name,
+                        numeral            : numeral,
+                        identity           : identity,
+                        comparative        : comparative,
+                        comparative_parent : comparative_parent,
+                        tree               : tree,
+                        oid                : oid,
+                        flag_decimal       : flag_decimal,
+                        flag_decimal_parent: flag_decimal_parent
                     },
                 beforeSend:function(){
                     $("#loadprosess").modal('hide');                
