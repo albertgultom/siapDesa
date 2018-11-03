@@ -71,6 +71,16 @@ class HomeController extends Controller
         return view('monografi.potensi',compact('row','criterias','public'));
     }
 
+    public function infografik()
+    {
+        # code...
+        $row       = Profile::find(1);
+        $public    = 1;
+        $criterias = Criteria::where('criteriaable_id', null)
+        ->get();        
+        return view('monografi.infografik',compact('row','criterias','public'));        
+    }
+
     public function  foto()
     {
         $row = Profile::find(1);

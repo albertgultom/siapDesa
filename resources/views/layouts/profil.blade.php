@@ -13,7 +13,7 @@
     <a class="nav-link p-3" href="/potensi">Potensi</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link p-3 disabled" href="/infografik">Infografik</a>
+    <a class="nav-link p-3" href="/infografik">Infografik</a>
   </li>
   {{-- <li class="nav-item">
     <a class="nav-link p-3 disabled" href="/lembaga">Lembaga</a>

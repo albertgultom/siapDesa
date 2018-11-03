@@ -18,6 +18,7 @@ Route::get('/produk-hukum/{name?}', 'HomeController@hukum')->name('produk-hukum'
 Route::get('/pelayanan', 'HomeController@service')->name('pelayanan');
 Route::get('/pelayanan/{name}', 'HomeController@services')->name('pelayanan.index');
 Route::post('/propose_service', 'HomeController@propose_service')->name('propose_service.store');
+Route::get('/infografik','HomeController@infografik');
 Route::get('/soon', function(){
   return view('soon');
 })->name('soon');
