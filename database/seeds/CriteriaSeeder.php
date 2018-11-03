@@ -13,6 +13,7 @@ class CriteriaSeeder extends Seeder
     {
         DB::table('criterias')->truncate();
         DB::table('tabulations')->truncate();
+        DB::table('tabulations_detail')->truncate();
 
         $faker = Faker\Factory::create();
 
@@ -53,13 +54,18 @@ class CriteriaSeeder extends Seeder
                 'criteriaable_type' => 'App\Criteria',
                 'tree'              => 3                
             ],[
+                'name'              => 'Sumber Daya Manusia',
+                'criteriaable_id'   => null,
+                'criteriaable_type' => null,
+                'tree'              => 1
+            ],[
                 'name'              => 'Sarana dan Prasarana',
                 'criteriaable_id'   => null,
                 'criteriaable_type' => null,
                 'tree'              => 1
             ],[
                 'name'              => 'Prasarana Peribadatan',
-                'criteriaable_id'   => 8,
+                'criteriaable_id'   => 9,
                 'criteriaable_type' => 'App\Criteria',
                 'tree'              => 2
             ]
@@ -70,7 +76,9 @@ class CriteriaSeeder extends Seeder
                 'name'              => $value['name'],
                 'criteriaable_id'   => $value['criteriaable_id'],
                 'criteriaable_type' => $value['criteriaable_type'],
-                'tree'              => $value['tree']
+                'tree'              => $value['tree'],
+                'created_at'         => Carbon\Carbon::now(),
+                'updated_at'         => Carbon\Carbon::now()
             ]);
         }
 
@@ -103,6 +111,8 @@ class CriteriaSeeder extends Seeder
                 'numeral'            => $value['numeral'],
                 'identity'           => $value['identity'],
                 'status_available'   => $value['status_available'],
+                'created_at'         => Carbon\Carbon::now(),
+                'updated_at'         => Carbon\Carbon::now()
             ]);
         }
     }

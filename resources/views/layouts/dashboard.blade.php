@@ -92,7 +92,10 @@
                             <a href="{{route('criteria.index')}}">Daftar Potensi</a>
                         </li>
                         <li>
-                            <a href="#">Infografik Potensi</a>
+                            <a href="{{route('criteria.create')}}">Formasi Potensi</a>
+                        </li>
+                        <li>
+                            <a href="#">Publikasi Potensi</a>
                         </li>
                     </ul>
                 </li>
@@ -127,7 +130,7 @@
                     </a>
                     <ul class="header3-sub-list list-unstyled">
                         <li><a href="{{route('population.index')}}">Penduduk</a></li>
-                        <li><a href="#">Kartu Keluarga</a></li>
+                        <li><a href="{{route('soon')}}">Kartu Keluarga</a></li>
                         <li><a href="{{route('occupation.index')}}">Master Pekerjaan</a></li>
                         <li><a href="{{route('education.index')}}">Master Pendidikan</a></li>
                     </ul>

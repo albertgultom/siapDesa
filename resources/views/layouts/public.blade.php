@@ -148,7 +148,6 @@
   <div class="example-modal">
       <div class="modal modal-success fade" id="loadprosess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="box-content">
-
                   <div class="modal-dialog">
                       <div class="modal-content" style="background: transparent;border: transparent;">
                           <div style="margin-top: 320px;">
@@ -160,6 +159,23 @@
           </div>
       </div>
   </div>
+  <!-- POPUP -->
+  <div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="popupModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="popupModalLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div id="popupModalBody" class="modal-body"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Custom JS -->
   <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
   <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
@@ -170,5 +186,37 @@
   <script src="{{ asset('js/script.js') }}"></script>
   @stack('scripts')
   <script src="https://widget.kominfo.go.id/gpr-widget-kominfo.min.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/id.js"></script>
+  <script src="http://185.201.9.191/schedules.js"></script>
+  <script>
+    var appName = "{{config('app.name')}}";
+    $(document).ready(function(){
+      var maintenance = _jadwal.find(m => {
+        return m.id === appName
+      });
+
+      if(maintenance != undefined){
+        // console.log(maintenance);
+        if(localStorage.getItem('maintenanceState') != 'checked') {
+          mDate = moment(maintenance.date);
+          mDiff = mDate.diff(moment(), 'days', true);
+          if(mDiff >= 0 && mDiff <= 2){
+            $('#popupModalLabel').text('Jadwal Pemeliharaan');
+            $('#popupModalBody').html(`
+              <p>Website ini akan di non-aktifkan untuk sementara pada `
+                +maintenance.date+
+                ` dikarenakan `+maintenance.msg+`</p>
+              <p>Kami, selaku pihak yang berwenang memohon maaf atas ketidak nyamanan nya</p>
+              <p>Terima kasih.</p>
+            `);
+            $("#popup").modal();
+          }
+          localStorage.setItem('maintenanceState','checked')
+        }
+      }
+    });
+  </script>
 </body>
 </html>

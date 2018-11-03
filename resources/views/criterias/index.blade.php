@@ -32,7 +32,7 @@
                         </button>
                     </h5>
                 </div>
-                <div id="collapse{{$k['id']}}" class="collapse show" aria-labelledby="heading{{$k['id']}}" data-parent="#accordionExample">
+                <div id="collapse{{$k['id']}}" class="collapse" aria-labelledby="heading{{$k['id']}}" data-parent="#accordionExample">
                     <div class="card-body">
                         @if($k->criterias->count() > 0)
                             @include('elements.criteria', ['criterias' => $k->criterias])
