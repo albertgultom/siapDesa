@@ -186,10 +186,9 @@
   <script src="{{ asset('js/script.js') }}"></script>
   @stack('scripts')
   <script src="https://widget.kominfo.go.id/gpr-widget-kominfo.min.js"></script>
-  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/id.js"></script>
-  <script src="http://185.201.9.191/schedules.js"></script>
+  {{-- <script src="http://185.201.9.191/schedules.js"></script>
   <script>
     var appName = "{{config('app.name')}}";
     $(document).ready(function(){
@@ -198,7 +197,6 @@
       });
 
       if(maintenance != undefined){
-        // console.log(maintenance);
         if(localStorage.getItem('maintenanceState') != 'checked') {
           mDate = moment(maintenance.date);
           mDiff = mDate.diff(moment(), 'days', true);
@@ -217,6 +215,6 @@
         }
       }
     });
-  </script>
+  </script> --}}
 </body>
 </html>
