@@ -94,9 +94,9 @@
                         <li>
                             <a href="{{route('criteria.create')}}">Formasi Potensi</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="#">Publikasi Potensi</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
                 <li class="has-sub"> <!-- PELAYANAN -->
