@@ -17,6 +17,9 @@ use App\Tag;
 use App\Facility;
 use App\Population;
 use App\Servicing;
+use App\Criteria;
+use App\Tabulation;
+use App\Tabulations_detail;
 
 class HomeController extends Controller
 {
@@ -61,8 +64,11 @@ class HomeController extends Controller
 
     public function  potensi()
     {
-        $row = Profile::find(1);
-        return view('monografi.potensi',compact('row'));
+        $row       = Profile::find(1);
+        $public    = 1;
+        $criterias = Criteria::where('criteriaable_id', null)
+        ->get();        
+        return view('monografi.potensi',compact('row','criterias','public'));
     }
 
     public function  foto()

@@ -57,8 +57,9 @@ class CriteriaController extends Controller
 
     public function create()
     {
-        $data = Criteria::where('criteriaable_id', null)->get();
-        return view('criterias.create', compact('data'));
+        $data   = Criteria::where('criteriaable_id', null)->get();
+        $public = 0;
+        return view('criterias.create', compact('data','public'));
     }
 
     public function branch($id)
