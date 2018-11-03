@@ -111,6 +111,7 @@ class CriteriaController extends Controller
 
         } else {
             # code...
+            // dd($request);            
             if ($request->comparative_parent == 0) {
                 # code...
                 $data_1     = $this->validate($request,[
@@ -120,10 +121,16 @@ class CriteriaController extends Controller
                 $data_1['criteriaable_type'] = 'App\Criteria';
                 $data_1['tree']              = $request->tree + 1;
                 $data_1['comparative']       = $request->comparative;
-                if (($request->tree + 1) == 1) {
+                if (($request->tree + 1) == 1)$data_1['criteriaable_id'] = NULL;
+            
+                if ($request->flag_decimal == 'on') {
                     # code...
-                    $data_1['criteriaable_id']   = NULL;                
-                }
+                    $data_1['flag_decimal']       = 1;                    
+                } elseif ($request->flag_decimal == 'off') {
+                    # code...
+                    $data_1['flag_decimal']       = 0;                                        
+                } 
+                
                 Criteria::create($data_1);
                 $res_data = array
                 (
@@ -140,7 +147,8 @@ class CriteriaController extends Controller
                     'identity' => 'required'
                 ]);            
                 $data['criteria_id'] = $request->oid;
-                $data['comparative'] = $request->comparative;
+                $data['comparative'] = $request->comparative_parent;
+                $data['flag_decimal'] = $request->flag_decimal_parent;                
                 Tabulation::create($data);
                 $res_data = array
                 (

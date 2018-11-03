@@ -18,7 +18,19 @@ $flag_comparative = 0;
             @if ($t['comparative'] <= 1)
               <tr>
                 <td class="label_td">{{$t['name']}}</td>
-                <td class="label_td">{{$t['numeral']}} {{$t['identity']}}</td>
+                <td class="label_td">
+                  @if($t['flag_decimal'] == 1)
+                    @php 
+                      echo number_format($t['numeral'],2)
+                    @endphp
+                    {{$t['identity']}}
+                  @elseif ($t['flag_decimal'] == 0)
+                    @php 
+                      echo number_format($t['numeral'],0)
+                    @endphp
+                    {{$t['identity']}}
+                  @endif
+                </td>
               </tr>
             @elseif ($t['comparative'] > 1)
               @php 
