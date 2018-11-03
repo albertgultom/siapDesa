@@ -1,7 +1,12 @@
 v1.0.0-rc2.1
 ============
+Improved:
+- Tabulation for criteria
+- Servicing (public)
 Fixed:
 - Spelling type #1
+- Servicing (public) #2
+- Population (admin) #3
 
 v1.0.0-rc2
 2018-10-31
