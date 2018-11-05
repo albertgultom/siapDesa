@@ -43,8 +43,31 @@ class GalleryController extends Controller
         $tags            = Tag::select('id', 'name')->get();
         $request_content = $request;
         $data            = Gallery::findOrFail($id);
-        // dd($data->type_id);
-        return view('galleries.edit', compact('tags','types','request_content', 'data'));
+        // dd($data->content);
+        if($data->content == 'photo'){
+            $contents = $data
+                ->contents()
+                ->select(['name','image'])
+                ->get();
+        }else{
+            $contents = $data
+                ->contents()
+                ->select(['name','video'])
+                ->get();
+        }
+
+        $data_detail = collect([
+            'name' => $data->name,
+            'date' => $data->updated_at->format('d-m-Y'),
+            'type' => $data->type->name,
+            'tags' => $data->tags->pluck('name'),
+            'content'  => $data->content,
+            'contents' => $contents,
+        ]);
+
+        // dd($data_detail['contents'][0]);
+
+        return view('galleries.edit', compact('tags','types','request_content', 'data', 'data_detail'));
     }
 
     public function show(Request $request, $id)

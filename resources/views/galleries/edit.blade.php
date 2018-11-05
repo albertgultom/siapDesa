@@ -76,6 +76,47 @@
     </form>
   </div>
 </section>  
+
+<!-- SECTION content -->
+<section class="statistic-chart">
+  <div class="container">
+    <div class="row">
+    @if($data_detail)
+    @for($i=0;$i < count($data_detail['contents']);$i++)
+        @if($data_detail['content'] == 'photo')
+        <a href="#" class="col-12 col-lg-3 mb-2 d-flex align-items-stretch">
+            <div class="card features">
+              <img class="card-img-top img-fluid" src="{{asset('storage/photos/'.$data_detail['contents'][$i]->image)}}" alt="Card image cap">
+              <div class="card-body">
+                <div class="media">
+                  <div class="media-body">
+                      <h4 class="card-title">{{$data_detail['contents'][$i]->name}}</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        @elseif ($data_detail['content'] == 'video')
+        <a href="#" class="col-12 col-lg-3 mb-2 d-flex align-items-stretch">
+            <div class="card features col-lg-12">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="{{$data_detail['contents'][$i]->video}}" allowfullscreen=""></iframe>
+              </div>
+              <div class="card-body">
+                <div class="media">
+                  <div class="media-body">
+                      <h4 class="card-title">{{$data_detail['contents'][$i]->name}}</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>        
+        @endif
+    @endfor
+    @endif    
+    </div>
+  </div>
+</section>  
 @endsection
 
 @push('scripts')
