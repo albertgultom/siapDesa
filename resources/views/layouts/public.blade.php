@@ -29,7 +29,7 @@
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <link href="{{ asset('css/seamless.css') }}" rel="stylesheet">
   <link href="{{ asset('vendor/loadme/style/loadme.css') }}" rel="stylesheet">  
-  <link href="{{ asset('vendor/lobibox/dist/css/Lobibox.min.css') }}" rel="stylesheet">      
+  <link href="{{ asset('vendor/lobibox/dist/css/lobibox.min.css') }}" rel="stylesheet">      
   <style>
     .disabled {
       pointer-events: none;
@@ -182,14 +182,13 @@
   <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.js"></script>
   <script src="{{ asset('vendor/chartjs/Chart.bundle.min.js') }}"></script>
-  <script src="{{ asset('vendor/lobibox/js/Lobibox.js') }}"></script>
+  <script src="{{ asset('vendor/lobibox/js/lobibox.js') }}"></script>
   <script src="{{ asset('js/script.js') }}"></script>
   @stack('scripts')
   <script src="https://widget.kominfo.go.id/gpr-widget-kominfo.min.js"></script>
-  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/id.js"></script>
-  <script src="http://185.201.9.191/schedules.js"></script>
+  {{-- <script src="http://185.201.9.191/schedules.js"></script>
   <script>
     var appName = "{{config('app.name')}}";
     $(document).ready(function(){
@@ -198,7 +197,6 @@
       });
 
       if(maintenance != undefined){
-        // console.log(maintenance);
         if(localStorage.getItem('maintenanceState') != 'checked') {
           mDate = moment(maintenance.date);
           mDiff = mDate.diff(moment(), 'days', true);
@@ -217,6 +215,6 @@
         }
       }
     });
-  </script>
+  </script> --}}
 </body>
 </html>
