@@ -17,4 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::get('/tag/{id}', 'TagController@show');
+Route::post('/tes', function(Request $request){
+  return response()->json($request);
+});

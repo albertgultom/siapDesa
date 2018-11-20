@@ -1,3 +1,9 @@
+v1.0.0
+============
+Improved:
+- Video gallery (admin)
+- Contents gallery (admin)
+
 v1.0.0-rc2.2
 ============
 New:
