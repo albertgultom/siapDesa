@@ -94,6 +94,7 @@ class CriteriaController extends Controller
     {
         # code...
         $res_data = "";
+        $request->comparative = ($request->comparative == null ? 0 : $request->comparative);
         if ($request->tree == 4) {
             # code...
             $data     = $this->validate($request,[
