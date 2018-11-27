@@ -13,7 +13,7 @@
     <a class="nav-link p-3" href="{{route('galeri', ['content' => 'photo'])}}">Galeri Foto</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link p-3 disabled" href="{{route('soon')}}">Galeri Video</a>
+    <a class="nav-link p-3" href="{{route('galeri', ['content' => 'video'])}}">Galeri Video</a>
   </li>
   <li class="nav-item">
   <a class="nav-link p-3" href="{{route('produk-hukum')}}">Produk Hukum</a>

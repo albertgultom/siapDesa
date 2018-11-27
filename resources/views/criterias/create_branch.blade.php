@@ -37,7 +37,7 @@
         <input type="hidden" id="oid_parent" value="{{ $id }}">
         <input type="hidden" id="tree_parent" value="{{ $data != null ? $data->tree : null }}">                
         <input type="hidden" id="comparative_parent" value="{{ $comparative }}">                
-        <input type="hidden" id="flag_decimal_parent" value="{{ $data->flag_decimal }}">                
+        <input type="hidden" id="flag_decimal_parent" value="{{ $data != null ? $data->flag_decimal : null }}">                
 
         @if ($comparative <= 1)                              
         <div class="row">
@@ -61,25 +61,29 @@
                     @endif
                 @endif                            
 
-                @if ($data->tree != 4 && $comparative < 1)                
-                <div class="form-group">
-                    <div class="form-control-label">Desimal</div>
-                    <label class="switch switch-text switch-success mt-3">
-                        <input id="flag_decimal" type="checkbox" name="flag_decimal" class="switch-input" checked>
-                        <span data-on="On" data-off="Off" class="switch-label"></span>
-                        <span class="switch-handle"></span>
-                    </label>
-                </div>                
-                @endif
+                @if ($data != null)                      
+                    @if ($data->tree != 4 && $comparative < 1)                
+                    <div class="form-group">
+                        <div class="form-control-label">Desimal</div>
+                        <label class="switch switch-text switch-success mt-3">
+                            <input id="flag_decimal" type="checkbox" name="flag_decimal" class="switch-input" checked>
+                            <span data-on="On" data-off="Off" class="switch-label"></span>
+                            <span class="switch-handle"></span>
+                        </label>
+                    </div>                
+                    @endif
+                @endif                                            
             </div>
             <div class="col-md-6">
                 {{-- comparative --}}
-                @if ($data->tree != 4 && $comparative > 1)                
-                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                    <label class="form-control-label">Data Pembanding</label>
-                    <input type="number" name="comparative" id="comparative" placeholder="Data Pembanding" value="{{ old('comparative') }}" class="form-control">
-                    <small class="form-text text-danger" id="msg_comparative"></small>
-                </div>                
+                @if ($data != null)                                      
+                    @if ($data->tree != 4 || $comparative > 1)                
+                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                        <label class="form-control-label">Data Pembanding</label>
+                        <input type="number" name="comparative" id="comparative" placeholder="Data Pembanding" value="{{ old('comparative') }}" class="form-control">
+                        <small class="form-text text-danger" id="msg_comparative"></small>
+                    </div>                
+                    @endif
                 @endif
 
                 {{-- NUMERAL --}}
